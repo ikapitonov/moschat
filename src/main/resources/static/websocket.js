@@ -1,4 +1,4 @@
-let domen = "http://localhost:8080";
+let domen = "https://" + location.hostname;
 let stompClient;
 let role;
 let webSocket;
