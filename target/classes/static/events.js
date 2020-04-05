@@ -40,4 +40,6 @@ $(document).ready(function() {
     });
 
     $("#loading").click(loadingMessages);
+
+    $("#textarea").keyup(userWrite);
 });

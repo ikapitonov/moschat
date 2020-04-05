@@ -2,7 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41f441b1-3f74-4b76-ba3f-6a3a4028abfe" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/chat/repositories/OffsetBasedPageRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/controller/WebSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/controller/WebSocket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/repositories/ClientMessageRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/repositories/ClientMessageRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/utils/Time.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/utils/Time.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/config/Handshake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/config/Handshake.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/config/TopicSubscriptionInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/config/TopicSubscriptionInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/model/ClientMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/model/ClientMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/model/ListMessages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/model/ListMessages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/handlers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/handlers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/show.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/events.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/websocket.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/websocket.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/page.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/Application.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/controller/WebSocket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/controller/WebSocket.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/repositories/ClientMessageRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/repositories/ClientMessageRepo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/utils/Time.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/utils/Time.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/config/Handshake.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/config/Handshake.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/config/TopicSubscriptionInterceptor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/config/TopicSubscriptionInterceptor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/model/ClientMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/model/ClientMessage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/model/ListMessages.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/model/ListMessages.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/handlers.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/handlers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/show.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/websocket.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/websocket.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/page.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/page.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +109,7 @@
       <workItem from="1585844433743" duration="18091000" />
       <workItem from="1585917244849" duration="25745000" />
       <workItem from="1586009272288" duration="5692000" />
-      <workItem from="1586017478747" duration="3993000" />
+      <workItem from="1586017478747" duration="38793000" />
     </task>
     <servers />
   </component>
@@ -91,46 +117,50 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="496" y="52" key="#com.intellij.ide.util.MemberChooser" timestamp="1585956712838">
+    <state x="496" y="52" key="#com.intellij.ide.util.MemberChooser" timestamp="1586122399186">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state x="496" y="52" key="#com.intellij.ide.util.MemberChooser/0.23.1366.677@0.23.1366.677" timestamp="1585956712838" />
-    <state width="1324" height="214" key="GridCell.Tab.0.bottom" timestamp="1586021066592">
+    <state x="496" y="52" key="#com.intellij.ide.util.MemberChooser/0.23.1366.677@0.23.1366.677" timestamp="1586122399186" />
+    <state width="1324" height="176" key="GridCell.Tab.0.bottom" timestamp="1586129300350">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="214" key="GridCell.Tab.0.bottom/0.23.1366.677@0.23.1366.677" timestamp="1586021066592" />
-    <state width="1324" height="214" key="GridCell.Tab.0.center" timestamp="1586021066590">
+    <state width="1324" height="176" key="GridCell.Tab.0.bottom/0.23.1366.677@0.23.1366.677" timestamp="1586129300350" />
+    <state width="1324" height="176" key="GridCell.Tab.0.center" timestamp="1586129300346">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="214" key="GridCell.Tab.0.center/0.23.1366.677@0.23.1366.677" timestamp="1586021066590" />
-    <state width="1324" height="214" key="GridCell.Tab.0.left" timestamp="1586021066589">
+    <state width="1324" height="176" key="GridCell.Tab.0.center/0.23.1366.677@0.23.1366.677" timestamp="1586129300346" />
+    <state width="1324" height="176" key="GridCell.Tab.0.left" timestamp="1586129300345">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="214" key="GridCell.Tab.0.left/0.23.1366.677@0.23.1366.677" timestamp="1586021066589" />
-    <state width="1324" height="214" key="GridCell.Tab.0.right" timestamp="1586021066591">
+    <state width="1324" height="176" key="GridCell.Tab.0.left/0.23.1366.677@0.23.1366.677" timestamp="1586129300345" />
+    <state width="1324" height="176" key="GridCell.Tab.0.right" timestamp="1586129300347">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="214" key="GridCell.Tab.0.right/0.23.1366.677@0.23.1366.677" timestamp="1586021066591" />
-    <state width="1324" height="214" key="GridCell.Tab.1.bottom" timestamp="1586021066594">
+    <state width="1324" height="176" key="GridCell.Tab.0.right/0.23.1366.677@0.23.1366.677" timestamp="1586129300347" />
+    <state width="1324" height="176" key="GridCell.Tab.1.bottom" timestamp="1586129300360">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="214" key="GridCell.Tab.1.bottom/0.23.1366.677@0.23.1366.677" timestamp="1586021066594" />
-    <state width="1324" height="214" key="GridCell.Tab.1.center" timestamp="1586021066593">
+    <state width="1324" height="176" key="GridCell.Tab.1.bottom/0.23.1366.677@0.23.1366.677" timestamp="1586129300360" />
+    <state width="1324" height="176" key="GridCell.Tab.1.center" timestamp="1586129300358">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="214" key="GridCell.Tab.1.center/0.23.1366.677@0.23.1366.677" timestamp="1586021066593" />
-    <state width="1324" height="214" key="GridCell.Tab.1.left" timestamp="1586021066592">
+    <state width="1324" height="176" key="GridCell.Tab.1.center/0.23.1366.677@0.23.1366.677" timestamp="1586129300358" />
+    <state width="1324" height="176" key="GridCell.Tab.1.left" timestamp="1586129300357">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="214" key="GridCell.Tab.1.left/0.23.1366.677@0.23.1366.677" timestamp="1586021066592" />
-    <state width="1324" height="214" key="GridCell.Tab.1.right" timestamp="1586021066594">
+    <state width="1324" height="176" key="GridCell.Tab.1.left/0.23.1366.677@0.23.1366.677" timestamp="1586129300357" />
+    <state width="1324" height="176" key="GridCell.Tab.1.right" timestamp="1586129300359">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="214" key="GridCell.Tab.1.right/0.23.1366.677@0.23.1366.677" timestamp="1586021066594" />
-    <state x="171" y="23" key="SettingsEditor" timestamp="1585864189670">
+    <state width="1324" height="176" key="GridCell.Tab.1.right/0.23.1366.677@0.23.1366.677" timestamp="1586129300359" />
+    <state x="221" y="23" key="Maven.ArtifactSearchDialog" timestamp="1586092255967">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state x="171" y="23" key="SettingsEditor/0.23.1366.677@0.23.1366.677" timestamp="1585864189670" />
+    <state x="221" y="23" key="Maven.ArtifactSearchDialog/0.23.1366.677@0.23.1366.677" timestamp="1586092255967" />
+    <state x="171" y="23" key="SettingsEditor" timestamp="1586044639841">
+      <screen x="0" y="23" width="1366" height="677" />
+    </state>
+    <state x="171" y="23" key="SettingsEditor/0.23.1366.677@0.23.1366.677" timestamp="1586044639841" />
     <state x="362" y="194" key="com.intellij.ide.util.TipDialog" timestamp="1585917276366">
       <screen x="0" y="23" width="1366" height="677" />
     </state>

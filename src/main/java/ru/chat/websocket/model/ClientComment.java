@@ -5,16 +5,18 @@ import ru.chat.utils.Time;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
+// пока нет авторизации придется записывать в обе таблицы одно и то же
 @Entity
-public class ClientMessage {
+@Table(name = "client_comment")
+public class ClientComment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToMany(fetch=FetchType.EAGER, mappedBy="clientMessage")
-    private List<ClientComment> comments;
+    @ManyToOne
+    @JoinColumn(name="message_id", nullable=false)
+    private ClientMessage clientMessage;
 
     @Column(nullable = false, length = 50)
     private String name;
@@ -46,21 +48,20 @@ public class ClientMessage {
         return name;
     }
 
-
-    public List<ClientComment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<ClientComment> comments) {
-        this.comments = comments;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public ClientMessage getClientMessage() {
+        return clientMessage;
+    }
+
+    public void setClientMessage(ClientMessage clientMessage) {
+        this.clientMessage = clientMessage;
     }
 
     public String getDate() {

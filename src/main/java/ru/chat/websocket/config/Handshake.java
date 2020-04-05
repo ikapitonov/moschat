@@ -5,7 +5,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.http.server.ServletServerHttpRequest;
-import org.springframework.messaging.simp.stomp.StompSession;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.server.HandshakeInterceptor;
@@ -15,6 +14,7 @@ import ru.chat.utils.Html;
 import ru.chat.websocket.permissions.Admin;
 import ru.chat.websocket.permissions.User;
 
+import java.net.URLDecoder;
 import java.util.Map;
 
 public class Handshake implements HandshakeInterceptor {
@@ -34,7 +34,10 @@ public class Handshake implements HandshakeInterceptor {
                 return closeConnection(response);
 
             if (role.equals("user")) {
-                String name = Html.fullDecode(getFromMapWithTrim(parameters, "name"));
+                String name = getFromMapWithTrim(parameters, "name");
+                if (name != null)
+                    name = URLDecoder.decode(name, "UTF-8").trim();
+                name = Html.fullDecode(name);
 
                 if (!user.isAllowed() || !user.validateName(name))
                     return closeConnection(response);

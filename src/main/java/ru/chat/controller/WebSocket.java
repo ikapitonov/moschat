@@ -7,7 +7,9 @@ import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.messaging.simp.user.SimpUserRegistry;
 import org.springframework.stereotype.Controller;
+import ru.chat.repositories.ClientCommentRepo;
 import ru.chat.repositories.ClientMessageRepo;
+import ru.chat.repositories.OffsetBasedPageRequest;
 import ru.chat.utils.Html;
 import ru.chat.utils.Time;
 import ru.chat.websocket.model.*;
@@ -25,32 +27,55 @@ public class WebSocket {
     @Autowired
     private ClientMessageRepo clientMessageRepo;
 
-    @MessageMapping("/chat.listMessages")
-    public void lastMessages(SimpMessageHeaderAccessor headerAccessor, @Payload Limits limits) {
+    @Autowired
+    private ClientCommentRepo clientCommentRepo;
 
+    @MessageMapping("/chat.userWrite")
+    public void userWrite(SimpMessageHeaderAccessor headerAccessor) {
+        UserWrite user = new UserWrite();
+
+        user.setUsername(headerAccessor.getSessionAttributes().get("name").toString());
+        user.setType("WRITE");
+        user.setSession(headerAccessor.getSessionId());
+        simpMessagingTemplate.convertAndSend("/topic/" + "common", user);
+    }
+
+    @MessageMapping("/chat.listMessages")
+    public void listMessages(SimpMessageHeaderAccessor headerAccessor, @Payload Limits limits) {
         if (limits.getOffset() > 100 || limits.getLimit() <= 0 || limits.getLimit() > 100)
             return ;
 
-        ListMessages listMessages = new ListMessages();
-        Iterable<ClientMessage> messages = clientMessageRepo.findAll(limits.getOffset(), limits.getLimit());
+        boolean isAdmin = headerAccessor.getSessionAttributes().get("role").toString().equals("admin");
+        Iterable<ClientMessage> messages = clientMessageRepo.findAll(new OffsetBasedPageRequest(limits.getLimit(), limits.getOffset()));
+        Iterator<ClientMessage> messageIterator = messages.iterator();
+        Iterator<ClientComment> commentIterator;
+        ClientMessage message;
+        ClientComment comment;
 
-        if (!headerAccessor.getSessionAttributes().get("role").toString().equals("admin")) {
-            Iterator<ClientMessage> iterator = messages.iterator();
-            ClientMessage tmp;
+        while (messageIterator.hasNext()) {
+            message = messageIterator.next();
 
-            while (iterator.hasNext()) {
-                tmp = iterator.next();
+            if (!isAdmin) {
+                message.setEmail(null);
+                message.setPhone(0);
+            }
+            commentIterator = message.getComments().iterator();
 
-                tmp.setEmail(null);
-                tmp.setPhone(0);
+            while (commentIterator.hasNext()) {
+                comment = commentIterator.next();
+
+                if (!isAdmin) {
+                    comment.setEmail(null);
+                    comment.setPhone(0);
+                }
+                comment.setClientMessage(null);
             }
         }
-        listMessages.setMessages(messages);
 
         simpMessagingTemplate.convertAndSend("/topic/" +
                 headerAccessor.getSessionAttributes().get("role").toString() + "/" +
                 headerAccessor.getSessionId(),
-                listMessages);
+                messages);
     }
 
     @MessageMapping("/chat.addUser")
@@ -106,5 +131,51 @@ public class WebSocket {
         clientMessage.setPhone(0);
         clientMessage.setEmail(null);
         simpMessagingTemplate.convertAndSend("/topic/" + "user", clientMessage);
+    }
+
+    // поскольку авторизации нет - нижепредставленный код может показаться несуразным
+    // с другой стороны, его (как и тот, что выше) с появлением авторизации придется переписать, поэтому нормально
+    @MessageMapping("/chat.sendComment")
+    public void SendComment (SimpMessageHeaderAccessor headerAccessor, @Payload Comment comment) {
+        ClientComment clientComment = new ClientComment();
+        ClientMessage message = new ClientMessage();
+        String content;
+
+        comment.setContent(Html.decodeParseLines(comment.getContent()));
+
+        if (comment.getId() == 0 || comment.getContent() == null || comment.getContent().trim().isEmpty()) {
+            return ;
+        }
+        message.setId(comment.getId());
+
+        content = comment.getContent().trim();
+        if (content.length() >= 2000)
+            content = content.substring(0, 1996) + "...";
+
+        clientComment.setName(headerAccessor.getSessionAttributes().get("name").toString());
+        clientComment.setContent(content);
+        clientComment.setRole(headerAccessor.getSessionAttributes().get("role").toString());
+        clientComment.setType("COMMENT");
+        clientComment.setClientMessage(message);
+
+        try {
+            clientComment.setPhone(Long.parseLong(headerAccessor.getSessionAttributes().get("phone").toString()));
+        }
+        catch (NullPointerException | NumberFormatException e) {
+            //clientMessage.setPhone("none");
+        }
+        try {
+            clientComment.setEmail(headerAccessor.getSessionAttributes().get("email").toString());
+        }
+        catch (NullPointerException e) {
+            //clientMessage.setEmail("none");
+        }
+
+        clientComment = clientCommentRepo.save(clientComment);
+        simpMessagingTemplate.convertAndSend("/topic/" + "admin", clientComment);
+
+        clientComment.setPhone(0);
+        clientComment.setEmail(null);
+        simpMessagingTemplate.convertAndSend("/topic/" + "user", clientComment);
     }
 }

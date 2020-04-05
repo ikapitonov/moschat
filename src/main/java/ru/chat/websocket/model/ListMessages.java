@@ -1,13 +1,15 @@
 package ru.chat.websocket.model;
 
-public class ListMessages {
-    private Iterable<ClientMessage> messages;
+import java.util.Iterator;
 
-    public Iterable<ClientMessage> getMessages() {
+public class ListMessages {
+    private Iterator<ClientMessage> messages;
+
+    public Iterator<ClientMessage> getMessages() {
         return messages;
     }
 
-    public void setMessages(Iterable<ClientMessage> messages) {
+    public void setMessages(Iterator<ClientMessage> messages) {
         this.messages = messages;
     }
 }

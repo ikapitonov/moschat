@@ -13,7 +13,7 @@ public class TopicSubscriptionInterceptor extends ChannelInterceptorAdapter {
         StompHeaderAccessor headerAccessor= StompHeaderAccessor.wrap(message);
 
         if (StompCommand.SUBSCRIBE.equals(headerAccessor.getCommand())) {
-
+            System.out.println("------ " + headerAccessor.getDestination());
             if (!validateSubscription(headerAccessor)) {
                 throw new IllegalArgumentException("No permission for this topic");
             }
@@ -28,6 +28,9 @@ public class TopicSubscriptionInterceptor extends ChannelInterceptorAdapter {
 
         // подписка на общие событие
         if (array.length == 3) {
+            if (array[2].equals("common"))
+                return true;
+
             return array[2].equals(role);
         }
         // подписка на личные события
