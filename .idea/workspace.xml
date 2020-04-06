@@ -2,33 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41f441b1-3f74-4b76-ba3f-6a3a4028abfe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/chat/repositories/OffsetBasedPageRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/controller/WebSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/controller/WebSocket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/repositories/ClientMessageRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/repositories/ClientMessageRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/utils/Time.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/utils/Time.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/config/Handshake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/config/Handshake.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/config/TopicSubscriptionInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/config/TopicSubscriptionInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/model/ClientMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/model/ClientMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/model/ListMessages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/model/ListMessages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/handlers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/handlers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/show.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/events.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/websocket.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/websocket.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/page.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/controller/WebSocket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/controller/WebSocket.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/repositories/ClientMessageRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/repositories/ClientMessageRepo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/utils/Time.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/utils/Time.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/config/Handshake.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/config/Handshake.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/config/TopicSubscriptionInterceptor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/config/TopicSubscriptionInterceptor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/model/ClientMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/model/ClientMessage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/model/ListMessages.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/model/ListMessages.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/handlers.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/handlers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/show.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/websocket.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/websocket.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/page.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/page.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +83,7 @@
       <workItem from="1585844433743" duration="18091000" />
       <workItem from="1585917244849" duration="25745000" />
       <workItem from="1586009272288" duration="5692000" />
-      <workItem from="1586017478747" duration="38793000" />
+      <workItem from="1586017478747" duration="39103000" />
     </task>
     <servers />
   </component>
