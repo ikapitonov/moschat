@@ -5,11 +5,11 @@ let usersWrite = new Map();
 let interval = 2000;
 
 function onConnected() {
-    $("#forms").css("display", "none");
-    $("#window").css("display", "block");
+    $("#forms").css("display","none");
+    $("#window").css("display","block");
 
     // у стомп клиента какая-то проблема с генерацией id, поэтому приходится ставить таймаунты
-    setTimeout(function () {
+    setTimeout( function () {
         stompClient.subscribe('/topic/' + role, commonController);
         setSessionId();
 
@@ -17,12 +17,12 @@ function onConnected() {
         stompClient.subscribe('/topic/' + "common", commonController);
         stompClient.send("/app/chat.addUser", {}, JSON.stringify({ type: "empty" }));
         stompClient.send("/app/chat.listMessages", {}, JSON.stringify({ offset: getOffset(), limit: limit }));
-    }, 0);
+    } ,0);
 }
 
 function onError() {
-    $("#forms").css("display", "block");
-    $("#window").css("display", "none");
+    $("#forms").css("display","block");
+    $("#window").css("display","none");
     $("#board").empty();
 
     stompClient.disconnect();
@@ -46,7 +46,7 @@ function commonController(payload) {
         comment(data, data.clientMessage.id);
     }
     else if (data.type == "WRITE") {
-        usersWrite.set(data.session, [data.username, interval]);
+        usersWrite.set(data.session, [ data.username, interval ]);
     }
 }
 
@@ -54,11 +54,11 @@ function myController(payload) {
     let data = JSON.parse(payload.body);
 
     if (data.content == null || data.content.length == 0) {
-        $("#loading").css("display", "none");
-        return;
+        $("#loading").css("display","none");
+        return ;
     }
     if (data.content.length < limit)
-        $("#loading").css("display", "none");
+        $("#loading").css("display","none");
 
     for (let i = 0; i < data.content.length; ++i) {
         message(data.content[i], "APPEND");
@@ -66,7 +66,7 @@ function myController(payload) {
 }
 
 function loadingMessages() {
-    stompClient.send("/app/chat.listMessages", {}, JSON.stringify({ offset: getOffset(), limit: limit }));
+    stompClient.send("/app/chat.listMessages", {}, JSON.stringify({ offset: getOffset(), limit: limit}));
 }
 
 function sendMessage(text) {
@@ -81,9 +81,9 @@ function sendComment(id) {
     let text = $("#message" + id + " textarea").val();
 
     if (text.length === 0)
-        return;
+        return ;
 
-    stompClient.send("/app/chat.sendComment", {}, JSON.stringify({ content: text, id: id }));
+    stompClient.send("/app/chat.sendComment", {}, JSON.stringify({content: text, id: id}));
 }
 
 function userWrite() {
@@ -91,7 +91,7 @@ function userWrite() {
 }
 
 setInterval(function () {
-    usersWrite.forEach(function (value, key) {
+    usersWrite.forEach(function(value,key){
         // key - уникальный ключ
         // value[0] - имя
         // value[1] - задержка
@@ -99,19 +99,19 @@ setInterval(function () {
         if (/*key == sessionId ||*/ value[1] < 0) {
             usersWrite.delete(key);
             $("#userwrite_" + key).remove();
-            return;
+            return ;
         }
         if ($("#userwrite_" + key).length === 0) {
             $("#usersWrite").append("<div id=\"userwrite_" + key + "\">" + value[0] + " Набирает сообщение</div>");
         }
-        usersWrite.set(key, [value[0], value[1] - interval])
+        usersWrite.set(key, [ value[0], value[1] - interval ])
     });
 
-}, interval);
+},interval);
 
 setInterval(function () {
     if (isWrite === true) {
-        stompClient.send("/app/chat.userWrite", {}, JSON.stringify({ type: "empty" }));
+        stompClient.send("/app/chat.userWrite", {}, JSON.stringify({type: "empty"}));
 
         isWrite = false;
     }
@@ -126,23 +126,23 @@ function getOffset() {
 
 // html
 function add(data) {
-    // let str = "<div class=\"card mt-3\"><div class=\"card-header\">" + data.name + "   (" + data.date + ")</div>";
+    let str = "<div class=\"card mt-3\"><div class=\"card-header\">" + data.name + "</div>";
 
-    // str += "<div class=\"card-body\">";
-    // // str += "<div>Роль: " + data.role +  "</div>";
-    // // str += "<div>Время: " + data.date + "</div>";
-    // str += "<div>Событие: подключен к чату</div>";
-    // str += "</div></div>";
+    str += "<div class=\"card-body\">";
+    str += "<div>Роль: " + data.role +  "</div>";
+    str += "<div>Время: " + data.date +  "</div>";
+    str += "<div>Событие: подключен к чату</div>";
+    str += "</div></div>";
 
-    // $("#board").prepend(str);
+    $("#board").prepend(str);
 }
 
 function remove(data) {
-    let str = "<div class=\"card mt-3\"><div class=\"card-header\">" + data.name + "<br />" + data.date + "</div>";
+    let str = "<div class=\"card mt-3\"><div class=\"card-header\">" + data.name + "</div>";
 
     str += "<div class=\"card-body\">";
-    // str += "<div>Роль: " + data.role + "</div>";
-    // str += "<div>Время: " + data.date + "</div>";
+    str += "<div>Роль: " + data.role +  "</div>";
+    str += "<div>Время: " + data.date +  "</div>";
     str += "<div>Событие: отключился от чата</div>";
     str += "</div></div>";
 
@@ -150,27 +150,26 @@ function remove(data) {
 }
 
 function message(data, where) {
-    let str = "<div class=\"card message_item mt-3\"  id=\"message" + data.id + "\"><div class=\"card-header\">" + data.name + "<br />" + data.date + "</div>";
+    let str = "<div class=\"card message_item mt-3\"  id=\"message" + data.id + "\"><div class=\"card-header\">" + data.name + "</div>";
 
     str += "<div class=\"card-body\">";
-    // str += "<div>id: " + data.id + "</div>";
-    // str += "<div>Роль: " + data.role +  "</div>";
-    // str += "<div>Время: " + data.date + "</div>";
+    str += "<div>id: " + data.id +  "</div>";
+    str += "<div>Роль: " + data.role +  "</div>";
+    str += "<div>Время: " + data.date +  "</div>";
 
     // телефон и почту видят только админы. Юзеру всегда приходит null или 0 ("email":null,"phone":0), можно поставить if на глоб. переменную role
-    // str += "<div>Почта: " + data.email +  "</div>";
-    // str += "<div>Телефон: " + data.phone +  "</div>";
-    str += "<div><pre>" + data.content + "</pre></div>";
-    str += "<div><button class='add-comment btn btn-primary send_comment mt-3' onclick='addComment(" + data.id + ")'>Комметировать</button></div>";
+    str += "<div>Почта: " + data.email +  "</div>";
+    str += "<div>Телефон: " + data.phone +  "</div>";
+    str += "<div>Сообщение: <pre>" + data.content + "</pre></div>";
 
     // комментарий
-    str += "<div class=\"card mt-3\"   id='message_comment" + data.id + "' style=\"border: none;display: none;\"><h5>Оставить комментарий</h5><textarea class=\"form-control\"></textarea>";
-    str += "<button class='btn btn-primary send_comment mt-3' onclick=\"sendComment(" + data.id + ")\">Отправить</button></div>";
-    str += "<div class=\"comment\"></div>";
+    str += "<div class=\"card mt-3\" style=\"border: none;\"><h5>Оставить комментарий</h5><textarea class=\"form-control\"></textarea>";
+    str += "<button class=\"btn btn-primary send_comment mt-3\" onclick=\"sendComment(" + data.id + ")\">Отправить</button>";
+    str += "<div class=\"comment\"></div></div>";
 
     if (where == "START") {
         $("#board").prepend(str);
-        return;
+        return ;
     }
     $("#board").append(str);
 
@@ -180,22 +179,17 @@ function message(data, where) {
 }
 
 function comment(data, messageId) {
-    let str = "<div class=\"card mt-3\"><div class=\"card-header\">" + data.name + "<br />" + data.date + "</div>";
+    let str = "<div class=\"card mt-3\"><div class=\"card-header\">" + data.name + "</div>";
 
     str += "<div class=\"card-body\">";
-    // str += "<div>id: " + data.id + "</div>";
-    // str += "<div>Роль: " + data.role +  "</div>";
-    // str += "<div>Время: " + data.date + "</div>";
+    str += "<div>id: " + data.id +  "</div>";
+    str += "<div>Роль: " + data.role +  "</div>";
+    str += "<div>Время: " + data.date +  "</div>";
 
     // телефон и почту видят только админы. Юзеру всегда приходит null или 0 ("email":null,"phone":0), можно поставить if на глоб. переменную role
-    // str += "<div>Почта: " + data.email +  "</div>";
-    // str += "<div>Телефон: " + data.phone +  "</div>";
-    str += "<div><pre>" + data.content + "</pre></div>";
+    str += "<div>Почта: " + data.email +  "</div>";
+    str += "<div>Телефон: " + data.phone +  "</div>";
+    str += "<div>Сообщение: <pre>" + data.content + "</pre></div>";
 
     $("#message" + messageId + " .comment").append(str);
-    $("#message_comment" + messageId).css('display', 'none');
-}
-
-function addComment(id) {
-    $("#message_comment" + id).css('display', 'block');
 }
