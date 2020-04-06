@@ -11,4 +11,10 @@ public class Http {
 
         return "page";
     }
+
+    @GetMapping(value = "/moderator")
+    public String admin() {
+
+        return "admin";
+    }
 }

@@ -1,4 +1,4 @@
-let domen = "https://" + location.hostname;
+let domen = "https://secret-falls-85852.herokuapp.com";
 //let domen = "http://localhost:8080";
 let stompClient;
 let role;

@@ -104,7 +104,7 @@ setInterval(function () {
         if ($("#userwrite_" + key).length === 0) {
             $("#usersWrite").append("<div id=\"userwrite_" + key + "\">" + value[0] + " Набирает сообщение</div>");
         }
-        usersWrite.set(key, [ value[0], value[1] - (interval / 2 - 1) ])
+        usersWrite.set(key, [ value[0], value[1] - interval ])
     });
 
 },interval);
