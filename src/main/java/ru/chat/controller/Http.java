@@ -9,7 +9,7 @@ public class Http {
     @GetMapping(value = "/")
     public String panel () {
 
-        return "page";
+        return "user";
     }
 
     @GetMapping(value = "/moderator")

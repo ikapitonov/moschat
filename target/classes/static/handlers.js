@@ -1,29 +1,21 @@
-let limit = 50;
-let offsetClassHtml = "message_item";
 let isWrite = false;
 let usersWrite = new Map();
 let interval = 2000;
 
-function onConnected() {
+function onConnected(e) {
     $("#forms").css("display","none");
     $("#window").css("display","block");
 
     // у стомп клиента какая-то проблема с генерацией id, поэтому приходится ставить таймаунты
-    setTimeout( function () {
-        stompClient.subscribe('/topic/' + role, commonController);
-        setSessionId();
-
-        stompClient.subscribe('/topic/' + role + "/" + sessionId, myController);
-        stompClient.subscribe('/topic/' + "common", commonController);
-        stompClient.send("/app/chat.addUser", {}, JSON.stringify({ type: "empty" }));
-        stompClient.send("/app/chat.listMessages", {}, JSON.stringify({ offset: getOffset(), limit: limit }));
-    } ,0);
+    stompClient.subscribe('/topic/' + role, commonController);
+    setSessionId();
+    stompClient.subscribe('/topic/' + "common", commonController);
+    stompClient.send("/app/chat.addUser", {}, JSON.stringify({ type: "empty" }));
 }
 
 function onError() {
     $("#forms").css("display","block");
     $("#window").css("display","none");
-    $("#board").empty();
 
     stompClient.disconnect();
 
@@ -48,25 +40,6 @@ function commonController(payload) {
     else if (data.type == "WRITE") {
         usersWrite.set(data.session, [ data.username, interval ]);
     }
-}
-
-function myController(payload) {
-    let data = JSON.parse(payload.body);
-
-    if (data.content == null || data.content.length == 0) {
-        $("#loading").css("display","none");
-        return ;
-    }
-    if (data.content.length < limit)
-        $("#loading").css("display","none");
-
-    for (let i = 0; i < data.content.length; ++i) {
-        message(data.content[i], "APPEND");
-    }
-}
-
-function loadingMessages() {
-    stompClient.send("/app/chat.listMessages", {}, JSON.stringify({ offset: getOffset(), limit: limit}));
 }
 
 function sendMessage(text) {
@@ -116,13 +89,6 @@ setInterval(function () {
         isWrite = false;
     }
 }, 500);
-
-// html class для подсчета общего числа (чтобы сместить offset)
-function getOffset() {
-    let tmp = document.querySelectorAll("." + offsetClassHtml);
-
-    return tmp == null ? 0 : tmp.length;
-}
 
 // html
 function add(data) {

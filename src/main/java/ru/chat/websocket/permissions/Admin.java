@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 public class Admin {
     public static final String login = "admin";
     public static final String password = "pass";
+    public static final String token = "4i903idfljksjkiuhewu8932okwdk";
     public static final String name = "admin";
 
     // здесь можно проводить валидацию

@@ -3,7 +3,6 @@ let domen = "http://localhost:8080";
 let stompClient;
 let role;
 let webSocket;
-let sessionId;
 
 // после перезарузки страницы
 

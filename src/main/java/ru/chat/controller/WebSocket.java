@@ -9,12 +9,10 @@ import org.springframework.messaging.simp.user.SimpUserRegistry;
 import org.springframework.stereotype.Controller;
 import ru.chat.repositories.ClientCommentRepo;
 import ru.chat.repositories.ClientMessageRepo;
-import ru.chat.repositories.OffsetBasedPageRequest;
 import ru.chat.utils.Html;
 import ru.chat.utils.Time;
 import ru.chat.websocket.model.*;
 
-import java.util.Iterator;
 
 @Controller
 public class WebSocket {
@@ -40,43 +38,43 @@ public class WebSocket {
         simpMessagingTemplate.convertAndSend("/topic/" + "common", user);
     }
 
-    @MessageMapping("/chat.listMessages")
-    public void listMessages(SimpMessageHeaderAccessor headerAccessor, @Payload Limits limits) {
-        if (limits.getOffset() > 100 || limits.getLimit() <= 0 || limits.getLimit() > 100)
-            return ;
-
-        boolean isAdmin = headerAccessor.getSessionAttributes().get("role").toString().equals("admin");
-        Iterable<ClientMessage> messages = clientMessageRepo.findAll(new OffsetBasedPageRequest(limits.getLimit(), limits.getOffset()));
-        Iterator<ClientMessage> messageIterator = messages.iterator();
-        Iterator<ClientComment> commentIterator;
-        ClientMessage message;
-        ClientComment comment;
-
-        while (messageIterator.hasNext()) {
-            message = messageIterator.next();
-
-            if (!isAdmin) {
-                message.setEmail(null);
-                message.setPhone(0);
-            }
-            commentIterator = message.getComments().iterator();
-
-            while (commentIterator.hasNext()) {
-                comment = commentIterator.next();
-
-                if (!isAdmin) {
-                    comment.setEmail(null);
-                    comment.setPhone(0);
-                }
-                comment.setClientMessage(null);
-            }
-        }
-
-        simpMessagingTemplate.convertAndSend("/topic/" +
-                headerAccessor.getSessionAttributes().get("role").toString() + "/" +
-                headerAccessor.getSessionId(),
-                messages);
-    }
+//    @MessageMapping("/chat.listMessages")
+//    public void listMessages(SimpMessageHeaderAccessor headerAccessor, @Payload Limits limits) {
+//        if (limits.getOffset() > 100 || limits.getLimit() <= 0 || limits.getLimit() > 100)
+//            return ;
+//
+//        boolean isAdmin = headerAccessor.getSessionAttributes().get("role").toString().equals("admin");
+//        Iterable<ClientMessage> messages = clientMessageRepo.findAll(new OffsetBasedPageRequest(limits.getLimit(), limits.getOffset()));
+//        Iterator<ClientMessage> messageIterator = messages.iterator();
+//        Iterator<ClientComment> commentIterator;
+//        ClientMessage message;
+//        ClientComment comment;
+//
+//        while (messageIterator.hasNext()) {
+//            message = messageIterator.next();
+//
+//            if (!isAdmin) {
+//                message.setEmail(null);
+//                message.setPhone(0);
+//            }
+//            commentIterator = message.getComments().iterator();
+//
+//            while (commentIterator.hasNext()) {
+//                comment = commentIterator.next();
+//
+//                if (!isAdmin) {
+//                    comment.setEmail(null);
+//                    comment.setPhone(0);
+//                }
+//                comment.setClientMessage(null);
+//            }
+//        }
+//
+//        simpMessagingTemplate.convertAndSend("/topic/" +
+//                headerAccessor.getSessionAttributes().get("role").toString() + "/" +
+//                headerAccessor.getSessionId(),
+//                messages);
+//    }
 
     @MessageMapping("/chat.addUser")
     public void addUser (SimpMessageHeaderAccessor headerAccessor) {

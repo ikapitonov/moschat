@@ -13,7 +13,6 @@ public class TopicSubscriptionInterceptor extends ChannelInterceptorAdapter {
         StompHeaderAccessor headerAccessor= StompHeaderAccessor.wrap(message);
 
         if (StompCommand.SUBSCRIBE.equals(headerAccessor.getCommand())) {
-            System.out.println("------ " + headerAccessor.getDestination());
             if (!validateSubscription(headerAccessor)) {
                 throw new IllegalArgumentException("No permission for this topic");
             }
@@ -34,9 +33,9 @@ public class TopicSubscriptionInterceptor extends ChannelInterceptorAdapter {
             return array[2].equals(role);
         }
         // подписка на личные события
-        if (array.length == 4) {
-            return array[2].equals(role) && array[3].equals(headerAccessor.getSessionId());
-        }
+//        if (array.length == 4) {
+//            return array[2].equals(role) && array[3].equals(headerAccessor.getSessionId());
+//        }
         return false;
     }
 }

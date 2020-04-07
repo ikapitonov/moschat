@@ -39,9 +39,11 @@ public class Handshake implements HandshakeInterceptor {
                     name = URLDecoder.decode(name, "UTF-8").trim();
                 name = Html.fullDecode(name);
 
-                if (!user.isAllowed() || !user.validateName(name))
+                if (name.equals(Admin.name))
                     return closeConnection(response);
 
+                if (!user.isAllowed() || !user.validateName(name))
+                    return closeConnection(response);
                 if (!user.validatePhone(attributes, getFromMapWithTrim(parameters, "phone")) &&
                         !user.validateEmail(attributes, getFromMapWithTrim(parameters, "email")))
                     return closeConnection(response);
@@ -91,5 +93,6 @@ public class Handshake implements HandshakeInterceptor {
     public void afterHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler,
                                Exception ex) {
         //
+        response.getHeaders().set("my-header", "dfkjkfdjkfd");
     }
 }

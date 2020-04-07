@@ -39,7 +39,5 @@ $(document).ready(function() {
         sendMessage(text);
     });
 
-    $("#loading").click(loadingMessages);
-
     $("#textarea").keyup(userWrite);
 });

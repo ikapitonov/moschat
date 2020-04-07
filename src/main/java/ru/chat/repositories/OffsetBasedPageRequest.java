@@ -7,7 +7,6 @@ public class OffsetBasedPageRequest implements Pageable {
     private int limit;
     private int offset;
 
-    // Constructor could be expanded if sorting is needed
     private Sort sort = Sort.by(Sort.Direction.DESC, "id");
     public OffsetBasedPageRequest(int limit, int offset) {
         if (limit < 1) {
@@ -37,11 +36,9 @@ public class OffsetBasedPageRequest implements Pageable {
     }
     @Override
     public Pageable next() {
-        // Typecast possible because number of entries cannot be bigger than integer (primary key is integer)
         return new OffsetBasedPageRequest(getPageSize(), (int) (getOffset() + getPageSize()));
     }
     public Pageable previous() {
-        // The integers are positive. Subtracting does not let them become bigger than integer.
         return hasPrevious() ?
                 new OffsetBasedPageRequest(getPageSize(), (int) (getOffset() - getPageSize())): this;
     }

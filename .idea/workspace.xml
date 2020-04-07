@@ -2,7 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41f441b1-3f74-4b76-ba3f-6a3a4028abfe" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/user.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/controller/Http.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/controller/Http.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/controller/Rest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/controller/Rest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/controller/WebSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/controller/WebSocket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/repositories/OffsetBasedPageRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/repositories/OffsetBasedPageRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/config/Handshake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/config/Handshake.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/config/TopicSubscriptionInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/config/TopicSubscriptionInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/permissions/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/permissions/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/events.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/events.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/handlers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/handlers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/handlersadmin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/websocket.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/websocket.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/moderator.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/page.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/controller/Http.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/controller/Http.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/controller/Rest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/controller/Rest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/controller/WebSocket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/controller/WebSocket.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/repositories/OffsetBasedPageRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/repositories/OffsetBasedPageRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/config/Handshake.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/config/Handshake.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/config/TopicSubscriptionInterceptor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/config/TopicSubscriptionInterceptor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/permissions/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/permissions/Admin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/events.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/events.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/handlers.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/handlers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/websocket.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/websocket.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/page.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,10 +38,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="Interface" />
         <option value="Class" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -85,6 +111,9 @@
       <workItem from="1586009272288" duration="5692000" />
       <workItem from="1586017478747" duration="40319000" />
       <workItem from="1586168203916" duration="3844000" />
+      <workItem from="1586177256929" duration="565000" />
+      <workItem from="1586278756363" duration="1160000" />
+      <workItem from="1586290191461" duration="4989000" />
     </task>
     <servers />
   </component>
@@ -96,38 +125,38 @@
       <screen x="0" y="23" width="1366" height="677" />
     </state>
     <state x="496" y="52" key="#com.intellij.ide.util.MemberChooser/0.23.1366.677@0.23.1366.677" timestamp="1586122399186" />
-    <state width="1324" height="176" key="GridCell.Tab.0.bottom" timestamp="1586173297998">
+    <state width="1324" height="176" key="GridCell.Tab.0.bottom" timestamp="1586296997384">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="176" key="GridCell.Tab.0.bottom/0.23.1366.677@0.23.1366.677" timestamp="1586173297998" />
-    <state width="1324" height="176" key="GridCell.Tab.0.center" timestamp="1586173297997">
+    <state width="1324" height="176" key="GridCell.Tab.0.bottom/0.23.1366.677@0.23.1366.677" timestamp="1586296997384" />
+    <state width="1324" height="176" key="GridCell.Tab.0.center" timestamp="1586296997382">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="176" key="GridCell.Tab.0.center/0.23.1366.677@0.23.1366.677" timestamp="1586173297997" />
-    <state width="1324" height="176" key="GridCell.Tab.0.left" timestamp="1586173297996">
+    <state width="1324" height="176" key="GridCell.Tab.0.center/0.23.1366.677@0.23.1366.677" timestamp="1586296997382" />
+    <state width="1324" height="176" key="GridCell.Tab.0.left" timestamp="1586296997382">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="176" key="GridCell.Tab.0.left/0.23.1366.677@0.23.1366.677" timestamp="1586173297996" />
-    <state width="1324" height="176" key="GridCell.Tab.0.right" timestamp="1586173297997">
+    <state width="1324" height="176" key="GridCell.Tab.0.left/0.23.1366.677@0.23.1366.677" timestamp="1586296997382" />
+    <state width="1324" height="176" key="GridCell.Tab.0.right" timestamp="1586296997383">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="176" key="GridCell.Tab.0.right/0.23.1366.677@0.23.1366.677" timestamp="1586173297997" />
-    <state width="1324" height="176" key="GridCell.Tab.1.bottom" timestamp="1586173298002">
+    <state width="1324" height="176" key="GridCell.Tab.0.right/0.23.1366.677@0.23.1366.677" timestamp="1586296997383" />
+    <state width="1324" height="176" key="GridCell.Tab.1.bottom" timestamp="1586296997387">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="176" key="GridCell.Tab.1.bottom/0.23.1366.677@0.23.1366.677" timestamp="1586173298002" />
-    <state width="1324" height="176" key="GridCell.Tab.1.center" timestamp="1586173298000">
+    <state width="1324" height="176" key="GridCell.Tab.1.bottom/0.23.1366.677@0.23.1366.677" timestamp="1586296997387" />
+    <state width="1324" height="176" key="GridCell.Tab.1.center" timestamp="1586296997385">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="176" key="GridCell.Tab.1.center/0.23.1366.677@0.23.1366.677" timestamp="1586173298000" />
-    <state width="1324" height="176" key="GridCell.Tab.1.left" timestamp="1586173297999">
+    <state width="1324" height="176" key="GridCell.Tab.1.center/0.23.1366.677@0.23.1366.677" timestamp="1586296997385" />
+    <state width="1324" height="176" key="GridCell.Tab.1.left" timestamp="1586296997385">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="176" key="GridCell.Tab.1.left/0.23.1366.677@0.23.1366.677" timestamp="1586173297999" />
-    <state width="1324" height="176" key="GridCell.Tab.1.right" timestamp="1586173298001">
+    <state width="1324" height="176" key="GridCell.Tab.1.left/0.23.1366.677@0.23.1366.677" timestamp="1586296997385" />
+    <state width="1324" height="176" key="GridCell.Tab.1.right" timestamp="1586296997386">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="176" key="GridCell.Tab.1.right/0.23.1366.677@0.23.1366.677" timestamp="1586173298001" />
+    <state width="1324" height="176" key="GridCell.Tab.1.right/0.23.1366.677@0.23.1366.677" timestamp="1586296997386" />
     <state x="221" y="23" key="Maven.ArtifactSearchDialog" timestamp="1586092255967">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
@@ -136,10 +165,10 @@
       <screen x="0" y="23" width="1366" height="677" />
     </state>
     <state x="171" y="23" key="SettingsEditor/0.23.1366.677@0.23.1366.677" timestamp="1586044639841" />
-    <state x="362" y="194" key="com.intellij.ide.util.TipDialog" timestamp="1585917276366">
+    <state x="362" y="194" key="com.intellij.ide.util.TipDialog" timestamp="1586278754285">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state x="362" y="194" key="com.intellij.ide.util.TipDialog/0.23.1366.677@0.23.1366.677" timestamp="1585917276366" />
+    <state x="362" y="194" key="com.intellij.ide.util.TipDialog/0.23.1366.677@0.23.1366.677" timestamp="1586278754285" />
     <state x="348" y="24" width="670" height="676" key="search.everywhere.popup" timestamp="1586168419827">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
