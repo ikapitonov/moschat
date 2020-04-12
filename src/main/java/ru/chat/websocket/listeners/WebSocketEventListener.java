@@ -9,6 +9,7 @@ import org.springframework.web.socket.messaging.SessionConnectedEvent;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 import ru.chat.utils.Time;
 import ru.chat.websocket.model.UserEvent;
+import ru.chat.websocket.permissions.Admin;
 
 @Component
 public class WebSocketEventListener {
@@ -27,11 +28,16 @@ public class WebSocketEventListener {
         UserEvent userEvent = new UserEvent();
 
         userEvent.setDate(Time.getNowDate());
-        userEvent.setRole(headerAccessor.getSessionAttributes().get("role").toString());
+        try {
+            userEvent.setRole(headerAccessor.getSessionAttributes().get("role").toString());
+        }
+        catch (Exception e) {
+            return ;
+        }
         userEvent.setType("REMOVE");
         userEvent.setName(headerAccessor.getSessionAttributes().get("name").toString());
 
         simpMessagingTemplate.convertAndSend("/topic/" + "user", userEvent);
-        simpMessagingTemplate.convertAndSend("/topic/" + "admin", userEvent);
+        simpMessagingTemplate.convertAndSend("/topic/" + Admin.token, userEvent);
     }
 }

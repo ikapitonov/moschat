@@ -38,6 +38,4 @@ $(document).ready(function() {
             return ;
         sendMessage(text);
     });
-
-    $("#textarea").keyup(userWrite);
 });

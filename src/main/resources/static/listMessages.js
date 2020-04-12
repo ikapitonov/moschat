@@ -1,5 +1,4 @@
 let limit = 50;
-let offsetClassHtml = "message_item";
 
 $("#loading").click(loadingMessages);
 
@@ -9,7 +8,8 @@ function loadingMessages() {
         type: 'GET',
         data: {
             offset: getOffset(),
-            limit: limit
+            limit: limit,
+            token: token
         },
         contentType: 'application/json',
         success: function(response) {
@@ -32,13 +32,12 @@ function listMessages(data) {
     }
 
     for (let i = 0; i < data.content.length; ++i) {
-        message(data.content[i], "APPEND");
+        massageShow(data.content[i], "APPEND");
     }
 }
 
-// html class для подсчета общего числа (чтобы сместить offset)
 function getOffset() {
-    let tmp = document.querySelectorAll("." + offsetClassHtml);
+    let tmp = document.querySelectorAll(".message_item");
 
     return tmp == null ? 0 : tmp.length;
 }

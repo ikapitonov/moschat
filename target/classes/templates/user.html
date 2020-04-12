@@ -1,93 +1,155 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Hello!</title>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div class="container mb-5" style="max-width: 500px;">
-
-        <div id="forms">
-            <h3 class="mt-3 text-center">Войдите, чтобы написать</h3>
-            <div>
-                <form>
-                    <div class="form-group">
-                        <label for="input">Имя</label>
-                        <input type="text" class="form-control" id="input" placeholder="максимальная длина - 50">
-                    </div>
-                    <div class="form-group">
-                        <label for="input2">Номер телефона</label>
-                        <input type="text" class="form-control" id="input2" placeholder="phone">
-                    </div>
-                    <div class="form-group">
-                        <label for="input3">Почта</label>
-                        <input type="text" class="form-control" id="input3" placeholder="максимальная длина - 50">
-                    </div>
-                    <small class="text-muted">Либо телефон, либо почта, либо вместе. Телефон и почту видять только админы</small>
-                    <div>
-                        <button type="submit" class="btn btn-primary" id="subUser">Sign in</button>
-                    </div>
-                </form>
-            </div>
-<!--            <h3 class="mt-3 text-center">Админ</h3>-->
-<!--            <div>-->
-<!--                <form>-->
-<!--                    <div class="form-group">-->
-<!--                        <label for="input4">Логин</label>-->
-<!--                        <input type="text" class="form-control" id="input4" placeholder="input">-->
-<!--                    </div>-->
-<!--                    <div class="form-group">-->
-<!--                        <label for="input5">Пароль</label>-->
-<!--                        <input type="password" class="form-control" id="input5" placeholder="input">-->
-<!--                    </div>-->
-<!--                    <button type="submit" class="btn btn-primary" id="subAdm">Sign in</button>-->
-<!--                </form>-->
-<!--            </div>-->
+<!-- код окно регистрации -->
+<div class="backReg">
+    <div class="signup">
+        <p class="textSignup">Войдите, чтобы оставлять комментарии и писать сообщения</p>
+        <div class="rowButtonSignupG">
+            <button onclick="switchUserAdm(this)" class="buttonSignUp buttonSignUp1" active="1">Для пользователя</button>
+            <button onclick="switchUserAdm(this)" class="buttonSignUp buttonSignUp1" active="0">Для администратора</button>
         </div>
-        <div id="window" style="display: none;">
-            <h3 class="text-center mt-3">Чат</h3>
-            <div class="card">
-                <div class="card-body" id="usersWrite">
-
+        <div class="formsSignup">
+            <form class="oneform" id="formSignupUser">
+                <input class="inputSignup" id="userName" type="text" placeholder="Имя" />
+                <input class="inputSignup" id="userEmail" type="email" placeholder="E-mail" />
+                <input class="inputSignup" id="userPhone" type="tel" placeholder="Номер телефона" />
+                <p class="textSignup">Или телефон или почта или вместе. Их видят только администраторы</p>
+                <div class="rowButtonsBottomG">
+                    <input class="submitSignup" type="submit" id="userAuth" value="Подключиться">
+                    <input class="submitSignup" id="closeForm1" type="submit" value="Закрыть">
                 </div>
-            </div>
-            <form>
-                <div class="form-group">
-                    <label for="textarea">Напишите сообщение</label>
-                    <textarea class="form-control" id="textarea" rows="3"></textarea>
+            </form>
+            <form class="oneform" id="formSigninUser">
+                <input class="inputSignup" type="tel" placeholder="Номер телефона" />
+                <input class="submitSignup" type="submit" value="Войти">
+            </form>
+            <form class="oneform" id="formSignupAdm">
+                <input class="inputSignup" id="admInputLogin" type="text" placeholder="Логин" />
+                <input class="inputSignup" id="admInputPass" type="password" placeholder="Пароль" />
+                <div class="rowButtonsBottomG">
+                    <input class="submitSignup" type="submit" id="adminAuth" value="Подключиться">
+                    <input class="submitSignup" id="closeForm2" type="submit" value="Закрыть">
                 </div>
-                <button type="submit" class="btn btn-primary" id="sendMessage">Отправить</button>
+            </form>
+            <form class="oneform" id="formSigninAdm">
+                <input class="inputSignup" type="text" placeholder="Логин" />
+                <input class="inputSignup" type="password" placeholder="Пароль" />
+                <div class="rowButtonsBottomG">
+                    <input class="submitSignup" type="submit" value="Войти">
+                    <input class="submitSignup" onclick="hideSignup()" type="submit" value="Закрыть">
+                </div>
             </form>
         </div>
-        <div id="board"></div>
-        <button class="btn btn-primary mt-3" id="loading" style="display: none;">Загрузить еще</button>
     </div>
+</div>
+<!-- конец код окно регистрации -->
+
+<!-- код чата -->
+<div class="chatG">
+    <!-- блок ввода комментария -->
+    <div class="blockInputMessage">
+        <textarea class="textareaG" onclick="showSignup()" id="textarea" placeholder="Введите комментарий" name="inputMessage"></textarea>
+        <button class="buttonSendG" type="button" onclick="sendMessage()" name="sendInputMessage">Добавить</button>
+    </div>
+    <!-- конец блок ввода комментария -->
+
+    <!-- блок кол-во набирают сообщения -->
+    <div class="blockTyping">
+        <p class="textTypingChatG" id="writes" style="color: #FFFFFF;">Загружаю чат...</p>
+    </div>
+    <!-- конец блок подключился к чату -->
+
+    <div class="messagesG">
+        <div id="board">
+        </div>
+        <button class="uploadMoreG" style="display: none;" id="loading">Загрузить еще</button>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    let isAuth = false;
+
+    function showSignup() {
+        if (isAuth == true || isAuth === true)
+            return ;
+
+        $(".backReg").css("display", "flex");
+        setTimeout(function() {
+            $(".signup").css("transform", "scale(1)");
+        }, 100);
+    }
+    function hideSignup() {
+        $(".signup").css("transform", "scale(0)");
+        setTimeout(function() {
+            $(".backReg").css("display", "none");
+        }, 500);
+    }
+    function switchUserAdm(el) {
+        $(".buttonSignUp1").attr("active", "0");
+        $(el).attr("active", "1");
+        chooseForm();
+    }
+    function switchInUp(el) {
+        $(".buttonSignUp2").attr("active", "0");
+        $(el).attr("active", "1");
+        chooseForm();
+    }
+    function chooseForm(i) {
+        var ind1 = $(".buttonSignUp1[active='1']").index();
+
+        $(".oneform").css("display", "none");
+
+        if (ind1 == 0) {
+            $("#formSignupUser").css("display", "flex");
+        } else if (ind1 == 1) {
+            $("#formSignupAdm").css("display", "flex");
+        }
+    }
+    var downPressSignup = false;
+    $(document).mousedown(function (e){
+        if (!$(".signup").is(e.target) && $(".signup").has(e.target).length === 0 && $(".backReg").css("display") == "flex") {
+            downPressSignup = true;
+        } else {
+            downPressSignup = false;
+        }
+    });
+    $(document).mouseup(function (e){
+        if (!$(".signup").is(e.target) && $(".signup").has(e.target).length === 0 && downPressSignup) {
+            hideSignup();
+        } else {
+            downPressSignup = false;
+        }
+    });
+
+</script>
+<!-- конец код чата -->
 
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 
-    <script src="handlers.js"></script>
+<script src="auth.js"></script>
+<script src="listMessages.js"></script>
+<script src="paint.js"></script>
+<script src="handlers.js"></script>
+<script src="websocket.js"></script>
+<script src="cookie.js"></script>
+<script>
+    loadingMessages();
+    wsConnection();
+    generateCookie();
+</script>
 
-<!--    вебсокеты-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 
-    <script src="websocket.js"></script>
-<!--    вебсокеты-->
-
-    <script src="events.js"></script>
-
-    <script src="listMessages.js"></script>
-
-    <script>
-        // загружаем первую пачку сообщений
-        loadingMessages();
-    </script>
 </body>
 </html>

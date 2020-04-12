@@ -26,43 +26,44 @@ public class Handshake implements HandshakeInterceptor {
 
     @Override
     public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler, Map attributes) throws Exception {
-        if (request instanceof ServletServerHttpRequest) {
-            MultiValueMap<String, String> parameters = UriComponentsBuilder.fromUriString(request.getURI().toString()).build().getQueryParams();
-            String role = getFromMapWithTrim(parameters, "role");
-
-            if (role == null || role.isEmpty())
-                return closeConnection(response);
-
-            if (role.equals("user")) {
-                String name = getFromMapWithTrim(parameters, "name");
-                if (name != null)
-                    name = URLDecoder.decode(name, "UTF-8").trim();
-                name = Html.fullDecode(name);
-
-                if (name.equals(Admin.name))
-                    return closeConnection(response);
-
-                if (!user.isAllowed() || !user.validateName(name))
-                    return closeConnection(response);
-                if (!user.validatePhone(attributes, getFromMapWithTrim(parameters, "phone")) &&
-                        !user.validateEmail(attributes, getFromMapWithTrim(parameters, "email")))
-                    return closeConnection(response);
-
-                attributes.put("role", "user");
-                attributes.put("name", name);
-
-                return true;
-            }
-            if (role.equals("admin")) {
-                if (!admin.isAllowed(getFromMap(parameters, "login"), getFromMap(parameters, "password")))
-                    return closeConnection(response);
-
-                attributes.put("role", "admin");
-                attributes.put("name", Admin.name);
-                return true;
-            }
-        }
-        return closeConnection(response);
+//        if (request instanceof ServletServerHttpRequest) {
+//            MultiValueMap<String, String> parameters = UriComponentsBuilder.fromUriString(request.getURI().toString()).build().getQueryParams();
+//            String role = getFromMapWithTrim(parameters, "role");
+//
+//            if (role == null || role.isEmpty())
+//                return closeConnection(response);
+//
+//            if (role.equals("user")) {
+//                String name = getFromMapWithTrim(parameters, "name");
+//                if (name != null)
+//                    name = URLDecoder.decode(name, "UTF-8").trim();
+//                name = Html.fullDecode(name);
+//
+//                if (name.equals(Admin.name))
+//                    return closeConnection(response);
+//
+//                if (!user.isAllowed() || !user.validateName(name))
+//                    return closeConnection(response);
+//                if (!user.validatePhone(attributes, getFromMapWithTrim(parameters, "phone")) &&
+//                        !user.validateEmail(attributes, getFromMapWithTrim(parameters, "email")))
+//                    return closeConnection(response);
+//
+//                attributes.put("role", "user");
+//                attributes.put("name", name);
+//
+//                return true;
+//            }
+//            if (role.equals("admin")) {
+//                if (!admin.isAllowed(getFromMap(parameters, "login"), getFromMap(parameters, "password")))
+//                    return closeConnection(response);
+//
+//                attributes.put("role", "admin");
+//                attributes.put("name", Admin.name);
+//                return true;
+//            }
+//        }
+//        return closeConnection(response);
+        return true;
     }
 
     private boolean closeConnection(ServerHttpResponse response) {
@@ -93,6 +94,5 @@ public class Handshake implements HandshakeInterceptor {
     public void afterHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler,
                                Exception ex) {
         //
-        response.getHeaders().set("my-header", "dfkjkfdjkfd");
     }
 }

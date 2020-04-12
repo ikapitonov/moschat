@@ -2,33 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41f441b1-3f74-4b76-ba3f-6a3a4028abfe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/user.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/controller/Http.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/controller/Http.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/controller/Rest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/controller/Rest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/controller/WebSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/controller/WebSocket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/repositories/OffsetBasedPageRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/repositories/OffsetBasedPageRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/config/Handshake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/config/Handshake.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/config/TopicSubscriptionInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/config/TopicSubscriptionInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/listeners/WebSocketEventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/listeners/WebSocketEventListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/permissions/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/permissions/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/permissions/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/permissions/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/events.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/events.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/handlers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/handlers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/handlersadmin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/listMessages.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/listMessages.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/websocket.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/websocket.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/moderator.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/page.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/controller/Http.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/controller/Http.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/controller/Rest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/controller/Rest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/controller/WebSocket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/controller/WebSocket.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/repositories/OffsetBasedPageRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/repositories/OffsetBasedPageRequest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/config/Handshake.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/config/Handshake.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/config/TopicSubscriptionInterceptor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/config/TopicSubscriptionInterceptor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/listeners/WebSocketEventListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/listeners/WebSocketEventListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/permissions/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/permissions/Admin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/events.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/events.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/permissions/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/permissions/User.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/handlers.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/handlers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/listMessages.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/listMessages.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/websocket.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/websocket.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/page.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,8 +38,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="CSS File" />
+        <option value="Class" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -65,6 +65,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -113,7 +114,11 @@
       <workItem from="1586168203916" duration="3844000" />
       <workItem from="1586177256929" duration="565000" />
       <workItem from="1586278756363" duration="1160000" />
-      <workItem from="1586290191461" duration="4989000" />
+      <workItem from="1586290191461" duration="5908000" />
+      <workItem from="1586304465968" duration="35000" />
+      <workItem from="1586304514154" duration="5000" />
+      <workItem from="1586304843609" duration="1062000" />
+      <workItem from="1586688994767" duration="26257000" />
     </task>
     <servers />
   </component>
@@ -121,42 +126,42 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="496" y="52" key="#com.intellij.ide.util.MemberChooser" timestamp="1586122399186">
+    <state x="496" y="52" key="#com.intellij.ide.util.MemberChooser" timestamp="1586698110785">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state x="496" y="52" key="#com.intellij.ide.util.MemberChooser/0.23.1366.677@0.23.1366.677" timestamp="1586122399186" />
-    <state width="1324" height="176" key="GridCell.Tab.0.bottom" timestamp="1586296997384">
+    <state x="496" y="52" key="#com.intellij.ide.util.MemberChooser/0.23.1366.677@0.23.1366.677" timestamp="1586698110785" />
+    <state width="1324" height="105" key="GridCell.Tab.0.bottom" timestamp="1586726305616">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="176" key="GridCell.Tab.0.bottom/0.23.1366.677@0.23.1366.677" timestamp="1586296997384" />
-    <state width="1324" height="176" key="GridCell.Tab.0.center" timestamp="1586296997382">
+    <state width="1324" height="105" key="GridCell.Tab.0.bottom/0.23.1366.677@0.23.1366.677" timestamp="1586726305616" />
+    <state width="1324" height="105" key="GridCell.Tab.0.center" timestamp="1586726305604">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="176" key="GridCell.Tab.0.center/0.23.1366.677@0.23.1366.677" timestamp="1586296997382" />
-    <state width="1324" height="176" key="GridCell.Tab.0.left" timestamp="1586296997382">
+    <state width="1324" height="105" key="GridCell.Tab.0.center/0.23.1366.677@0.23.1366.677" timestamp="1586726305604" />
+    <state width="1324" height="105" key="GridCell.Tab.0.left" timestamp="1586726305603">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="176" key="GridCell.Tab.0.left/0.23.1366.677@0.23.1366.677" timestamp="1586296997382" />
-    <state width="1324" height="176" key="GridCell.Tab.0.right" timestamp="1586296997383">
+    <state width="1324" height="105" key="GridCell.Tab.0.left/0.23.1366.677@0.23.1366.677" timestamp="1586726305603" />
+    <state width="1324" height="105" key="GridCell.Tab.0.right" timestamp="1586726305615">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="176" key="GridCell.Tab.0.right/0.23.1366.677@0.23.1366.677" timestamp="1586296997383" />
-    <state width="1324" height="176" key="GridCell.Tab.1.bottom" timestamp="1586296997387">
+    <state width="1324" height="105" key="GridCell.Tab.0.right/0.23.1366.677@0.23.1366.677" timestamp="1586726305615" />
+    <state width="1324" height="105" key="GridCell.Tab.1.bottom" timestamp="1586726305619">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="176" key="GridCell.Tab.1.bottom/0.23.1366.677@0.23.1366.677" timestamp="1586296997387" />
-    <state width="1324" height="176" key="GridCell.Tab.1.center" timestamp="1586296997385">
+    <state width="1324" height="105" key="GridCell.Tab.1.bottom/0.23.1366.677@0.23.1366.677" timestamp="1586726305619" />
+    <state width="1324" height="105" key="GridCell.Tab.1.center" timestamp="1586726305618">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="176" key="GridCell.Tab.1.center/0.23.1366.677@0.23.1366.677" timestamp="1586296997385" />
-    <state width="1324" height="176" key="GridCell.Tab.1.left" timestamp="1586296997385">
+    <state width="1324" height="105" key="GridCell.Tab.1.center/0.23.1366.677@0.23.1366.677" timestamp="1586726305618" />
+    <state width="1324" height="105" key="GridCell.Tab.1.left" timestamp="1586726305617">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="176" key="GridCell.Tab.1.left/0.23.1366.677@0.23.1366.677" timestamp="1586296997385" />
-    <state width="1324" height="176" key="GridCell.Tab.1.right" timestamp="1586296997386">
+    <state width="1324" height="105" key="GridCell.Tab.1.left/0.23.1366.677@0.23.1366.677" timestamp="1586726305617" />
+    <state width="1324" height="105" key="GridCell.Tab.1.right" timestamp="1586726305618">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="176" key="GridCell.Tab.1.right/0.23.1366.677@0.23.1366.677" timestamp="1586296997386" />
+    <state width="1324" height="105" key="GridCell.Tab.1.right/0.23.1366.677@0.23.1366.677" timestamp="1586726305618" />
     <state x="221" y="23" key="Maven.ArtifactSearchDialog" timestamp="1586092255967">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
@@ -165,13 +170,24 @@
       <screen x="0" y="23" width="1366" height="677" />
     </state>
     <state x="171" y="23" key="SettingsEditor/0.23.1366.677@0.23.1366.677" timestamp="1586044639841" />
-    <state x="362" y="194" key="com.intellij.ide.util.TipDialog" timestamp="1586278754285">
+    <state x="362" y="194" key="com.intellij.ide.util.TipDialog" timestamp="1586689041568">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state x="362" y="194" key="com.intellij.ide.util.TipDialog/0.23.1366.677@0.23.1366.677" timestamp="1586278754285" />
+    <state x="362" y="194" key="com.intellij.ide.util.TipDialog/0.23.1366.677@0.23.1366.677" timestamp="1586689041568" />
     <state x="348" y="24" width="670" height="676" key="search.everywhere.popup" timestamp="1586168419827">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
     <state x="348" y="24" width="670" height="676" key="search.everywhere.popup/0.23.1366.677@0.23.1366.677" timestamp="1586168419827" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/chat/websocket/config/TopicSubscriptionInterceptor.java</url>
+          <line>9</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
