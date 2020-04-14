@@ -19,14 +19,19 @@ body {
     overflow-y: auto; */
 }
 .blockInputMessage {
-    margin: 10px 0px;
+    padding: 10px 0px;
     display: flex;
     flex-direction: row;
     align-items: stretch;
     justify-content: space-around;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+    z-index: 100;
+    background-color: #010125;
 }
 .textareaG {
-    padding: 10px;
+    padding: 5px 10px;
     border: none;
     border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -37,6 +42,20 @@ body {
     font-family: Roboto, sans-serif;
     font-size: 12px;
     flex: 1;
+    max-height: 150px;
+}
+.textareaG::-webkit-scrollbar {
+  width: 4px;
+}
+.textareaG::-webkit-scrollbar-track {
+  background-color: #999;
+}
+.textareaG::-webkit-scrollbar-thumb {
+  background-color: #666;
+  border-radius: 10px;
+}
+.textareaG::-webkit-scrollbar-thumb:hover {
+  background-color: #333;
 }
 .buttonSendG, .buttonReply, .uploadMoreG {
     margin: 0px;
@@ -59,7 +78,12 @@ body {
     -o-transition: opacity ease 0.3s;
 }
 .buttonReply {
-    margin: 0px 20px;
+    margin: 0px 10px;
+    padding: 5px 11px;
+    padding-top: 6px;
+}
+.buttonReply2[active="0"] {
+  display: none;
 }
 .uploadMoreG {
     align-self: center;
@@ -71,21 +95,20 @@ body {
 .messagesG {
     display: flex;
     flex-direction: column;
-    max-height: 400px;
-    overflow-y: auto;
 }
-/* .messagesG::-webkit-scrollbar {
-  width: 0px;
+.messagesG::-webkit-scrollbar {
+  width: 8px;
 }
 .messagesG::-webkit-scrollbar-track {
-  background: #00000000;
+  background-color: #050546;
 }
 .messagesG::-webkit-scrollbar-thumb {
-  background: #00000000;
+  background-color: #00009a;
+  border-radius: 10px;
 }
 .messagesG::-webkit-scrollbar-thumb:hover {
-  background: #00000000;
-} */
+  background-color: #0000e0;
+}
 .oneMessageG {
     margin: 0px;
     padding: 10px 0px;
@@ -115,6 +138,21 @@ body {
     -moz-border-radius: 30px;
     -o-border-radius: 30px;
 }
+.checkMark {
+  width: 15px;
+  height: 15px;
+  background-image: url('checkMark.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: -15px;
+  margin-left: 30px;
+  z-index: 100;
+  position: relative;
+}
+.checkMark[active="0"] {
+  display: none;
+}
 .titleRightMOMG {
     display: flex;
     flex-direction: row;
@@ -137,6 +175,9 @@ body {
     margin: 5px;
     color: #fff;
     font-size: 12px;
+    word-break: break-word;
+    font-family: Roboto, sans-serif;
+    white-space: break-spaces;
 }
 .replyOMG {
     margin-left: 50px;
@@ -152,9 +193,20 @@ body {
 .textareaReplyG {
     flex: none;
     margin-left: 10px;
-    max-width: 200px;
-    max-height: 15px;
+    max-width: 500px;
     width: 40%;
+    height: 15px;
+    transition: max-width ease 0.3s;
+    -webkit-transition: max-width ease 0.3s;
+    -moz-transition: max-width ease 0.3s;
+    -o-transition: max-width ease 0.3s;
+}
+.textareaReplyG[active='0'] {
+  margin: 0px;
+  max-width: 0px;
+  padding: 5px 0px;
+  resize: none;
+  height: 0px!important;
 }
 .textJoinChatG {
     margin: 0px 10px;
@@ -168,8 +220,13 @@ body {
 .blockTyping {
     margin: 0px;
     padding: 10px 0px;
+    padding-top: 0px;
     display: flex;
     flex-direction: column;
+    position: sticky;
+    top: 58px;
+    z-index: 100;
+    background-color: #010125;
 }
 .textTypingChatG {
     margin: 0px 10px;
@@ -242,6 +299,11 @@ body {
 .buttonSignUp[active="1"] {
     opacity: 1;
 }
+.buttonSignUp.buttonSignUp1 {
+  margin: 0px;
+  background-color: #00000000;
+  text-decoration: underline;
+}
 .oneform {
     display: none;
     flex-direction: column;
@@ -273,4 +335,22 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+}
+.closeSignup {
+  width: 20px;
+  height: 20px;
+  align-self: flex-end;
+  background-image: url("cross.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity ease 0.3s;
+  -webkit-transition: opacity ease 0.3s;
+  -moz-transition: opacity ease 0.3s;
+  -o-transition: opacity ease 0.3s;
+}
+.closeSignup:hover {
+  opacity: 1;
 }

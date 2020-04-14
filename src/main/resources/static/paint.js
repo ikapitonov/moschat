@@ -28,12 +28,24 @@ function massageShow(data, where) {
     let str = "<div class=\"oneMessageG message_item\" id=\"message" + data.id + "\">";
 
     str += "<div class=\"blockMessageMG\">";
+
+    //новый код
+    var activeCheckMark = 0;
     if (data.role == "admin") {
-        str += "<img class=\"imgUserG\" src=\"admin.png\">";
+        activeCheckMark = 1;
     }
-    else {
-        str += "<img class=\"imgUserG\" src=\"user.png\">";
-    }
+    str += "<div class=\"blockImgUserG\">";
+    str += "<img class=\"imgUserG\" src=\"user.png\">";
+    str += "<div class=\"checkMark\" active=\""+activeCheckMark+"\"></div>";
+    str += "</div>";
+
+    //старый код
+    // if (data.role == "admin") {
+    //     str += "<img class=\"imgUserG\" src=\"admin.png\">";
+    // }
+    // else {
+    //     str += "<img class=\"imgUserG\" src=\"user.png\">";
+    // }
 
     str += "<div class=\"rightMOMG\">";
     str += "<div class=\"titleRightMOMG\">";
@@ -46,35 +58,55 @@ function massageShow(data, where) {
     }
     str += "<h5>" + data.date + "</h5>";
     str += "</div>";
-    str += "<div class=\"textMessageG\">" + data.content + "</div>";
+    str += "<pre class=\"textMessageG\">" + data.content + "</pre>";
     str += "</div>";
 
     str += "</div>";
     str += "<div class=\"replyOMG\"><div class=\"comment_show\"></div>";
-    str += "<div class=\"replyInputBlock\">\n<textarea onclick=\"showSignup()\" onkeyup=\"userWrite()\" class=\"textareaG textareaReplyG\" placeholder=\"Введите ответ\" name=\"inputMessage\"></textarea><div class=\"buttonReply\" onclick=\"sendComment(" + data.id + ")\">Ответить</div></div>";
+    str += "<div class=\"replyInputBlock\">\n<textarea id=\"commentid_" + data.id + "\" onclick=\"showSignup()\" active=\"0\" class=\"textareaG textareaReplyG\" placeholder=\"Введите ответ\" name=\"inputMessage\"></textarea><div class=\"buttonReply buttonReply2\" active=\"0\" onclick=\"sendComment(" + data.id + ")\">Отправить</div><div class=\"buttonReply buttonReply2\" active=\"1\" onclick=\"showInputReply(this)\">Ответить</div></div>";
     str+= "</div>";
     str += "</div>";
 
     if (where == "START") {
         $("#board").prepend(str);
-        return ;
     }
-    $("#board").append(str);
+    else {
+        $("#board").append(str);
 
-    for (let i = 0; data.comments != null && data.comments.length !== 0 && i < data.comments.length; i++) {
-        commentShow(data.comments[i], data.id);
+        for (let i = 0; data.comments != null && data.comments.length !== 0 && i < data.comments.length; i++) {
+            commentShow(data.comments[i], data.id);
+        }
     }
+
+    setTimeout(function () {
+        autosize($('#message' + data.id + " .textareaG"));
+        $('#message' + data.id + " .textareaG").on("keydown", controllEnterComment);
+        $('#message' + data.id + " .textareaG").keyup(userWrite);
+        $('#message' + data.id + " .textareaG").css("height", "15px");
+    }, 10);
 }
 
 function commentShow(data, messageId) {
     let str = "<div class=\"blockMessageMG\">";
 
+    //новый код
+    var activeCheckMark = 0;
     if (data.role == "admin") {
-        str += "<img class=\"imgUserG\" src=\"admin.png\">";
+        activeCheckMark = 1;
     }
-    else {
-        str += "<img class=\"imgUserG\" src=\"user.png\">";
-    }
+    str += "<div class=\"blockImgUserG\">";
+    str += "<img class=\"imgUserG\" src=\"user.png\">";
+    str += "<div class=\"checkMark\" active=\""+activeCheckMark+"\"></div>";
+    str += "</div>";
+
+    //старый код
+    // if (data.role == "admin") {
+    //     str += "<img class=\"imgUserG\" src=\"admin.png\">";
+    // }
+    // else {
+    //     str += "<img class=\"imgUserG\" src=\"user.png\">";
+    // }
+
     str += "<div class=\"rightMOMG\">";
     str += "<div class=\"titleRightMOMG\">";
     str += "<h3>" + data.name + "</h3>";
@@ -86,7 +118,7 @@ function commentShow(data, messageId) {
     }
     str += "<h5>" + data.date + "</h5>";
     str += "</div>";
-    str += "<div class=\"textMessageG\">" + data.content + "</div>";
+    str += "<pre class=\"textMessageG\">" + data.content + "</pre>";
     str += "</div>";
     str += "</div>";
 

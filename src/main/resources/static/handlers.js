@@ -60,13 +60,15 @@ function commonController(payload) {
 
 function sendMessage() {
     if (!isAuth) return ;
-    let text = $("#textarea").val();
+    let text = $("#textarea").val().trim();
 
     if (text.length === 0) return ;
 
     stompClient.send("/app/chat.sendMessage", {}, JSON.stringify({content: text}));
 
     $("#textarea").val('');
+    autosize.update($("#textarea"));
+    //resizeTextarea(document.getElementById('textarea'));//меняет размер текстого поля
 }
 
 function sendComment(id) {
@@ -79,7 +81,9 @@ function sendComment(id) {
 
     stompClient.send("/app/chat.sendComment", {}, JSON.stringify({content: text, id: id}));
 
+
     $("#message" + id + " textarea").val('');
+    autosize.update($("#message" + id + " textarea"));
 }
 
 $("#textarea").keyup(userWrite);
