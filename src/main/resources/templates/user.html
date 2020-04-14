@@ -158,6 +158,17 @@
         showSignup();
       }
     }
+    function showInputReply1(el) {
+      if (isAuth == true || isAuth === true) {
+        var obj = $(el).parent().parent().parent().parent().children(".replyOMG").children(".replyInputBlock");
+        console.log(obj.html());
+        obj.children(".buttonReply.buttonReply2").attr("active", "1");
+        obj.children(".textareaG.textareaReplyG").attr("active", "1");
+        $(el).attr("active", "0");
+      } else  {
+        showSignup();
+      }
+    }
     //listeners
     var downPressSignup = false;
     $(document).mousedown(function (e){

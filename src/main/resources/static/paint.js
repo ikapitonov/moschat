@@ -57,13 +57,15 @@ function massageShow(data, where) {
         str += "<h5>" + data.phone + "</h5>";
     }
     str += "<h5>" + data.date + "</h5>";
+    str += "<div class=\"buttonReply buttonReply2\" active=\"1\" onclick=\"showInputReply1(this)\">Ответить</div>";
     str += "</div>";
     str += "<pre class=\"textMessageG\">" + data.content + "</pre>";
     str += "</div>";
 
     str += "</div>";
     str += "<div class=\"replyOMG\"><div class=\"comment_show\"></div>";
-    str += "<div class=\"replyInputBlock\">\n<textarea id=\"commentid_" + data.id + "\" onclick=\"showSignup()\" active=\"0\" class=\"textareaG textareaReplyG\" placeholder=\"Введите ответ\" name=\"inputMessage\"></textarea><div class=\"buttonReply buttonReply2\" active=\"0\" onclick=\"sendComment(" + data.id + ")\">Отправить</div><div class=\"buttonReply buttonReply2\" active=\"1\" onclick=\"showInputReply(this)\">Ответить</div></div>";
+    //str += "<div class=\"replyInputBlock\">\n<textarea id=\"commentid_" + data.id + "\" onclick=\"showSignup()\" active=\"0\" class=\"textareaG textareaReplyG\" placeholder=\"Введите ответ\" name=\"inputMessage\"></textarea><div class=\"buttonReply buttonReply2\" active=\"0\" onclick=\"sendComment(" + data.id + ")\">Отправить</div><div class=\"buttonReply buttonReply2\" active=\"1\" onclick=\"showInputReply(this)\">Ответить</div></div>";
+    str += "<div class=\"replyInputBlock\">\n<textarea id=\"commentid_" + data.id + "\" onclick=\"showSignup()\" active=\"0\" class=\"textareaG textareaReplyG\" placeholder=\"Введите ответ\" name=\"inputMessage\"></textarea><div class=\"buttonReply buttonReply2\" active=\"0\" onclick=\"sendComment(" + data.id + ")\">Отправить</div></div>";
     str+= "</div>";
     str += "</div>";
 
