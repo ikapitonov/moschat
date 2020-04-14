@@ -1,4 +1,5 @@
 let domen = location.origin;
+//let domen = "https://secret-falls-85852.herokuapp.com";
 let stompClient;
 let role;
 let webSocket;

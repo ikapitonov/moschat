@@ -1,6 +1,6 @@
 let isWrite = false;
 let usersWrite = new Map();
-let interval = 2000;
+let interval = 400;
 let userSub;
 
 function onConnected() {

@@ -11,20 +11,17 @@
 <!-- код окно регистрации -->
 <div class="backReg">
     <div class="signup">
+        <div class="closeSignup" onclick="hideSignup()"></div>
         <p class="textSignup">Войдите, чтобы оставлять комментарии и писать сообщения</p>
-        <div class="rowButtonSignupG">
-            <button onclick="switchUserAdm(this)" class="buttonSignUp buttonSignUp1" active="1">Для пользователя</button>
-            <button onclick="switchUserAdm(this)" class="buttonSignUp buttonSignUp1" active="0">Для администратора</button>
-        </div>
         <div class="formsSignup">
             <form class="oneform" id="formSignupUser">
                 <input class="inputSignup" id="userName" type="text" placeholder="Имя" />
                 <input class="inputSignup" id="userEmail" type="email" placeholder="E-mail" />
                 <input class="inputSignup" id="userPhone" type="tel" placeholder="Номер телефона" />
-                <p class="textSignup">Или телефон или почта или вместе. Их видят только администраторы</p>
+                <p class="textSignup">Или телефон или почта или вместе. Их видят только администраторы.</p>
                 <div class="rowButtonsBottomG">
                     <input class="submitSignup" type="submit" id="userAuth" value="Подключиться">
-                    <input class="submitSignup" id="closeForm1" type="submit" value="Закрыть">
+                    <!-- <input class="submitSignup" id="closeForm1" type="submit" value="Закрыть"> -->
                 </div>
             </form>
             <form class="oneform" id="formSigninUser">
@@ -36,7 +33,7 @@
                 <input class="inputSignup" id="admInputPass" type="password" placeholder="Пароль" />
                 <div class="rowButtonsBottomG">
                     <input class="submitSignup" type="submit" id="adminAuth" value="Подключиться">
-                    <input class="submitSignup" id="closeForm2" type="submit" value="Закрыть">
+                    <!-- <input class="submitSignup" id="closeForm2" type="submit" value="Закрыть"> -->
                 </div>
             </form>
             <form class="oneform" id="formSigninAdm">
@@ -44,9 +41,13 @@
                 <input class="inputSignup" type="password" placeholder="Пароль" />
                 <div class="rowButtonsBottomG">
                     <input class="submitSignup" type="submit" value="Войти">
-                    <input class="submitSignup" onclick="hideSignup()" type="submit" value="Закрыть">
+                    <!-- <input class="submitSignup" onclick="hideSignup()" type="submit" value="Закрыть"> -->
                 </div>
             </form>
+            <div class="rowButtonSignupG">
+                <button onclick="switchTypeSignUp(this)" switchparam="buttonFromUser" class="buttonSignUp buttonSignUp1" active="1">Регистрация для администратора</button>
+                <!-- <button onclick="switchUserAdm(this)" switchparam="buttonFromAdmin"  class="buttonSignUp buttonSignUp1" active="0">Для администратора</button> -->
+            </div>
         </div>
     </div>
 </div>
@@ -57,6 +58,7 @@
     <!-- блок ввода комментария -->
     <div class="blockInputMessage">
         <textarea class="textareaG" onclick="showSignup()" id="textarea" placeholder="Введите комментарий" name="inputMessage"></textarea>
+        <!-- <textarea class="textareaG" oninput="resizeTextarea(this)" id="textarea" placeholder="Введите комментарий" name="inputMessage"></textarea> -->
         <button class="buttonSendG" type="button" onclick="sendMessage()" name="sendInputMessage">Добавить</button>
     </div>
     <!-- конец блок ввода комментария -->
@@ -86,11 +88,14 @@
         setTimeout(function() {
             $(".signup").css("transform", "scale(1)");
         }, 100);
+
+        $("body").css("overflow", "hidden");
     }
     function hideSignup() {
         $(".signup").css("transform", "scale(0)");
         setTimeout(function() {
             $(".backReg").css("display", "none");
+            $("body").css("overflow", "auto");
         }, 500);
     }
     function switchUserAdm(el) {
@@ -104,16 +109,56 @@
         chooseForm();
     }
     function chooseForm(i) {
-        var ind1 = $(".buttonSignUp1[active='1']").index();
+        var switchparam = $(".buttonSignUp1[active='1']").attr("switchparam");
 
         $(".oneform").css("display", "none");
 
-        if (ind1 == 0) {
+        if (switchparam == "buttonFromUser") {
             $("#formSignupUser").css("display", "flex");
-        } else if (ind1 == 1) {
+        } else if (switchparam == "buttonFromAdmin") {
             $("#formSignupAdm").css("display", "flex");
         }
     }
+    function switchTypeSignUp(el) {
+      var switchparam = $(el).attr("switchparam");
+
+      $(".oneform").css("display", "none");
+      if (switchparam == "buttonFromUser") {
+        $("#formSignupAdm").css("display", "flex");
+        $(el).attr("switchparam", "buttonFromAdmin");
+        $(el).html("Регистрация для пользователя");
+      } else if (switchparam == "buttonFromAdmin") {
+        $("#formSignupUser").css("display", "flex");
+        $(el).attr("switchparam", "buttonFromUser");
+        $(el).html("Регистрация для администратора");
+      }
+    }
+    //oninput="resizeTextarea(this)"
+    // function resizeTextarea(e) {
+    //   var rows = $(e).val().split('\n').length;
+    //   var heightRow = 14;
+    //
+    //   if (rows <= 2) {
+    //     $(e).css("height", heightRow*2+"px");
+    //   } else if (rows > 2) {
+    //     $(e).css("height", heightRow*rows+"px");
+    //   }
+    // }
+    // function resizeTextareaReply(e) {
+    //   var rows = $(e).val().split('\n').length;
+    //   var heightRow = 14;
+    //   $(e).css("height", heightRow*rows+"px");
+    // }
+    function showInputReply(el) {
+      if (isAuth == true || isAuth === true) {
+        $(el).parent().children(".buttonReply.buttonReply2").attr("active", "1");
+        $(el).parent().children(".textareaG.textareaReplyG").attr("active", "1");
+        $(el).attr("active", "0");
+      } else  {
+        showSignup();
+      }
+    }
+    //listeners
     var downPressSignup = false;
     $(document).mousedown(function (e){
         if (!$(".signup").is(e.target) && $(".signup").has(e.target).length === 0 && $(".backReg").css("display") == "flex") {
@@ -129,7 +174,24 @@
             downPressSignup = false;
         }
     });
+    $("#textarea").on("keydown", controllEnter);
 
+
+    function controllEnter (e) {
+        if (e.code == "Enter" && !e.shiftKey) {
+            setTimeout(sendMessage, 10);
+        }
+    }
+
+    function controllEnterComment(e) {
+        if (e.keyCode === 13 && !e.shiftKey) {
+            let id = this.id.split("_")[1];
+
+            setTimeout(function () {
+                sendComment(id);
+            }, 10);
+        }
+    }
 </script>
 <!-- конец код чата -->
 
@@ -144,10 +206,12 @@
 <script src="handlers.js"></script>
 <script src="websocket.js"></script>
 <script src="cookie.js"></script>
+<script src="autosize.js"></script>
 <script>
     loadingMessages();
     wsConnection();
     generateCookie();
+    autosize($('#textarea'));
 </script>
 
 

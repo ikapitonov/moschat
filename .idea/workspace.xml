@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41f441b1-3f74-4b76-ba3f-6a3a4028abfe" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/handlers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/handlers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/websocket.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/websocket.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,6 +97,7 @@
       <workItem from="1586688994767" duration="28471000" />
       <workItem from="1586779879296" duration="441000" />
       <workItem from="1586812294566" duration="908000" />
+      <workItem from="1586869935104" duration="238000" />
     </task>
     <servers />
   </component>
@@ -107,38 +109,38 @@
       <screen x="0" y="23" width="1366" height="677" />
     </state>
     <state x="496" y="52" key="#com.intellij.ide.util.MemberChooser/0.23.1366.677@0.23.1366.677" timestamp="1586698110785" />
-    <state width="1324" height="105" key="GridCell.Tab.0.bottom" timestamp="1586733191563">
+    <state width="1324" height="105" key="GridCell.Tab.0.bottom" timestamp="1586870132597">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="105" key="GridCell.Tab.0.bottom/0.23.1366.677@0.23.1366.677" timestamp="1586733191563" />
-    <state width="1324" height="105" key="GridCell.Tab.0.center" timestamp="1586733191562">
+    <state width="1324" height="105" key="GridCell.Tab.0.bottom/0.23.1366.677@0.23.1366.677" timestamp="1586870132597" />
+    <state width="1324" height="105" key="GridCell.Tab.0.center" timestamp="1586870132595">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="105" key="GridCell.Tab.0.center/0.23.1366.677@0.23.1366.677" timestamp="1586733191562" />
-    <state width="1324" height="105" key="GridCell.Tab.0.left" timestamp="1586733191561">
+    <state width="1324" height="105" key="GridCell.Tab.0.center/0.23.1366.677@0.23.1366.677" timestamp="1586870132595" />
+    <state width="1324" height="105" key="GridCell.Tab.0.left" timestamp="1586870132593">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="105" key="GridCell.Tab.0.left/0.23.1366.677@0.23.1366.677" timestamp="1586733191561" />
-    <state width="1324" height="105" key="GridCell.Tab.0.right" timestamp="1586733191562">
+    <state width="1324" height="105" key="GridCell.Tab.0.left/0.23.1366.677@0.23.1366.677" timestamp="1586870132593" />
+    <state width="1324" height="105" key="GridCell.Tab.0.right" timestamp="1586870132596">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="105" key="GridCell.Tab.0.right/0.23.1366.677@0.23.1366.677" timestamp="1586733191562" />
-    <state width="1324" height="105" key="GridCell.Tab.1.bottom" timestamp="1586733191566">
+    <state width="1324" height="105" key="GridCell.Tab.0.right/0.23.1366.677@0.23.1366.677" timestamp="1586870132596" />
+    <state width="1324" height="105" key="GridCell.Tab.1.bottom" timestamp="1586870132600">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="105" key="GridCell.Tab.1.bottom/0.23.1366.677@0.23.1366.677" timestamp="1586733191566" />
-    <state width="1324" height="105" key="GridCell.Tab.1.center" timestamp="1586733191564">
+    <state width="1324" height="105" key="GridCell.Tab.1.bottom/0.23.1366.677@0.23.1366.677" timestamp="1586870132600" />
+    <state width="1324" height="105" key="GridCell.Tab.1.center" timestamp="1586870132598">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="105" key="GridCell.Tab.1.center/0.23.1366.677@0.23.1366.677" timestamp="1586733191564" />
-    <state width="1324" height="105" key="GridCell.Tab.1.left" timestamp="1586733191564">
+    <state width="1324" height="105" key="GridCell.Tab.1.center/0.23.1366.677@0.23.1366.677" timestamp="1586870132598" />
+    <state width="1324" height="105" key="GridCell.Tab.1.left" timestamp="1586870132598">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="105" key="GridCell.Tab.1.left/0.23.1366.677@0.23.1366.677" timestamp="1586733191564" />
-    <state width="1324" height="105" key="GridCell.Tab.1.right" timestamp="1586733191565">
+    <state width="1324" height="105" key="GridCell.Tab.1.left/0.23.1366.677@0.23.1366.677" timestamp="1586870132598" />
+    <state width="1324" height="105" key="GridCell.Tab.1.right" timestamp="1586870132599">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
-    <state width="1324" height="105" key="GridCell.Tab.1.right/0.23.1366.677@0.23.1366.677" timestamp="1586733191565" />
+    <state width="1324" height="105" key="GridCell.Tab.1.right/0.23.1366.677@0.23.1366.677" timestamp="1586870132599" />
     <state x="221" y="23" key="Maven.ArtifactSearchDialog" timestamp="1586092255967">
       <screen x="0" y="23" width="1366" height="677" />
     </state>
@@ -163,6 +165,10 @@
           <url>file://$PROJECT_DIR$/src/main/java/ru/chat/websocket/config/TopicSubscriptionInterceptor.java</url>
           <line>9</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/chat/config/WebConfig.java</url>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
