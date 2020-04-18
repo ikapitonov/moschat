@@ -1,13 +1,16 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Tellsy online chat</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+
+<div style="display: none;" id="sessionId" th:utext="${sessionId}"></div>
+
 <!-- код окно регистрации -->
 <div class="backReg">
     <div class="signup">
@@ -15,9 +18,9 @@
         <p class="textSignup">Войдите, чтобы оставлять комментарии и писать сообщения</p>
         <div class="formsSignup">
             <form class="oneform" id="formSignupUser">
-                <input class="inputSignup" id="userName" type="text" placeholder="Имя" />
-                <input class="inputSignup" id="userEmail" type="email" placeholder="E-mail" />
-                <input class="inputSignup" id="userPhone" type="tel" placeholder="Номер телефона" />
+                <input class="inputSignup" id="userName" type="text" th:value="${name}" placeholder="Имя" />
+                <input class="inputSignup" id="userEmail" type="email" th:value="${email}" placeholder="E-mail" />
+                <input class="inputSignup" id="userPhone" type="tel" th:value="${phone}" placeholder="Номер телефона" />
                 <p class="textSignup">Или телефон или почта или вместе. Их видят только администраторы.</p>
                 <div class="rowButtonsBottomG">
                     <input class="submitSignup" type="submit" id="userAuth" value="Подключиться">
@@ -211,20 +214,24 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 
-<script src="auth.js"></script>
-<script src="listMessages.js"></script>
-<script src="paint.js"></script>
-<script src="handlers.js"></script>
-<script src="websocket.js"></script>
-<script src="cookie.js"></script>
-<script src="autosize.js"></script>
+<script src="/auth.js?var=4"></script>
+<script src="/listMessages.js?var=5"></script>
+<script src="/paint.js?var=6"></script>
+<script src="/handlers.js?var=4"></script>
+<script src="/websocket.js?var=3"></script>
+<script src="/cookie.js"></script>
+<script src="/autosize.js"></script>
 <script>
     loadingMessages();
     wsConnection();
-    generateCookie();
     autosize($('#textarea'));
 </script>
-
+<script th:if="${auth} == false">
+    generateCookie();
+</script>
+<script th:if="${auth} == true">
+    generateAuth(null);
+</script>
 
 </body>
 </html>

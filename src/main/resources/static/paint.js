@@ -35,7 +35,7 @@ function massageShow(data, where) {
         activeCheckMark = 1;
     }
     str += "<div class=\"blockImgUserG\">";
-    str += "<img class=\"imgUserG\" src=\"user.png\">";
+    str += "<img class=\"imgUserG\" src=\"/user.png\">";
     str += "<div class=\"checkMark\" active=\""+activeCheckMark+"\"></div>";
     str += "</div>";
 
@@ -58,6 +58,11 @@ function massageShow(data, where) {
     }
     str += "<h5>" + data.date + "</h5>";
     str += "<div class=\"buttonReply buttonReply2\" active=\"1\" onclick=\"showInputReply1(this)\">Ответить</div>";
+
+    if (role == "admin") {
+        str += "<div class=\"buttonReply buttonReply2\" onclick=\"deleteMessage(" + data.id + ")\" active=\"1\">Удалить</div>";
+    }
+
     str += "</div>";
     str += "<pre class=\"textMessageG\">" + data.content + "</pre>";
     str += "</div>";
@@ -89,7 +94,7 @@ function massageShow(data, where) {
 }
 
 function commentShow(data, messageId) {
-    let str = "<div class=\"blockMessageMG\">";
+    let str = "<div class=\"blockMessageMG\" id=\"comment_id_" + data.id + "\">";
 
     //новый код
     var activeCheckMark = 0;
@@ -97,7 +102,7 @@ function commentShow(data, messageId) {
         activeCheckMark = 1;
     }
     str += "<div class=\"blockImgUserG\">";
-    str += "<img class=\"imgUserG\" src=\"user.png\">";
+    str += "<img class=\"imgUserG\" src=\"/user.png\">";
     str += "<div class=\"checkMark\" active=\""+activeCheckMark+"\"></div>";
     str += "</div>";
 
@@ -119,6 +124,11 @@ function commentShow(data, messageId) {
         str += "<h5>" + data.phone + "</h5>";
     }
     str += "<h5>" + data.date + "</h5>";
+
+    if (role == "admin") {
+        str += "<div class=\"buttonReply buttonReply2\" onclick=\"deleteComment(" + data.id + ")\" active=\"1\">Удалить</div>";
+    }
+
     str += "</div>";
     str += "<pre class=\"textMessageG\">" + data.content + "</pre>";
     str += "</div>";

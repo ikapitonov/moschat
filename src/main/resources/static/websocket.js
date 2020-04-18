@@ -1,11 +1,11 @@
-//let domen = location.origin;
-let domen = "https://secret-falls-85852.herokuapp.com";
+let domen = location.origin;
+//let domen = "https://secret-falls-85852.herokuapp.com";
 let stompClient;
 let role;
 let webSocket;
 
 function wsConnection() {
-    let url = domen + "/ws";
+    let url = domen + "/ws?sessionId=" + sessionId;
 
     webSocket = new SockJS(url);
 

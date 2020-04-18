@@ -3,16 +3,19 @@ let limit = 50;
 $("#loading").click(loadingMessages);
 
 function loadingMessages() {
+    console.log(sessionId);
     $.ajax({
         url: domen + "/listMessages",
         type: 'GET',
         data: {
             offset: getOffset(),
             limit: limit,
-            token: token
+            token: token,
+            sessionId: sessionId
         },
         contentType: 'application/json',
         success: function(response) {
+            console.log(response);
             listMessages(response);
         }
     });
@@ -20,19 +23,19 @@ function loadingMessages() {
 
 function listMessages(data) {
 
-    if (data.content == null || data.content.length == 0) {
+    if (data == null || data.length == 0) {
         $("#loading").css("display","none");
         return ;
     }
-    if (data.content.length < limit) {
+    if (data.length < limit) {
         $("#loading").css("display", "none");
     }
     else {
         $("#loading").css("display", "block");
     }
 
-    for (let i = 0; i < data.content.length; ++i) {
-        massageShow(data.content[i], "APPEND");
+    for (let i = 0; i < data.length; ++i) {
+        massageShow(data[i], "APPEND");
     }
 }
 

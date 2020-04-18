@@ -7,6 +7,7 @@ import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.messaging.SessionConnectedEvent;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
+import ru.chat.controller.WebSocket;
 import ru.chat.utils.Time;
 import ru.chat.websocket.model.UserEvent;
 import ru.chat.websocket.permissions.Admin;
@@ -26,6 +27,7 @@ public class WebSocketEventListener {
     public void handleWebSocketDisconnectListener(SessionDisconnectEvent event) {
         StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
         UserEvent userEvent = new UserEvent();
+        int sessionId = WebSocket.getSessionId(headerAccessor);
 
         userEvent.setDate(Time.getNowDate());
         try {
@@ -37,7 +39,7 @@ public class WebSocketEventListener {
         userEvent.setType("REMOVE");
         userEvent.setName(headerAccessor.getSessionAttributes().get("name").toString());
 
-        simpMessagingTemplate.convertAndSend("/topic/" + "user", userEvent);
-        simpMessagingTemplate.convertAndSend("/topic/" + Admin.token, userEvent);
+        simpMessagingTemplate.convertAndSend("/topic/" + sessionId + "/" + "user", userEvent);
+        simpMessagingTemplate.convertAndSend("/topic/" + sessionId + "/" + Admin.token, userEvent);
     }
 }

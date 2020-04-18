@@ -33,16 +33,18 @@ public class WebSocket {
     @MessageMapping("/chat.userWrite")
     public void userWrite(SimpMessageHeaderAccessor headerAccessor) {
         UserWrite user = new UserWrite();
+        int sessionId = getSessionId(headerAccessor);
 
         user.setUsername(headerAccessor.getSessionAttributes().get("name").toString());
         user.setType("WRITE");
         user.setSession(headerAccessor.getSessionId());
-        simpMessagingTemplate.convertAndSend("/topic/" + "common", user);
+        simpMessagingTemplate.convertAndSend("/topic/" + sessionId + "/common", user);
     }
 
     @MessageMapping("/chat.addUser")
     public void addUser (SimpMessageHeaderAccessor headerAccessor, @Payload AuthData authData) {
         UserEvent userEvent = new UserEvent();
+        int sessionId = getSessionId(headerAccessor);
         if (!authData.isStatus())
             return ;
 
@@ -70,13 +72,14 @@ public class WebSocket {
         userEvent.setType("ADD");
         userEvent.setName(headerAccessor.getSessionAttributes().get("name").toString());
 
-        simpMessagingTemplate.convertAndSend("/topic/" + "user", userEvent);
-        simpMessagingTemplate.convertAndSend("/topic/" + Admin.token, userEvent);
+        simpMessagingTemplate.convertAndSend("/topic/" + sessionId + "/" + "user", userEvent);
+        simpMessagingTemplate.convertAndSend("/topic/"  + sessionId + "/" + Admin.token, userEvent);
     }
 
     @MessageMapping("/chat.sendMessage")
     public void SendMessage (SimpMessageHeaderAccessor headerAccessor, @Payload Message message) {
         ClientMessage clientMessage = new ClientMessage();
+        int sessionId = getSessionId(headerAccessor);
         String content;
 
         message.setContent(Html.decodeParseLines(message.getContent()));
@@ -84,6 +87,8 @@ public class WebSocket {
         if (message.getContent() == null || message.getContent().trim().isEmpty()) {
             return ;
         }
+        clientMessage.setSession((Session) headerAccessor.getSessionAttributes().get("session"));
+
 
         content = message.getContent().trim();
         if (content.length() >= 2000)
@@ -99,7 +104,6 @@ public class WebSocket {
         }
         catch (NullPointerException | NumberFormatException e) {
             //clientMessage.setPhone("none");
-            e.printStackTrace();
         }
         try {
             clientMessage.setEmail(headerAccessor.getSessionAttributes().get("email").toString());
@@ -109,17 +113,18 @@ public class WebSocket {
         }
 
         clientMessage = clientMessageRepo.save(clientMessage);
-        simpMessagingTemplate.convertAndSend("/topic/" + Admin.token, clientMessage);
+        simpMessagingTemplate.convertAndSend("/topic/" + sessionId + "/" + Admin.token, clientMessage);
 
         clientMessage.setPhone(0);
         clientMessage.setEmail(null);
-        simpMessagingTemplate.convertAndSend("/topic/" + "user", clientMessage);
+        simpMessagingTemplate.convertAndSend("/topic/" + sessionId + "/" + "user", clientMessage);
     }
 
     @MessageMapping("/chat.sendComment")
     public void SendComment (SimpMessageHeaderAccessor headerAccessor, @Payload Comment comment) {
         ClientComment clientComment = new ClientComment();
         ClientMessage message = new ClientMessage();
+        int sessionId = getSessionId(headerAccessor);
         String content;
 
         comment.setContent(Html.decodeParseLines(comment.getContent()));
@@ -153,10 +158,39 @@ public class WebSocket {
         }
 
         clientComment = clientCommentRepo.save(clientComment);
-        simpMessagingTemplate.convertAndSend("/topic/" + Admin.token, clientComment);
+        simpMessagingTemplate.convertAndSend("/topic/" + sessionId + "/" + Admin.token, clientComment);
 
         clientComment.setPhone(0);
         clientComment.setEmail(null);
-        simpMessagingTemplate.convertAndSend("/topic/" + "user", clientComment);
+        simpMessagingTemplate.convertAndSend("/topic/" + sessionId + "/" + "user", clientComment);
+    }
+
+    @MessageMapping("/chat.deleteItem")
+    public void deleteItem (SimpMessageHeaderAccessor headerAccessor, @Payload DeleteItem item) {
+        int sessionId = getSessionId(headerAccessor);
+        ClientDeleteItem deletedItem = new ClientDeleteItem();
+
+        if (!headerAccessor.getSessionAttributes().get("role").toString().equals("admin"))
+            return ;
+        deletedItem.setItem(item.getType());
+        deletedItem.setId(item.getId());
+        deletedItem.setType("DELETE");
+
+        if (item.getType().equals("comment")) {
+            clientCommentRepo.deleteById(item.getId());
+
+            simpMessagingTemplate.convertAndSend("/topic/" + sessionId + "/common", deletedItem);
+        }
+        else if (item.getType().equals("message")) {
+            clientMessageRepo.deleteById(item.getId());
+
+            simpMessagingTemplate.convertAndSend("/topic/" + sessionId + "/common", deletedItem);
+        }
+    }
+
+    public static int getSessionId(SimpMessageHeaderAccessor headerAccessor) {
+        Session session = (Session) headerAccessor.getSessionAttributes().get("session");
+
+        return session.getId();
     }
 }

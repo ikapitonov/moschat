@@ -2,11 +2,15 @@ let isWrite = false;
 let usersWrite = new Map();
 let interval = 400;
 let userSub;
+let sendAddUser = false;
+let Connected = false;
+let TMPdata;
 
 function onConnected() {
-    userSub = stompClient.subscribe('/topic/user', commonController);
-    stompClient.subscribe('/topic/' + "common", commonController);
-   // stompClient.send("/app/chat.addUser", {}, JSON.stringify({ type: "empty" }));
+    Connected = true;
+    userSub = stompClient.subscribe('/topic/' + sessionId + '/user', commonController);
+    stompClient.subscribe('/topic/' + sessionId + '/common', commonController);
+    // stompClient.send("/app/chat.addUser", {}, JSON.stringify({ type: "empty" }));
 }
 
 function socketReconnection(data) {
@@ -18,11 +22,12 @@ function socketReconnection(data) {
         setCookie("phone", data.phone, 7);
         setCookie("email", data.email, 7);
 
-        stompClient.send("/app/chat.addUser", {}, JSON.stringify(data));
+        sendAddUser = true;
+        TMPdata = data;
         return ;
     }
     userSub.unsubscribe();
-    stompClient.subscribe('/topic/' + data.token, commonController);
+    stompClient.subscribe('/topic/' + sessionId + '/' + data.token, commonController);
 
     $("#board").empty();
     stompClient.send("/app/chat.addUser", {}, JSON.stringify(data));
@@ -35,6 +40,30 @@ function onError() {
     alert("Ошибка подключения");
 
     location.reload();
+}
+
+//удаление
+function deleteComment(id) {
+    if (confirm("Вы уверены?") === true) {
+        stompClient.send("/app/chat.deleteItem", {}, JSON.stringify({ type: "comment", id: id }));
+    }
+}
+
+function deleteMessage(id) {
+    if (confirm("Вы уверены?") === true) {
+        stompClient.send("/app/chat.deleteItem", {}, JSON.stringify({ type: "message", id: id }));
+    }
+}
+
+function deleteItem(data) {
+    if (data.item == "comment") {
+        console.log(data.id);
+        $("#comment_id_" + data.id).remove();
+    }
+    else if (data.item == "message") {
+        console.log(data.id);
+        $("#message" + data.id).remove();
+    }
 }
 
 function commonController(payload) {
@@ -55,6 +84,9 @@ function commonController(payload) {
     }
     else if (data.type == "WRITE") {
         usersWrite.set(data.session, [ data.username, interval ]);
+    }
+    else if (data.type == "DELETE") {
+        deleteItem(data);
     }
 }
 
@@ -130,5 +162,9 @@ setInterval(function () {
         stompClient.send("/app/chat.userWrite", {}, JSON.stringify({type: "empty"}));
 
         isWrite = false;
+    }
+    if (sendAddUser === true && Connected === true) {
+        sendAddUser = false;
+        stompClient.send("/app/chat.addUser", {}, JSON.stringify(TMPdata));
     }
 }, 400);

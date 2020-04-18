@@ -13,11 +13,15 @@ public class ClientMessage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToMany(fetch=FetchType.EAGER, mappedBy="clientMessage")
+    @OneToMany(fetch=FetchType.EAGER, mappedBy="clientMessage", orphanRemoval=true)
     private List<ClientComment> comments;
 
     @Column(nullable = false, length = 50)
     private String name;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "session_id")
+    private Session session;
 
     @CreationTimestamp
     private LocalDateTime date;
@@ -109,5 +113,13 @@ public class ClientMessage {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Session getSession() {
+        return session;
+    }
+
+    public void setSession(Session session) {
+        this.session = session;
     }
 }

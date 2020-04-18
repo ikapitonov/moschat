@@ -5,6 +5,7 @@ import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.simp.stomp.StompCommand;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.messaging.support.ChannelInterceptorAdapter;
+import ru.chat.websocket.model.Session;
 import ru.chat.websocket.permissions.Admin;
 
 public class TopicSubscriptionInterceptor extends ChannelInterceptorAdapter {
@@ -23,15 +24,15 @@ public class TopicSubscriptionInterceptor extends ChannelInterceptorAdapter {
 
     private boolean validateSubscription(StompHeaderAccessor headerAccessor) {
         String destination = headerAccessor.getDestination();
+        Session session = (Session) headerAccessor.getSessionAttributes().get("session");
         String[] array = destination.split("/");
 
-        // подписка на общие событие
-        if (array.length == 3) {
-            if (array[2].equals("common"))
+        if (array.length == 4 && array[2].equals(Integer.toString(session.getId()))) {
+            if (array[3].equals("common"))
                 return true;
-            if (array[2].equals("user"))
+            if (array[3].equals("user"))
                 return true;
-            if (array[2].equals(Admin.token))
+            if (array[3].equals(Admin.token))
                 return true;
         }
         return false;

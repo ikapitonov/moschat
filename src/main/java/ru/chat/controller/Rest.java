@@ -5,20 +5,27 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ru.chat.auth.AuthData;
+import ru.chat.model.CreateSession;
 import ru.chat.repositories.ClientMessageRepo;
 import ru.chat.repositories.OffsetBasedPageRequest;
+import ru.chat.repositories.SessionRepo;
 import ru.chat.websocket.model.ClientComment;
 import ru.chat.websocket.model.ClientMessage;
+import ru.chat.websocket.model.Session;
 import ru.chat.websocket.permissions.Admin;
 import ru.chat.websocket.permissions.User;
 
 import java.util.Iterator;
+import java.util.List;
 
 @RestController
 public class Rest {
 
     @Autowired
     private ClientMessageRepo clientMessageRepo;
+
+    @Autowired
+    private SessionRepo sessionRepo;
 
     @Autowired
     private User user;
@@ -40,14 +47,15 @@ public class Rest {
     }
 
     @GetMapping(value = "/listMessages")
-    public Iterable<ClientMessage> listMessages(@RequestParam(value = "offset") int offset,
-                             @RequestParam(value = "limit") int limit,
-                             @RequestParam(value = "token", defaultValue = "") String token) {
+    public List<ClientMessage> listMessages(@RequestParam(value = "offset") int offset,
+                                                @RequestParam(value = "limit") int limit,
+                                                @RequestParam(value = "token", defaultValue = "") String token,
+                                                @RequestParam(value = "sessionId") int sessionId) {
         if (limit > 100 || limit <= 0 || offset > 100)
             return null;
 
         boolean isAdmin = token != null && !token.isEmpty() && token.equals(Admin.token);
-        Iterable<ClientMessage> messages = clientMessageRepo.findAll(new OffsetBasedPageRequest(limit, offset));
+        List<ClientMessage> messages = clientMessageRepo.findBySessionId(sessionId, new OffsetBasedPageRequest(limit, offset));
         Iterator<ClientMessage> messageIterator = messages.iterator();
         Iterator<ClientComment> commentIterator;
         ClientMessage message;
@@ -73,5 +81,26 @@ public class Rest {
             }
         }
         return messages;
+    }
+
+    @GetMapping(value = "/create-session")
+    public CreateSession createSession(@RequestParam("name") String name) {
+        CreateSession session = new CreateSession();
+        Session dbSession = new Session();
+
+        if (name == null || name.isEmpty()) {
+            session.setStatus(false);
+            return session;
+        }
+        if (!sessionRepo.findByNameEquals(name).isEmpty()) {
+            session.setStatus(false);
+            return session;
+        }
+        dbSession.setName(name.length() > 50 ? name.substring(0, 50) : name);
+        dbSession = sessionRepo.save(dbSession);
+
+        session.setSession(dbSession);
+        session.setStatus(true);
+        return session;
     }
 }

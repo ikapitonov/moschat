@@ -5,7 +5,7 @@ let role;
 let webSocket;
 
 function wsConnection() {
-    let url = domen + "/ws";
+    let url = domen + "/ws?sessionId=" + sessionId;
 
     webSocket = new SockJS(url);
 
