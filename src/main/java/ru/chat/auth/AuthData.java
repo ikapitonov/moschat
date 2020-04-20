@@ -1,5 +1,7 @@
 package ru.chat.auth;
 
+import ru.chat.websocket.model.AppUser;
+
 public class AuthData {
     private boolean status;
     private String role;
@@ -7,6 +9,7 @@ public class AuthData {
     private long phone;
     private String email;
     private String token;
+    private AppUser user;
 
     public boolean isStatus() {
         return status;
@@ -54,5 +57,13 @@ public class AuthData {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public AppUser getUser() {
+        return user;
+    }
+
+    public void setUser(AppUser user) {
+        this.user = user;
     }
 }

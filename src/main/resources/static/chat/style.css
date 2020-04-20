@@ -340,7 +340,7 @@ body {
   width: 20px;
   height: 20px;
   align-self: flex-end;
-  background-image: url("cross.png");
+  background-image: url("/chat/cross.png");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;

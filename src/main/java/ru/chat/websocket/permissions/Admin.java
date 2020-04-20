@@ -8,6 +8,7 @@ public class Admin {
     public static final String login = "admin";
     public static final String password = "pass";
     public static final String token = "4i903idfljksjkiuhewu8932okwdk";
+    public static final String key = "fdjsjwqjkdskdsklsdakj";
     public static final String name = "Администратор";
 
     public AuthData validateHttp(String login, String password) {

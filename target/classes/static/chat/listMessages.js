@@ -5,7 +5,7 @@ $("#loading").click(loadingMessages);
 function loadingMessages() {
     console.log(sessionId);
     $.ajax({
-        url: domen + "/listMessages",
+        url: domen + "/chat/listMessages",
         type: 'GET',
         data: {
             offset: getOffset(),

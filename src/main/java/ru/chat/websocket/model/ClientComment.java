@@ -18,38 +18,24 @@ public class ClientComment {
     @JoinColumn(name="message_id", nullable=false)
     private ClientMessage clientMessage;
 
-    @Column(nullable = false, length = 50)
-    private String name;
-
     @CreationTimestamp
     private LocalDateTime date;
 
     @Column(nullable = false, length = 2000)
     private String content;
 
-    // думаю пока нет смысла выносить их в отдельную таблицу
-    @Column(nullable = false, length = 20)
-    private String role;
-
-    @Column(length = 50)
-    private String email;
-
-    @Column(nullable = true)
-    private long phone;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private AppUser appUser;
 
     @Column(nullable = false, length = 20)
     private String type;
 
+    @Transient
+    private String fields;
+
     public long getId() {
         return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public void setId(long id) {
@@ -80,35 +66,27 @@ public class ClientComment {
         this.content = content;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public long getPhone() {
-        return phone;
-    }
-
-    public void setPhone(long phone) {
-        this.phone = phone;
-    }
-
     public String getType() {
         return type;
     }
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public AppUser getAppUser() {
+        return appUser;
+    }
+
+    public void setAppUser(AppUser appUser) {
+        this.appUser = appUser;
+    }
+
+    public String getFields() {
+        return fields;
+    }
+
+    public void setFields(String fields) {
+        this.fields = fields;
     }
 }

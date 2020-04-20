@@ -15,13 +15,9 @@ function onConnected() {
 
 function socketReconnection(data) {
     if (data.role == "user") {
-        deleteCookie("name");
-        deleteCookie("phone");
-        deleteCookie("email");
-        setCookie("name", data.name, 7);
-        setCookie("phone", data.phone, 7);
-        setCookie("email", data.email, 7);
+        saveSessionCookie(data.user);
 
+        // веб сокет еще не успел подключиться
         sendAddUser = true;
         TMPdata = data;
         return ;
@@ -80,7 +76,7 @@ function commonController(payload) {
         massageShow(data, "START");
     }
     else if (data.type == "COMMENT") {
-        commentShow(data, data.clientMessage.id);
+        commentShow(data, data.clientMessage.id, getUserFields(data.fields));
     }
     else if (data.type == "WRITE") {
         usersWrite.set(data.session, [ data.username, interval ]);

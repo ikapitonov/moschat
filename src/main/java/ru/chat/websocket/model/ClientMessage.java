@@ -16,9 +16,6 @@ public class ClientMessage {
     @OneToMany(fetch=FetchType.EAGER, mappedBy="clientMessage", orphanRemoval=true)
     private List<ClientComment> comments;
 
-    @Column(nullable = false, length = 50)
-    private String name;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "session_id")
     private Session session;
@@ -29,15 +26,9 @@ public class ClientMessage {
     @Column(nullable = false, length = 2000)
     private String content;
 
-    // думаю пока нет смысла выносить их в отдельную таблицу
-    @Column(nullable = false, length = 20)
-    private String role;
-
-    @Column(length = 50)
-    private String email;
-
-    @Column(nullable = true)
-    private long phone;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private AppUser appUser;
 
     @Column(nullable = false, length = 20)
     private String type;
@@ -46,21 +37,12 @@ public class ClientMessage {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-
     public List<ClientComment> getComments() {
         return comments;
     }
 
     public void setComments(List<ClientComment> comments) {
         this.comments = comments;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public void setId(long id) {
@@ -83,30 +65,6 @@ public class ClientMessage {
         this.content = content;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public long getPhone() {
-        return phone;
-    }
-
-    public void setPhone(long phone) {
-        this.phone = phone;
-    }
-
     public String getType() {
         return type;
     }
@@ -121,5 +79,13 @@ public class ClientMessage {
 
     public void setSession(Session session) {
         this.session = session;
+    }
+
+    public AppUser getAppUser() {
+        return appUser;
+    }
+
+    public void setAppUser(AppUser appUser) {
+        this.appUser = appUser;
     }
 }

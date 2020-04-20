@@ -45,10 +45,15 @@ public class WebSocket {
     public void addUser (SimpMessageHeaderAccessor headerAccessor, @Payload AuthData authData) {
         UserEvent userEvent = new UserEvent();
         int sessionId = getSessionId(headerAccessor);
+
         if (!authData.isStatus())
             return ;
 
         if (authData.getRole().equals("user")) {
+            if (authData.getUser() == null || authData.getUser().getId() == 0)
+                return ;
+
+            headerAccessor.getSessionAttributes().put("appUser", authData.getUser());
             headerAccessor.getSessionAttributes().put("name", authData.getName());
             headerAccessor.getSessionAttributes().put("role", authData.getRole());
 
@@ -61,6 +66,7 @@ public class WebSocket {
         }
         else {
             if (authData.getToken() != null && !authData.getToken().isEmpty() && authData.getToken().equals(Admin.token)) {
+                headerAccessor.getSessionAttributes().put("appUser", authData.getUser());
                 headerAccessor.getSessionAttributes().put("role", authData.getRole());
                 headerAccessor.getSessionAttributes().put("name", Admin.name);
             }
@@ -89,34 +95,22 @@ public class WebSocket {
         }
         clientMessage.setSession((Session) headerAccessor.getSessionAttributes().get("session"));
 
-
         content = message.getContent().trim();
         if (content.length() >= 2000)
             content = content.substring(0, 1996) + "...";
 
-        clientMessage.setName(headerAccessor.getSessionAttributes().get("name").toString());
+        clientMessage.setAppUser(AppUser.duplicate((AppUser) headerAccessor.getSessionAttributes().get("appUser")));
         clientMessage.setContent(content);
-        clientMessage.setRole(headerAccessor.getSessionAttributes().get("role").toString());
         clientMessage.setType("MESSAGE");
 
-        try {
-            clientMessage.setPhone(Long.parseLong(headerAccessor.getSessionAttributes().get("phone").toString()));
-        }
-        catch (NullPointerException | NumberFormatException e) {
-            //clientMessage.setPhone("none");
-        }
-        try {
-            clientMessage.setEmail(headerAccessor.getSessionAttributes().get("email").toString());
-        }
-        catch (NullPointerException e) {
-            //clientMessage.setEmail("none");
-        }
-
         clientMessage = clientMessageRepo.save(clientMessage);
+
         simpMessagingTemplate.convertAndSend("/topic/" + sessionId + "/" + Admin.token, clientMessage);
 
-        clientMessage.setPhone(0);
-        clientMessage.setEmail(null);
+        clientMessage.getAppUser().setFields(null);
+        clientMessage.getAppUser().setEmail(null);
+        clientMessage.getAppUser().setPhone(0);
+
         simpMessagingTemplate.convertAndSend("/topic/" + sessionId + "/" + "user", clientMessage);
     }
 
@@ -138,30 +132,20 @@ public class WebSocket {
         if (content.length() >= 2000)
             content = content.substring(0, 1996) + "...";
 
-        clientComment.setName(headerAccessor.getSessionAttributes().get("name").toString());
         clientComment.setContent(content);
-        clientComment.setRole(headerAccessor.getSessionAttributes().get("role").toString());
-        clientComment.setType("COMMENT");
         clientComment.setClientMessage(message);
-
-        try {
-            clientComment.setPhone(Long.parseLong(headerAccessor.getSessionAttributes().get("phone").toString()));
-        }
-        catch (NullPointerException | NumberFormatException e) {
-            //clientMessage.setPhone("none");
-        }
-        try {
-            clientComment.setEmail(headerAccessor.getSessionAttributes().get("email").toString());
-        }
-        catch (NullPointerException e) {
-            //clientMessage.setEmail("none");
-        }
+        clientComment.setAppUser(AppUser.duplicate((AppUser) headerAccessor.getSessionAttributes().get("appUser")));
+        clientComment.setType("COMMENT");
+        clientComment.setFields(((Session) headerAccessor.getSessionAttributes().get("session")).getFields());
 
         clientComment = clientCommentRepo.save(clientComment);
+
         simpMessagingTemplate.convertAndSend("/topic/" + sessionId + "/" + Admin.token, clientComment);
 
-        clientComment.setPhone(0);
-        clientComment.setEmail(null);
+        clientComment.getAppUser().setFields(null);
+        clientComment.getAppUser().setEmail(null);
+        clientComment.getAppUser().setPhone(0);
+
         simpMessagingTemplate.convertAndSend("/topic/" + sessionId + "/" + "user", clientComment);
     }
 

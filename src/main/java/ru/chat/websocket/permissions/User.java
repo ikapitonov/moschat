@@ -2,6 +2,7 @@ package ru.chat.websocket.permissions;
 
 import org.springframework.stereotype.Component;
 import ru.chat.auth.AuthData;
+import ru.chat.utils.Html;
 
 import javax.mail.internet.InternetAddress;
 
@@ -28,7 +29,7 @@ public class User {
             authData.setEmail(email);
         }
         authData.setStatus(flag);
-        authData.setName(name);
+        authData.setName(Html.fullDecode(name));
         return authData;
     }
 
