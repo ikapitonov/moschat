@@ -14,7 +14,7 @@
 
 
 <div class="container mt-3" style="max-width: 700px;">
-    <h3 class="text-center">Создание новой сессии сессия</h3>
+    <h3 class="text-center">Создание новой сессии</h3>
 
     <div id="response">
     </div>
@@ -22,6 +22,12 @@
     <form method="POST">
         <div class="form-group">
             <input type="text" class="form-control" id="name" placeholder="Название комнаты (на английском и без пробелов)">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="user" placeholder="Какие данные для показа собираем">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="phone" placeholder="Название поле с номером телефона">
         </div>
         <div class="form-group">
             <input type="password" class="form-control" id="key" placeholder="Секретный ключ">
@@ -64,10 +70,20 @@
             let name = $("#name").val();
             let key = $("#key").val();
             let fields = $(".newbox");
+            let user = $("#user").val();
+            let phone = $("#phone").vali();
             let arr = [];
 
             if (name.length === 0) {
                 alert("Заполнение поле с названием");
+                return ;
+            }
+            if (user.length === 0) {
+                alert("Заполнение поле с данными");
+                return ;
+            }
+            if (phone.length === 0) {
+                alert("Заполнение поле с названием поля номера телефона");
                 return ;
             }
             if (key.length === 0) {
@@ -81,11 +97,11 @@
                 }
             }
 
-            send(name, key, arr);
+            send(name.trim(), key.trim(), arr, user.trim(), phone.trim());
         });
 
 
-        function send(name, key, arr) {
+        function send(name, key, arr, user, phone) {
 
             $.ajax({
                 url: location.pathname,
@@ -93,6 +109,8 @@
                 data: JSON.stringify({
                     name: name,
                     key: key,
+                    user: user,
+                    phone: phone,
                     fields: arr
                 }),
                 contentType: 'application/json',

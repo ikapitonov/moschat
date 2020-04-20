@@ -14,7 +14,7 @@ function includeSessionCookie() {
         data = JSON.parse(dataStr);
 
         $("#userName").val(data.name);
-        $("#userEmail").val(data.email == null || data.email == "" || data.email == "null" ? "" : data.email);
+     //   $("#userEmail").val(data.email == null || data.email == "" || data.email == "null" ? "" : data.email);
         $("#userPhone").val(data.phone > 0 ? data.phone : "");
 
         fields = data.fields == null || data.fields === undefined ? null : getUserFields(data.fields);

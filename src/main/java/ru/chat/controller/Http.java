@@ -47,7 +47,7 @@ public class Http {
 
         model.addAttribute("auth", auth.isStatus());
         model.addAttribute("name", auth.getName());
-        model.addAttribute("email", auth.getEmail());
+     //   model.addAttribute("email", auth.getEmail());
         model.addAttribute("phone", auth.getPhone() == 0 ? null : auth.getPhone());
 
         List<Session> list = sessionRepo.findByNameEquals(sessionName);
@@ -56,6 +56,8 @@ public class Http {
             return "redirect:/" + COMMON_ROOM;
         }
         model.addAttribute("sessionId", list.get(0).getId());
+        model.addAttribute("username", list.get(0).getUserName());
+        model.addAttribute("phonename", list.get(0).getPhoneName());
         model.addAttribute("fields", Item.generateItems(Codec.unmergeStrings(list.get(0).getFields()), fields));
 
         return "user";

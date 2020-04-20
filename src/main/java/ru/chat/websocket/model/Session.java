@@ -1,8 +1,6 @@
 package ru.chat.websocket.model;
 
 import org.hibernate.annotations.CreationTimestamp;
-import ru.chat.utils.Codec;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -14,6 +12,12 @@ public class Session {
 
     @Column(nullable = false, length = 50)
     private String name;
+
+    @Column(nullable = false, length = 50)
+    private String userName;
+
+    @Column(nullable = false, length = 50)
+    private String phoneName;
 
     // Максимальная длина fields - 5 (5 * 50 + 5 * 10)
     @Column(length = 301)
@@ -52,5 +56,21 @@ public class Session {
 
     public void setFields(String fields) {
         this.fields = fields;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPhoneName() {
+        return phoneName;
+    }
+
+    public void setPhoneName(String phoneName) {
+        this.phoneName = phoneName;
     }
 }

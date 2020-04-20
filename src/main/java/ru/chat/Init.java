@@ -31,6 +31,8 @@ public class Init {
             Session session = new Session();
 
             session.setName(Http.COMMON_ROOM);
+            session.setUserName("Имя");
+            session.setPhoneName("Номер телефона");
             sessionRepo.save(session);
         }
         try {

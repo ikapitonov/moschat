@@ -18,11 +18,17 @@
         <p class="textSignup">Войдите, чтобы оставлять комментарии и писать сообщения</p>
         <div class="formsSignup">
             <form class="oneform" id="formSignupUser">
-                <input class="inputSignup" id="userName" type="text" th:value="${name}" placeholder="Имя" />
-                <input class="inputSignup" id="userEmail" type="email" th:value="${email}" placeholder="E-mail" />
-                <input class="inputSignup" id="userPhone" type="tel" th:value="${phone}" placeholder="Номер телефона" />
+                <div>
+                    <input class="inputSignup" id="userName" type="text" th:value="${name}" th:placeholder="${username}" />
+                    <div style="color: white; margin-left: 12px; font-size: 10px;">Обязательно</div>
+                </div>
+                <div>
+                    <input class="inputSignup" id="userPhone" type="tel" th:value="${phone}" th:placeholder="${phonename}" />
+                    <div style="color: white; margin-left: 12px; font-size: 10px;">Обязательно</div>
+                </div>
+                <input style="display: none;" class="inputSignup" id="userEmail" type="email" th:value="${email}" placeholder="E-mail" />
                 <input th:if="${fields} != null" th:each="Item, state : ${fields}" th:id="${'field' + state.index}" class="inputSignup" type="text" th:value="${Item.user}" th:placeholder="${Item.session}" />
-                <p class="textSignup">Или телефон или почта или вместе. Их видят только администраторы.</p>
+<!--                <p class="textSignup">Или телефон или почта или вместе. Их видят только администраторы.</p>-->
                 <div class="rowButtonsBottomG">
                     <input class="submitSignup" type="submit" id="userAuth" value="Подключиться">
                     <!-- <input class="submitSignup" id="closeForm1" type="submit" value="Закрыть"> -->
@@ -222,7 +228,7 @@
 <script src="/chat/websocket.js?var=4"></script>
 <script src="/chat/cookie.js"></script>
 <script src="/chat/autosize.js"></script>
-<script src="/chat/session.js?var=7"></script>
+<script src="/chat/session.js?var=8"></script>
 <script>
     loadingMessages();
     wsConnection();

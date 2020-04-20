@@ -4,6 +4,8 @@ public class SessionData {
     private String name;
     private String key;
     private String[] fields;
+    private String user;
+    private String phone;
 
     public String getName() {
         return name;
@@ -27,6 +29,22 @@ public class SessionData {
 
     public void setFields(String[] fields) {
         this.fields = fields;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public static void parseFields(SessionData sessionData) {

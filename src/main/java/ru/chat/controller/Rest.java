@@ -143,6 +143,16 @@ public class Rest {
             session.setError("Ошибка дополнительных полей - больше 5ти");
             return session;
         }
+        if (sessionData.getUser() == null || sessionData.getUser().isEmpty()) {
+            session.setStatus(false);
+            session.setError("Ошибка в данных для имени пользователя");
+            return session;
+        }
+        if (sessionData.getPhone() == null || sessionData.getPhone().isEmpty()) {
+            session.setStatus(false);
+            session.setError("Ошибка в данных для номера телефона");
+            return session;
+        }
         if (sessionData.getName() == null || sessionData.getName().isEmpty() || !SessionData.validateName(sessionData.getName())) {
             session.setStatus(false);
             session.setError("Ошибка в имени");
@@ -160,6 +170,8 @@ public class Rest {
         }
 
         dbSession.setFields(Codec.mergeStrings(sessionData.getFields()));
+        dbSession.setPhoneName(sessionData.getPhone().length() > 50 ? sessionData.getPhone().substring(0, 50) : sessionData.getPhone());
+        dbSession.setUserName(sessionData.getUser().length() > 50 ? sessionData.getUser().substring(0, 50) : sessionData.getUser());
         dbSession.setName(sessionData.getName().length() > 50 ? sessionData.getName().substring(0, 50) : sessionData.getName());
         dbSession = sessionRepo.save(dbSession);
 
