@@ -22,6 +22,11 @@ function includeSessionCookie() {
         for (let i = 0; fields != null && i < fields.length; i++) {
             $("#field" + i).val(fields[i]);
         }
+
+        if (data.name !== null && data.name.length > 0 && data.phone > 0) {
+            isAuth = true;
+            generateAuth(null);
+        }
     }
 }
 
