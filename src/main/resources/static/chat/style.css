@@ -169,7 +169,7 @@ body {
     color: #fff;
 }
 .titleRightMOMG h5 {
-    color: #ffffff99;
+    color: #9998A8;
 }
 .textMessageG {
     margin: 5px;
@@ -207,6 +207,7 @@ body {
   padding: 5px 0px;
   resize: none;
   height: 0px!important;
+    opacity: 0;
 }
 .textJoinChatG {
     margin: 0px 10px;
@@ -301,7 +302,7 @@ body {
 }
 .buttonSignUp.buttonSignUp1 {
   margin: 0px;
-  background-color: #00000000;
+  background-color: #010125;
   text-decoration: underline;
 }
 .oneform {
