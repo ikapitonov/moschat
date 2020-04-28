@@ -1,9 +1,15 @@
 let token = null;
 let sessionId = document.getElementById("sessionId").innerHTML;
+let waitAuth = false;
+let waitReconect = false;
 
 $(document).ready(function() {
 
     $("#adminAuth").click(function (e) {
+        if (waitAuth === true) {
+            return ;
+        }
+
         e.preventDefault();
         let login = $("#admInputLogin").val();
         let pass = $("#admInputPass").val();
@@ -28,11 +34,12 @@ $(document).ready(function() {
     });
 
     $("#textarea-Btn-button").click( function (e) {
-        if (isAuth === false) {
+        if (waitAuth === true || waitReconect === true || isAuth === false) {
             showDropdown();
             showSignup();
             return ;
         }
+        waitReconect = true;
         showDropdown();
         stompClient.send("/app/chat.removeUser", {}, JSON.stringify({}));
         $("#textarea-Btn-button").text("Войти");
@@ -45,6 +52,7 @@ $(document).ready(function() {
             setTimeout(function () {
                 adminSub.unsubscribe();
                 adminSub = null;
+                waitReconect = false;
             }, 400);
 
             setTimeout(function () {
@@ -54,14 +62,18 @@ $(document).ready(function() {
         else {
             deleteCookie(sessionId);
             isAuth = false;
+            waitReconect = false;
         }
         role = null;
     })
 });
 
 function generateAuth(e) {
-    let data = readSessionCookie();
+    if (waitAuth === true) {
+        return ;
+    }
 
+    let data = readSessionCookie();
 
     if (e !== null) {
         e.preventDefault();
@@ -96,22 +108,23 @@ function generateAuth(e) {
 }
 
 function tryAuth (type, obj) {
+    waitAuth = true;
     $.ajax({
         url: domen + "/auth/" + type,
         type: 'POST',
         data: JSON.stringify(obj),
         contentType: 'application/json',
         success: function(response) {
+            waitAuth = false;
+            isAuth = response.status;
             if (response.status === false) {
-                isAuth = false;
                 $("#textarea-Btn-button").text("Войти");
                 alert("Ошибка авторизации. Проверьте данные");
-                return ;
+                return;
             }
             $("#textarea-Btn-button").text("Выйти");
             role = type;
             token = response.token;
-            isAuth = true;
             hideSignup();
             socketReconnection(response);
         }
