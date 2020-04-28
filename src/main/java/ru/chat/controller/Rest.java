@@ -112,7 +112,7 @@ public class Rest {
             if (!isAdmin) {
                 message.getAppUser().setFields(null);
                 message.getAppUser().setEmail(null);
-                message.getAppUser().setPhone(0);
+                message.getAppUser().setPhone(null);
             }
 
             commentIterator = message.getComments().iterator();
@@ -123,7 +123,7 @@ public class Rest {
                 if (!isAdmin) {
                     comment.getAppUser().setFields(null);
                     comment.getAppUser().setEmail(null);
-                    comment.getAppUser().setPhone(0);
+                    comment.getAppUser().setPhone(null);
                 }
                 comment.setClientMessage(null);
             }

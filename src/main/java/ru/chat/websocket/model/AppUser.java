@@ -26,8 +26,8 @@ public class AppUser {
     @Column(length = 50)
     private String email;
 
-    @Column(nullable = true)
-    private long phone;
+    @Column(nullable = false, length = 30)
+    private String phone;
 
     @CreationTimestamp
     private LocalDateTime date;
@@ -59,11 +59,11 @@ public class AppUser {
         this.email = email;
     }
 
-    public long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

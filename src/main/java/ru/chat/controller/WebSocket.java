@@ -5,6 +5,7 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.messaging.simp.user.SimpUserRegistry;
 import org.springframework.stereotype.Controller;
 import ru.chat.auth.AuthData;
@@ -60,7 +61,7 @@ public class WebSocket {
             if (authData.getEmail() != null && !authData.getEmail().isEmpty()) {
                 headerAccessor.getSessionAttributes().put("email", authData.getEmail());
             }
-            if (authData.getPhone() != 0)  {
+            if (authData.getPhone() != null)  {
                 headerAccessor.getSessionAttributes().put("phone", authData.getPhone());
             }
         }
@@ -89,7 +90,6 @@ public class WebSocket {
         String content;
 
         message.setContent(Html.decodeParseLines(message.getContent()));
-
         if (message.getContent() == null || message.getContent().trim().isEmpty()) {
             return ;
         }
@@ -109,7 +109,7 @@ public class WebSocket {
 
         clientMessage.getAppUser().setFields(null);
         clientMessage.getAppUser().setEmail(null);
-        clientMessage.getAppUser().setPhone(0);
+        clientMessage.getAppUser().setPhone(null);
 
         simpMessagingTemplate.convertAndSend("/topic/" + sessionId + "/" + "user", clientMessage);
     }
@@ -144,7 +144,7 @@ public class WebSocket {
 
         clientComment.getAppUser().setFields(null);
         clientComment.getAppUser().setEmail(null);
-        clientComment.getAppUser().setPhone(0);
+        clientComment.getAppUser().setPhone(null);
 
         simpMessagingTemplate.convertAndSend("/topic/" + sessionId + "/" + "user", clientComment);
     }
@@ -172,9 +172,43 @@ public class WebSocket {
         }
     }
 
+    @MessageMapping("/chat.removeUser")
+    public void removeUser (SimpMessageHeaderAccessor headerAccessor) {
+        UserEvent userEvent = new UserEvent();
+        int sessionId = WebSocket.getSessionId(headerAccessor);
+
+        userEvent.setDate(Time.getNowDate());
+        try {
+            userEvent.setRole(headerAccessor.getSessionAttributes().get("role").toString());
+        }
+        catch (Exception e) {
+            return ;
+        }
+        userEvent.setType("REMOVE");
+        userEvent.setName(headerAccessor.getSessionAttributes().get("name").toString());
+
+        rmRf(headerAccessor, "appUser");
+        rmRf(headerAccessor, "name");
+        rmRf(headerAccessor, "role");
+        rmRf(headerAccessor, "email");
+        rmRf(headerAccessor, "phone");
+
+        simpMessagingTemplate.convertAndSend("/topic/" + sessionId + "/" + "user", userEvent);
+        simpMessagingTemplate.convertAndSend("/topic/" + sessionId + "/" + Admin.token, userEvent);
+    }
+
     public static int getSessionId(SimpMessageHeaderAccessor headerAccessor) {
         Session session = (Session) headerAccessor.getSessionAttributes().get("session");
 
         return session.getId();
+    }
+
+    public static void rmRf(SimpMessageHeaderAccessor headerAccessor, String key) {
+        try {
+            headerAccessor.getSessionAttributes().remove(key);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

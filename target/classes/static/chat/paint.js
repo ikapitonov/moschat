@@ -55,7 +55,7 @@ function massageShow(data, where) {
     if (data.appUser.email != null && data.appUser.email != "") {
         str += "<h5>" + data.appUser.email + "</h5>";
     }
-    if (data.appUser.phone > 0) {
+    if (data.appUser.phone != null && data.appUser.phone != "") {
         str += "<h5>" + data.appUser.phone + "</h5>";
     }
 
@@ -133,7 +133,7 @@ function commentShow(data, messageId, sessionFields) {
     if (data.appUser.email != null && data.appUser.email != "") {
         str += "<h5>" + data.appUser.email + "</h5>";
     }
-    if (data.appUser.phone > 0) {
+    if (data.appUser.phone != null && data.appUser.phone != "") {
         str += "<h5>" + data.appUser.phone + "</h5>";
     }
 

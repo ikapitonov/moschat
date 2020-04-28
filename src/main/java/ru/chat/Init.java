@@ -43,6 +43,7 @@ public class Init {
 
             appUser.setRole("admin");
             appUser.setName("Администратор");
+            appUser.setPhone("");
             appUserRepo.save(appUser);
         }
     }

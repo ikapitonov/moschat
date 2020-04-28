@@ -1,5 +1,5 @@
-let domen = location.origin;
-//let domen = "https://secret-falls-85852.herokuapp.com";
+//let domen = location.origin;
+let domen = "http://localhost:8080";
 let stompClient;
 let role;
 let webSocket;
@@ -11,6 +11,6 @@ function wsConnection() {
 
     stompClient = Stomp.over(webSocket);
     //нижепредставленной строчкой можно запретить стомпу писать в консоль
-    //stompClient.debug = null;
+    stompClient.debug = null;
     stompClient.connect({}, onConnected, onError);
 }

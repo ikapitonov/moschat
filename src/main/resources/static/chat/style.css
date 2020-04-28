@@ -18,6 +18,17 @@ body {
     /* max-height: 250px;
     overflow-y: auto; */
 }
+.upBlock {
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 1080px;
+}
+
 .blockInputMessage {
     padding: 10px 0px;
     display: flex;
@@ -25,9 +36,6 @@ body {
     align-items: stretch;
     justify-content: space-around;
     position: -webkit-sticky;
-    position: sticky;
-    top: 0px;
-    z-index: 100;
     background-color: #010125;
 }
 .textareaG {
@@ -43,7 +51,7 @@ body {
     font-size: 12px;
     flex: 1;
     max-height: 150px;
-}
+}blockInputMessage
 .textareaG::-webkit-scrollbar {
   width: 4px;
 }
@@ -224,9 +232,6 @@ body {
     padding-top: 0px;
     display: flex;
     flex-direction: column;
-    position: sticky;
-    top: 58px;
-    z-index: 100;
     background-color: #010125;
 }
 .textTypingChatG {
@@ -354,4 +359,84 @@ body {
 }
 .closeSignup:hover {
   opacity: 1;
+}
+
+
+.textareaWithBtn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    font-family: Roboto, sans-serif;
+    font-size: 12px;
+    max-height: 150px;
+}
+
+.textareaWithBtnG {
+    border: none;
+    resize: none;
+    outline: none;
+    font-family: Roboto, sans-serif;
+    font-size: 12px;
+    flex: 1;
+    max-height: 150px;
+}
+
+
+.textarea-Btn {
+    position: relative;
+}
+
+.textarea-Btn-dropbtn {
+    z-index: 1001;
+    color: white;
+    font-size: 16px;
+    position: absolute;
+    left: -13px;
+    border: none;
+    margin: 0px;
+    padding: 0 5px 0 10px;
+    cursor: pointer;
+}
+
+.textarea-Btn-icons li {
+    background-color: #010125;
+    height: 5px;
+    width: 5px;
+    line-height: 0;
+    list-style: none outside none;
+    vertical-align: top;
+    border-radius:50%;
+    margin-top: 3px;
+    pointer-events: none;
+}
+
+.textarea-Btn-showLeft {
+    text-shadow: none !important;
+    color:#fff !important;
+}
+
+.textarea-Btn-list {
+    z-index: 1001;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    background-color: white;
+    position: absolute;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    top: 35px;
+    left: -38px;
+    display: none;
+}
+
+#textarea-Btn-button {
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.display-show {
+    display: block;
 }

@@ -48,7 +48,7 @@ public class Http {
         model.addAttribute("auth", auth.isStatus());
         model.addAttribute("name", auth.getName());
      //   model.addAttribute("email", auth.getEmail());
-        model.addAttribute("phone", auth.getPhone() == 0 ? null : auth.getPhone());
+        model.addAttribute("phone", auth.getPhone() == null ? null : auth.getPhone());
 
         List<Session> list = sessionRepo.findByNameEquals(sessionName);
 

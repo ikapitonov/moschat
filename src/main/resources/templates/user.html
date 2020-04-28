@@ -5,11 +5,13 @@
     <title>Tellsy online chat</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="/chat/style.css?var=2">
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="/chat/style.css?var=3">
 </head>
 <body>
 
 <div style="display: none;" id="sessionId" th:utext="${sessionId}"></div>
+<!--<div style="display: none;" id="sessionId">1</div>-->
 
 <!-- код окно регистрации -->
 <div class="backReg">
@@ -66,20 +68,36 @@
 <!-- код чата -->
 <div class="chatG">
     <!-- блок ввода комментария -->
-    <div class="blockInputMessage">
-        <textarea class="textareaG" onclick="showSignup()" id="textarea" placeholder="Введите комментарий" name="inputMessage"></textarea>
-        <!-- <textarea class="textareaG" oninput="resizeTextarea(this)" id="textarea" placeholder="Введите комментарий" name="inputMessage"></textarea> -->
-        <button class="buttonSendG" type="button" onclick="sendMessage()" name="sendInputMessage">Добавить</button>
+    <div class="upBlock">
+        <div class="blockInputMessage">
+            <div class="textareaWithBtn" style="display: flex; justify-content: space-between; width: 100%; background-color: white;">
+                <textarea class="textareaWithBtnG" onclick="showSignup()" id="textarea" placeholder="Введите комментарий" name="inputMessage"></textarea>
+                <div class="textarea-Btn">
+                    <ul class="textarea-Btn-dropbtn textarea-Btn-icons textarea-Btn-btn-right textarea-Btn-showLeft" onclick="showDropdown()">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <div class="textarea-Btn-list">
+                        <div id="textarea-Btn-button">Войти</div>
+                    </div>
+                </div>
+            </div>
+            <!-- <textarea class="textareaG" oninput="resizeTextarea(this)" id="textarea" placeholder="Введите комментарий" name="inputMessage"></textarea> -->
+            <button class="buttonSendG" type="button" onclick="sendMessage()" name="sendInputMessage">Добавить</button>
+        </div>
+        <div class="blockTyping">
+            <p class="textTypingChatG" id="writes" style="color: #FFFFFF;">Загружаю чат...</p>
+        </div>
     </div>
     <!-- конец блок ввода комментария -->
 
     <!-- блок кол-во набирают сообщения -->
-    <div class="blockTyping">
-        <p class="textTypingChatG" id="writes" style="color: #FFFFFF;">Загружаю чат...</p>
-    </div>
+
     <!-- конец блок подключился к чату -->
 
     <div class="messagesG">
+        <div style="height: 90px; width: 1px;"></div>
         <div id="board">
         </div>
         <button class="uploadMoreG" style="display: none;" id="loading">Загрузить еще</button>
@@ -213,6 +231,20 @@
             }, 10);
         }
     }
+
+    function showDropdown() {
+        document.querySelector(".textarea-Btn-list").classList.toggle("display-show");
+    }
+
+    window.addEventListener("click", function(event) {
+        if (!event.target.matches('.textarea-Btn-dropbtn') && !event.target.matches('#textarea-Btn-button')) {
+            var dropdowns = document.querySelector(".textarea-Btn-list");
+
+            if (dropdowns.classList.contains('display-show')) {
+                dropdowns.classList.remove('display-show');
+            }
+        }
+    });
 </script>
 <!-- конец код чата -->
 
@@ -221,14 +253,17 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 
-<script src="/chat/auth.js?var=17"></script>
-<script src="/chat/listMessages.js?var=6"></script>
-<script src="/chat/paint.js?var=13"></script>
-<script src="/chat/handlers.js?var=7"></script>
-<script src="/chat/websocket.js?var=4"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+<script src="/chat/auth.js?var=19"></script>
+<script src="/chat/listMessages.js?var=8"></script>
+<script src="/chat/paint.js?var=15"></script>
+<script src="/chat/handlers.js?var=9"></script>
+<script src="/chat/websocket.js?var=6"></script>
 <script src="/chat/cookie.js"></script>
 <script src="/chat/autosize.js"></script>
-<script src="/chat/session.js?var=9"></script>
+<script src="/chat/session.js?var=11"></script>
 <script>
     loadingMessages();
     wsConnection();

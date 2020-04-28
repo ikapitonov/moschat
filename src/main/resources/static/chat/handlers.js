@@ -2,6 +2,7 @@ let isWrite = false;
 let usersWrite = new Map();
 let interval = 400;
 let userSub;
+let adminSub;
 let sendAddUser = false;
 let Connected = false;
 let TMPdata;
@@ -23,7 +24,7 @@ function socketReconnection(data) {
         return ;
     }
     userSub.unsubscribe();
-    stompClient.subscribe('/topic/' + sessionId + '/' + data.token, commonController);
+    adminSub = stompClient.subscribe('/topic/' + sessionId + '/' + data.token, adminController);
 
     $("#board").empty();
     stompClient.send("/app/chat.addUser", {}, JSON.stringify(data));
@@ -53,19 +54,20 @@ function deleteMessage(id) {
 
 function deleteItem(data) {
     if (data.item == "comment") {
-        console.log(data.id);
         $("#comment_id_" + data.id).remove();
     }
     else if (data.item == "message") {
-        console.log(data.id);
         $("#message" + data.id).remove();
     }
+}
+
+function adminController(payload) {
+    commonController(payload);
 }
 
 function commonController(payload) {
     let data = JSON.parse(payload.body);
 
-    console.log(data);
     if (data.type == "ADD") {
         addUser(data);
     }

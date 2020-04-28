@@ -3,7 +3,6 @@ let limit = 50;
 $("#loading").click(loadingMessages);
 
 function loadingMessages() {
-    console.log(sessionId);
     $.ajax({
         url: domen + "/chat/listMessages",
         type: 'GET',
@@ -15,7 +14,6 @@ function loadingMessages() {
         },
         contentType: 'application/json',
         success: function(response) {
-            console.log(response);
             listMessages(response);
         }
     });

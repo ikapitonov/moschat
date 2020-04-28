@@ -6,7 +6,7 @@ public class AuthData {
     private boolean status;
     private String role;
     private String name;
-    private long phone;
+    private String phone;
     private String email;
     private String token;
     private AppUser user;
@@ -35,11 +35,11 @@ public class AuthData {
         this.name = name;
     }
 
-    public long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

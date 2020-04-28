@@ -26,6 +26,31 @@ $(document).ready(function() {
         e.preventDefault();
         hideSignup();
     });
+
+    $("#textarea-Btn-button").click( function (e) {
+        if (isAuth === false) {
+            showDropdown();
+            showSignup();
+            return ;
+        }
+        showDropdown();
+        stompClient.send("/app/chat.removeUser", {}, JSON.stringify({}));
+        $("#textarea-Btn-button").text("Войти");
+
+        if (role == "admin") {
+            $("#board").empty();
+            loadingMessages();
+            isAuth = false;
+            token = null;
+            adminSub.unsubscribe();
+            userSub = stompClient.subscribe('/topic/' + sessionId + '/user', commonController);
+        }
+        else {
+            deleteCookie(sessionId);
+            isAuth = false;
+        }
+        role = null;
+    })
 });
 
 function generateAuth(e) {
@@ -49,7 +74,6 @@ function generateAuth(e) {
             break ;
         array.push(tmp.val());
     }
-    console.log(array);
     if (userName.length === 0 || (userEmail.length === 0 && userPhone.length === 0)) {
         alert("Заполните поля");
         return ;
@@ -74,10 +98,11 @@ function tryAuth (type, obj) {
         success: function(response) {
             if (response.status === false) {
                 isAuth = false;
+                $("#textarea-Btn-button").text("Войти");
                 alert("Ошибка авторизации. Проверьте данные");
                 return ;
             }
-            console.log(response);
+            $("#textarea-Btn-button").text("Выйти");
             role = type;
             token = response.token;
             isAuth = true;

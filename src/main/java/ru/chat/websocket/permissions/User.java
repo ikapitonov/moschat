@@ -5,10 +5,13 @@ import ru.chat.auth.AuthData;
 import ru.chat.utils.Html;
 
 import javax.mail.internet.InternetAddress;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Component
 public class User {
     private static final int nameLength = 50;
+    private static final String regex = "^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,10}$";
 
     // здесь можно проводить валидацию
     public AuthData validateHttp(String name, String phone, String email) {
@@ -38,17 +41,14 @@ public class User {
     }
 
     public boolean validatePhone(String phone) {
-        String result;
-
-        if (phone == null || phone.isEmpty())
-            return false;
-
-        result = phone.replaceAll("[\\D]","");
-        return result.length() >= 9 && result.length() <= 11;
+        return phone == null || phone.isEmpty() ? false : Pattern.matches(regex, phone);
     }
 
-    public long getPhone(String phone) {
-        return Long.parseLong(phone.replaceAll("[\\D]",""));
+    public String getPhone(String phone) {
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(phone);
+
+        return matcher.find() ? phone.substring(matcher.start(), matcher.end()) : null;
     }
 
     public boolean validateEmail(String email) {
