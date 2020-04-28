@@ -44,6 +44,7 @@ $(document).ready(function() {
             token = null;
             setTimeout(function () {
                 adminSub.unsubscribe();
+                adminSub = null;
             }, 400);
 
             setTimeout(function () {

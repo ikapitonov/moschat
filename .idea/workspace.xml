@@ -6,9 +6,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/chat/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/chat/auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/chat/handlers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/chat/handlers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/chat/session.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/chat/session.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/chat/websocket.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/chat/websocket.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +118,7 @@
       <workItem from="1587599299539" duration="2624000" />
       <workItem from="1588080928347" duration="142000" />
       <workItem from="1588082534823" duration="15144000" />
-      <workItem from="1588099824178" duration="1500000" />
+      <workItem from="1588099824178" duration="1726000" />
     </task>
     <servers />
   </component>

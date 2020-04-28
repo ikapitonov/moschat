@@ -24,6 +24,7 @@ function socketReconnection(data) {
         return ;
     }
     userSub.unsubscribe();
+    userSub = null;
     adminSub = stompClient.subscribe('/topic/' + sessionId + '/' + data.token, adminController);
 
     $("#board").empty();
