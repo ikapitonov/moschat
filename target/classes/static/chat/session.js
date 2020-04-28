@@ -15,7 +15,7 @@ function includeSessionCookie() {
 
         $("#userName").val(data.name);
      //   $("#userEmail").val(data.email == null || data.email == "" || data.email == "null" ? "" : data.email);
-        $("#userPhone").val(data.phone > 0 ? data.phone : "");
+        $("#userPhone").val(data.phone != null && data.phone != "" ? data.phone : "");
 
         fields = data.fields == null || data.fields === undefined ? null : getUserFields(data.fields);
 

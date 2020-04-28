@@ -42,8 +42,13 @@ $(document).ready(function() {
             loadingMessages();
             isAuth = false;
             token = null;
-            adminSub.unsubscribe();
-            userSub = stompClient.subscribe('/topic/' + sessionId + '/user', commonController);
+            setTimeout(function () {
+                adminSub.unsubscribe();
+            }, 400);
+
+            setTimeout(function () {
+                userSub = stompClient.subscribe('/topic/' + sessionId + '/user', commonController);
+            }, 500);
         }
         else {
             deleteCookie(sessionId);

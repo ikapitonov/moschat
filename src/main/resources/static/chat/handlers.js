@@ -1,8 +1,8 @@
 let isWrite = false;
 let usersWrite = new Map();
 let interval = 400;
-let userSub;
-let adminSub;
+var userSub;
+var adminSub;
 let sendAddUser = false;
 let Connected = false;
 let TMPdata;
