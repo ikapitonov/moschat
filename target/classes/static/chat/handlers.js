@@ -1,8 +1,8 @@
 let isWrite = false;
 let usersWrite = new Map();
 let interval = 400;
-let userSub;
-let adminSub;
+var userSub = null;
+var adminSub = null;
 let sendAddUser = false;
 let Connected = false;
 let TMPdata;
@@ -10,6 +10,13 @@ let TMPdata;
 function onConnected() {
     Connected = true;
     userSub = stompClient.subscribe('/topic/' + sessionId + '/user', commonController);
+
+    setTimeout(function () {
+        if (adminAuth === true) {
+            runAdminAuth(null);
+            adminAuth = false;
+        }
+    }, 200);
     stompClient.subscribe('/topic/' + sessionId + '/common', commonController);
     // stompClient.send("/app/chat.addUser", {}, JSON.stringify({ type: "empty" }));
 }
@@ -23,7 +30,15 @@ function socketReconnection(data) {
         TMPdata = data;
         return ;
     }
-    userSub.unsubscribe();
+    saveSessionCookie({
+        admin: true,
+        login: $("#admInputLogin").val(),
+        password: $("#admInputPass").val()
+    });
+    if (userSub !== null) {
+        userSub.unsubscribe();
+        userSub = null;
+    }
     adminSub = stompClient.subscribe('/topic/' + sessionId + '/' + data.token, adminController);
 
     $("#board").empty();
@@ -164,5 +179,10 @@ setInterval(function () {
     if (sendAddUser === true && Connected === true) {
         sendAddUser = false;
         stompClient.send("/app/chat.addUser", {}, JSON.stringify(TMPdata));
+    }
+
+    if (userSub !== null && adminSub !== null) {
+        userSub.unsubscribe();
+        userSub = null;
     }
 }, 400);

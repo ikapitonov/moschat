@@ -1,26 +1,11 @@
 let token = null;
 let sessionId = document.getElementById("sessionId").innerHTML;
-let waitAuth = false;
-let waitReconect = false;
+let waitAuth = false;     // не могу найти баг
+let waitReconect = false; // не могу найти баг
 
 $(document).ready(function() {
 
-    $("#adminAuth").click(function (e) {
-        if (waitAuth === true) {
-            return ;
-        }
-
-        e.preventDefault();
-        let login = $("#admInputLogin").val();
-        let pass = $("#admInputPass").val();
-
-        if (login.length === 0 && pass.length === 0) {
-            alert("Заполните необходимые поля");
-            return;
-        }
-
-        tryAuth("admin", {login: login, password: pass});
-    });
+    $("#adminAuth").click(runAdminAuth);
 
     $("#userAuth").click(generateAuth);
 
@@ -60,10 +45,10 @@ $(document).ready(function() {
             }, 500);
         }
         else {
-            deleteCookie(sessionId);
             isAuth = false;
             waitReconect = false;
         }
+        deleteCookie(sessionId);
         role = null;
     })
 });
@@ -133,4 +118,24 @@ function tryAuth (type, obj) {
 
 function getUserFields(str) {
     return str === null || str === undefined ? null : str.split("@|$|@");
+}
+
+function runAdminAuth(e) {
+    if (waitAuth === true) {
+        return ;
+    }
+
+    if (e != null) {
+        e.preventDefault();
+    }
+
+    let login = $("#admInputLogin").val();
+    let pass = $("#admInputPass").val();
+
+    if (login.length === 0 && pass.length === 0) {
+        alert("Заполните необходимые поля");
+        return;
+    }
+
+    tryAuth("admin", {login: login, password: pass});
 }
