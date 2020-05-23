@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">-->
-    <link rel="stylesheet" href="/chat/style.css?var=8">
+    <link rel="stylesheet" href="/chat/style.css?var=11">
 </head>
 <body style="margin-bottom: 20px;">
 
@@ -16,6 +16,7 @@
 <!--<div style="display: none;" id="sessionId">1</div>-->
 
 <!-- код окно регистрации -->
+<div class="backWithOpacity" style="display: none;"></div>
 <div class="backReg">
     <div class="signup">
         <div class="closeSignup" onclick="hideSignup()"></div>
@@ -127,12 +128,15 @@
             $(".signup").css("transform", "scale(1)");
         }, 100);
 
+        $(".backWithOpacity").css("display", "block");
+
         $("body").css("overflow", "hidden");
     }
     function hideSignup() {
         $(".signup").css("transform", "scale(0)");
         setTimeout(function() {
             $(".backReg").css("display", "none");
+            $(".backWithOpacity").css("display", "none");
             $("body").css("overflow", "auto");
         }, 500);
     }
@@ -277,14 +281,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-<script src="/chat/auth.js?var=27"></script>
-<script src="/chat/listMessages.js?var=13"></script>
-<script src="/chat/paint.js?var=20"></script>
-<script src="/chat/handlers.js?var=18"></script>
-<script src="/chat/websocket.js?var=12"></script>
+<script src="/chat/auth.js?var=28"></script>
+<script src="/chat/listMessages.js?var=14"></script>
+<script src="/chat/paint.js?var=21"></script>
+<script src="/chat/handlers.js?var=19"></script>
+<script src="/chat/websocket.js?var=13"></script>
 <script src="/chat/cookie.js"></script>
 <script src="/chat/autosize.js"></script>
-<script src="/chat/session.js?var=16"></script>
+<script src="/chat/session.js?var=17"></script>
 <script>
     loadingMessages();
     wsConnection();
