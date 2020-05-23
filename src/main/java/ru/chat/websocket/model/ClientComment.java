@@ -14,9 +14,13 @@ public class ClientComment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="message_id", nullable=false)
     private ClientMessage clientMessage;
+
+//   // @ManyToOne
+//    @Column(name = "message_id")
+//    private long clientMessage;
 
     @CreationTimestamp
     private LocalDateTime date;
