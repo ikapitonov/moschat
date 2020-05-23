@@ -8,10 +8,10 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Time {
-    public static final DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss");
+    public static final String format = "yyyy.MM.dd HH:mm:ss";
 
     public static String getFormatDate(LocalDateTime localDateTime) {
-        return localDateTime == null ? null : localDateTime.format(format);
+        return localDateTime == null ? null : localDateTime.format(DateTimeFormatter.ofPattern(format));
     }
 
     public static String getNowDate() {

@@ -194,7 +194,7 @@ public class WebSocket {
         rmRf(headerAccessor, "email");
         rmRf(headerAccessor, "phone");
 
-        simpMessagingTemplate.convertAndSend("/topic/" + sessionId + "/" + "user", userEvent);
+        //simpMessagingTemplate.convertAndSend("/topic/" + sessionId + "/" + "user", userEvent);
         simpMessagingTemplate.convertAndSend("/topic/" + sessionId + "/" + Admin.token, userEvent);
     }
 
