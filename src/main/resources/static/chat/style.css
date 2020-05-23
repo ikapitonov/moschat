@@ -188,7 +188,10 @@ body {
     font-size: 12px;
     word-break: break-word;
     font-family: Roboto, sans-serif;
-    white-space: break-spaces;
+    /*white-space: break-spaces;*/
+    overflow: hidden;
+    word-wrap: break-word;
+    white-space: pre-line;
 }
 .replyOMG {
     margin-left: 50px;
