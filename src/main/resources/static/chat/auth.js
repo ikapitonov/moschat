@@ -77,10 +77,19 @@ function generateAuth(e) {
             break ;
         array.push(tmp.val());
     }
-    if (userName.length === 0 || (userEmail.length === 0 && userPhone.length === 0)) {
-        alert("Заполните поля");
-        return ;
+    if (!usePhone()) {
+        if (userName.length === 0) {
+            alert("Заполните поля");
+            return ;
+        }
     }
+    else {
+        if (userName.length === 0 || (userEmail.length === 0 && userPhone.length === 0)) {
+            alert("Заполните поля");
+            return ;
+        }
+    }
+
     tryAuth("user", {
         name: userName,
         email: userEmail,

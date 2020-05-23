@@ -26,7 +26,7 @@ public class AppUser {
     @Column(length = 50)
     private String email;
 
-    @Column(nullable = false, length = 30)
+    @Column(length = 30)
     private String phone;
 
     @CreationTimestamp
@@ -117,6 +117,7 @@ public class AppUser {
         appUser.setDate(user.getDate());
         appUser.setId(user.getId());
         appUser.setSessionId(user.getSessionId());
+        appUser.setFields(user.getFields());
 
         return appUser;
     }

@@ -10,6 +10,7 @@ public class AuthData {
     private String email;
     private String token;
     private AppUser user;
+    private boolean useNumber;
 
     public boolean isStatus() {
         return status;
@@ -65,5 +66,13 @@ public class AuthData {
 
     public void setUser(AppUser user) {
         this.user = user;
+    }
+
+    public boolean isUseNumber() {
+        return useNumber;
+    }
+
+    public void setUseNumber(boolean useNumber) {
+        this.useNumber = useNumber;
     }
 }

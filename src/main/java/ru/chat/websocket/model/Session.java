@@ -16,8 +16,10 @@ public class Session {
     @Column(nullable = false, length = 50)
     private String userName;
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String phoneName;
+
+    private boolean usePhone;
 
     // Максимальная длина fields - 5 (5 * 50 + 5 * 10)
     @Column(length = 301)
@@ -72,5 +74,13 @@ public class Session {
 
     public void setPhoneName(String phoneName) {
         this.phoneName = phoneName;
+    }
+
+    public boolean isUsePhone() {
+        return usePhone;
+    }
+
+    public void setUsePhone(boolean usePhone) {
+        this.usePhone = usePhone;
     }
 }

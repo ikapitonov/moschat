@@ -78,7 +78,9 @@ public class WebSocket {
         userEvent.setType("ADD");
         userEvent.setName(headerAccessor.getSessionAttributes().get("name").toString());
 
-        simpMessagingTemplate.convertAndSend("/topic/" + sessionId + "/" + "user", userEvent);
+        // пользователям не приходит сообщение о том, что кто-то подключился к чату
+        //simpMessagingTemplate.convertAndSend("/topic/" + sessionId + "/" + "user", userEvent);
+
         simpMessagingTemplate.convertAndSend("/topic/"  + sessionId + "/" + Admin.token, userEvent);
     }
 

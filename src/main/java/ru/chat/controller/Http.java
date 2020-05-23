@@ -55,9 +55,12 @@ public class Http {
         if (list.isEmpty()) {
             return "redirect:/" + COMMON_ROOM;
         }
+        boolean usePhone = list.get(0).isUsePhone();
+
         model.addAttribute("sessionId", list.get(0).getId());
         model.addAttribute("username", list.get(0).getUserName());
         model.addAttribute("phonename", list.get(0).getPhoneName());
+        model.addAttribute("is_phone", usePhone);
         model.addAttribute("fields", Item.generateItems(Codec.unmergeStrings(list.get(0).getFields()), fields));
 
         return "user";

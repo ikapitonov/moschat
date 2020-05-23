@@ -83,6 +83,8 @@ function adminController(payload) {
 function commonController(payload) {
     let data = JSON.parse(payload.body);
 
+    console.log(data);
+
     if (data.type == "ADD") {
         addUser(data);
     }

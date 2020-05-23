@@ -6,6 +6,10 @@ function saveSessionCookie (data) {
     setCookie(sessionId, JSON.stringify(data), cockieTimeDays);
 }
 
+function usePhone() {
+    return $("#use_phone").length > 0;
+}
+
 function includeSessionCookie() {
     let dataStr = getCookie(sessionId);
     let data;
@@ -24,7 +28,10 @@ function includeSessionCookie() {
         }
         $("#userName").val(data.name);
      //   $("#userEmail").val(data.email == null || data.email == "" || data.email == "null" ? "" : data.email);
-        $("#userPhone").val(data.phone != null && data.phone != "" ? data.phone : "");
+
+        if (usePhone()) {
+            $("#userPhone").val(data.phone != null && data.phone != "" ? data.phone : "");
+        }
 
         fields = data.fields == null || data.fields === undefined ? null : getUserFields(data.fields);
 
@@ -32,9 +39,17 @@ function includeSessionCookie() {
             $("#field" + i).val(fields[i]);
         }
 
-        if (data.name !== null && data.name.length > 0 && data.phone > 0) {
-            isAuth = true;
-            generateAuth(null);
+        if (usePhone()) {
+            if (data.name !== null && data.name.length > 0 && data.phone > 0) {
+                isAuth = true;
+                generateAuth(null);
+            }
+        }
+        else {
+            if (data.name !== null && data.name.length > 0) {
+                isAuth = true;
+                generateAuth(null);
+            }
         }
     }
 }

@@ -6,6 +6,7 @@ public class SessionData {
     private String[] fields;
     private String user;
     private String phone;
+    private boolean useNumber;
 
     public String getName() {
         return name;
@@ -45,6 +46,14 @@ public class SessionData {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public boolean isUseNumber() {
+        return useNumber;
+    }
+
+    public void setUseNumber(boolean useNumber) {
+        this.useNumber = useNumber;
     }
 
     public static void parseFields(SessionData sessionData) {

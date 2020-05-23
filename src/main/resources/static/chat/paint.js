@@ -1,5 +1,5 @@
 function addUser(data) {
-    let str = "<div class=\"oneMessageG\">";
+    let str = "<div class=\"oneMessageG padding-bottom-10\">";
 
     if (data.role == "user") {
         str += "<p class=\"textJoinChatG\">Пользователь <span class=\"nameUserJoinG\">" + data.name + "</span> подключился к чату</p>";
@@ -12,7 +12,7 @@ function addUser(data) {
 }
 
 function removeUser(data) {
-    let str = "<div class=\"oneMessageG\">";
+    let str = "<div class=\"oneMessageG padding-bottom-10\">";
 
     if (data.role == "user") {
         str += "<p class=\"textJoinChatG\">Пользователь <span class=\"nameUserJoinG\">" + data.name + "</span> отключился от чата</p>";
@@ -69,7 +69,7 @@ function massageShow(data, where) {
     }
 
     str += "<h5>" + data.date + "</h5>";
-    str += "<div class=\"buttonReply buttonReply2\" active=\"1\" onclick=\"showInputReply1(this)\">Ответить</div>";
+    str += "<div class=\"buttonReply buttonReply2\" active=\"1\" onclick=\"showInputReply1(this, "+ data.id +")\">Ответить</div>";
 
     if (role == "admin") {
         str += "<div class=\"buttonReply buttonReply2\" onclick=\"deleteMessage(" + data.id + ")\" active=\"1\">Удалить</div>";

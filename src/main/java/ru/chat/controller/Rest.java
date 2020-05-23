@@ -22,6 +22,7 @@ import ru.chat.websocket.permissions.User;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class Rest {
@@ -48,14 +49,28 @@ public class Rest {
     @PostMapping(value = "/auth/user")
     public AuthData authUser(@RequestBody UserData userData) {
         AuthData authData;
-
-        if (userData.getId() < 0 || userData.getId() == AdminId) {
+        Session session;
+        try {
+            session = sessionRepo.findById(userData.getSessionId()).get();
+        }
+        catch (Exception e) {
             authData = new AuthData();
             authData.setStatus(false);
             return authData;
         }
 
-        authData = user.validateHttp(userData.getName(), userData.getPhone(), userData.getEmail());
+        if (session == null || userData.getId() < 0 || userData.getId() == AdminId) {
+            authData = new AuthData();
+            authData.setStatus(false);
+            return authData;
+        }
+
+        if (session.isUsePhone()) {
+            authData = user.validateHttp(userData.getName(), userData.getPhone(), userData.getEmail());
+        }
+        else {
+            authData = user.validateOnlyName(userData.getName());
+        }
         AppUser appUser = new AppUser();
 
         if (authData.isStatus()) {
@@ -148,7 +163,7 @@ public class Rest {
             session.setError("Ошибка в данных для имени пользователя");
             return session;
         }
-        if (sessionData.getPhone() == null || sessionData.getPhone().isEmpty()) {
+        if (sessionData.isUseNumber() && (sessionData.getPhone() == null || sessionData.getPhone().isEmpty())) {
             session.setStatus(false);
             session.setError("Ошибка в данных для номера телефона");
             return session;
@@ -170,7 +185,10 @@ public class Rest {
         }
 
         dbSession.setFields(Codec.mergeStrings(sessionData.getFields()));
-        dbSession.setPhoneName(sessionData.getPhone().length() > 50 ? sessionData.getPhone().substring(0, 50) : sessionData.getPhone());
+        dbSession.setUsePhone(sessionData.isUseNumber());
+        if (sessionData.isUseNumber()) {
+            dbSession.setPhoneName(sessionData.getPhone().length() > 50 ? sessionData.getPhone().substring(0, 50) : sessionData.getPhone());
+        }
         dbSession.setUserName(sessionData.getUser().length() > 50 ? sessionData.getUser().substring(0, 50) : sessionData.getUser());
         dbSession.setName(sessionData.getName().length() > 50 ? sessionData.getName().substring(0, 50) : sessionData.getName());
         dbSession = sessionRepo.save(dbSession);

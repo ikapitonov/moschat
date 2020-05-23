@@ -36,6 +36,19 @@ public class User {
         return authData;
     }
 
+    public AuthData validateOnlyName(String name) {
+        AuthData authData = new AuthData();
+
+        authData.setRole("user");
+        if (!validateName(name)) {
+            authData.setStatus(false);
+            return authData;
+        }
+        authData.setName(Html.fullDecode(name));
+        authData.setStatus(true);
+        return authData;
+    }
+
     public boolean validateName(String name) {
         return name != null && !name.isEmpty() && name.length() < nameLength;
     }

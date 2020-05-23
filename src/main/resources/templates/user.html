@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">-->
-    <link rel="stylesheet" href="/chat/style.css?var=3">
+    <link rel="stylesheet" href="/chat/style.css?var=5">
 </head>
-<body>
+<body style="margin-bottom: 20px;">
 
 <div style="display: none;" id="sessionId" th:utext="${sessionId}"></div>
+<div th:if="${is_phone} == true" style="display: none;" id="use_phone">true</div>
 <!--<div style="display: none;" id="sessionId">1</div>-->
 
 <!-- код окно регистрации -->
@@ -25,8 +26,8 @@
                     <div style="color: white; margin-left: 12px; font-size: 10px;">Обязательно</div>
                 </div>
                 <div>
-                    <input class="inputSignup" id="userPhone" type="tel" th:value="${phone}" th:placeholder="${phonename}" />
-                    <div style="color: white; margin-left: 12px; font-size: 10px;">Обязательно</div>
+                    <input th:if="${is_phone} == true" class="inputSignup" id="userPhone" type="tel" th:value="${phone}" th:placeholder="${phonename}" />
+                    <div th:if="${is_phone} == true" style="color: white; margin-left: 12px; font-size: 10px;">Обязательно</div>
                 </div>
                 <input style="display: none;" class="inputSignup" id="userEmail" type="email" th:value="${email}" placeholder="E-mail" />
                 <input th:if="${fields} != null" th:each="Item, state : ${fields}" th:id="${'field' + state.index}" class="inputSignup" type="text" th:value="${Item.user}" th:placeholder="${Item.session}" />
@@ -186,12 +187,13 @@
         showSignup();
       }
     }
-    function showInputReply1(el) {
+    function showInputReply1(el, id) {
       if (isAuth == true || isAuth === true) {
         var obj = $(el).parent().parent().parent().parent().children(".replyOMG").children(".replyInputBlock");
         console.log(obj.html());
         obj.children(".buttonReply.buttonReply2").attr("active", "1");
         obj.children(".textareaG.textareaReplyG").attr("active", "1");
+        $("#message" + id).css("padding-bottom", "10px");
         $(el).attr("active", "0");
       } else  {
         showSignup();
@@ -256,14 +258,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-<script src="/chat/auth.js?var=25"></script>
-<script src="/chat/listMessages.js?var=11"></script>
-<script src="/chat/paint.js?var=18"></script>
-<script src="/chat/handlers.js?var=16"></script>
-<script src="/chat/websocket.js?var=10"></script>
+<script src="/chat/auth.js?var=26"></script>
+<script src="/chat/listMessages.js?var=12"></script>
+<script src="/chat/paint.js?var=19"></script>
+<script src="/chat/handlers.js?var=17"></script>
+<script src="/chat/websocket.js?var=11"></script>
 <script src="/chat/cookie.js"></script>
 <script src="/chat/autosize.js"></script>
-<script src="/chat/session.js?var=14"></script>
+<script src="/chat/session.js?var=15"></script>
 <script>
     loadingMessages();
     wsConnection();

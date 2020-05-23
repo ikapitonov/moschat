@@ -26,7 +26,11 @@
         <div class="form-group">
             <input type="text" class="form-control" id="user" placeholder="Данные для показа (имя/ник)">
         </div>
-        <div class="form-group">
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Нужно ли включать поле "телефон"? Оно с валидацией</label>
+        </div>
+        <div class="form-group" style="display: none;">
             <input type="text" class="form-control" id="phone" placeholder="Название поля с номером телефона">
         </div>
         <div class="form-group">
@@ -64,6 +68,15 @@
             $("#box").append('<div class="form-group"><input type="text" class="form-control newbox" placeholder="Название дополнительного поля"></div>');
         });
 
+        $("#exampleCheck1").change(function() {
+            if(this.checked) {
+                $("#phone").parent().css("display","block");
+            }
+            else {
+                $("#phone").parent().css("display","none");
+            }
+        });
+
         $("#submit").click(function (e) {
             e.preventDefault();
 
@@ -72,6 +85,7 @@
             let fields = $(".newbox");
             let user = $("#user").val();
             let phone = $("#phone").val();
+            let isPhone = $('#exampleCheck1').is(':checked');
             let arr = [];
 
             if (name.length === 0) {
@@ -82,7 +96,7 @@
                 alert("Заполнение поле с данными");
                 return ;
             }
-            if (phone.length === 0) {
+            if (isPhone === true && phone.length === 0) {
                 alert("Заполнение поле с названием поля номера телефона");
                 return ;
             }
@@ -97,11 +111,11 @@
                 }
             }
 
-            send(name.trim(), key.trim(), arr, user.trim(), phone.trim());
+            send(name.trim(), key.trim(), arr, user.trim(), phone.trim(), isPhone);
         });
 
 
-        function send(name, key, arr, user, phone) {
+        function send(name, key, arr, user, phone, isPhone) {
 
             $.ajax({
                 url: location.pathname,
@@ -111,6 +125,7 @@
                     key: key,
                     user: user,
                     phone: phone,
+                    useNumber: isPhone,
                     fields: arr
                 }),
                 contentType: 'application/json',

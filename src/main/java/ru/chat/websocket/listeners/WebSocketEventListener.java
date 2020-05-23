@@ -39,7 +39,9 @@ public class WebSocketEventListener {
         userEvent.setType("REMOVE");
         userEvent.setName(headerAccessor.getSessionAttributes().get("name").toString());
 
-        simpMessagingTemplate.convertAndSend("/topic/" + sessionId + "/" + "user", userEvent);
+        // юзеру больше не приходят сообщения о том, что кто-то отключился
+        //simpMessagingTemplate.convertAndSend("/topic/" + sessionId + "/" + "user", userEvent);
+
         simpMessagingTemplate.convertAndSend("/topic/" + sessionId + "/" + Admin.token, userEvent);
     }
 }
