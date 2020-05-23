@@ -20,71 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41f441b1-3f74-4b76-ba3f-6a3a4028abfe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/moschat.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/auth/AuthData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/auth/AuthData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/controller/Http.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/controller/Http.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/controller/Rest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/controller/Rest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/controller/WebSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/controller/WebSocket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/model/SessionData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/model/SessionData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/listeners/WebSocketEventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/listeners/WebSocketEventListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/model/AppUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/model/AppUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/model/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/model/Session.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/permissions/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/chat/websocket/permissions/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/chat/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/chat/auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/chat/handlers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/chat/handlers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/chat/paint.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/chat/paint.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/chat/session.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/chat/session.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/chat/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/chat/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/create.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/auth/AdminData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/auth/AdminData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/auth/AuthData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/auth/AuthData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/auth/Item.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/auth/Item.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/auth/Token.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/auth/Token.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/auth/UserData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/auth/UserData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/controller/Http.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/controller/Http.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/controller/Rest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/controller/Rest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/controller/WebSocket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/controller/WebSocket.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/model/CreateSession.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/model/CreateSession.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/model/SessionData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/model/SessionData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/repositories/AppUserRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/repositories/AppUserRepo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/repositories/ClientCommentRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/repositories/ClientCommentRepo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/repositories/ClientMessageRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/repositories/ClientMessageRepo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/repositories/OffsetBasedPageRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/repositories/OffsetBasedPageRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/repositories/SessionRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/repositories/SessionRepo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/utils/Codec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/utils/Codec.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/utils/Html.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/utils/Html.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/utils/Time.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/utils/Time.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/config/Handshake.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/config/Handshake.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/config/TopicSubscriptionInterceptor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/config/TopicSubscriptionInterceptor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/config/WebSocketConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/config/WebSocketConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/listeners/WebSocketEventListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/listeners/WebSocketEventListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/model/AppUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/model/AppUser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/model/ClientDeleteItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/model/ClientDeleteItem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/model/Comment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/model/Comment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/model/DeleteItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/model/DeleteItem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/model/Limits.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/model/Limits.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/model/ListMessages.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/model/ListMessages.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/model/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/model/Message.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/model/Session.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/model/Session.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/model/UserEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/model/UserEvent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/model/UserWrite.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/model/UserWrite.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/permissions/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/permissions/Admin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/permissions/IsAuthorization.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/permissions/IsAuthorization.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ru/chat/websocket/permissions/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ru/chat/websocket/permissions/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/chat/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/chat/auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/chat/handlers.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/chat/handlers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/chat/paint.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/chat/paint.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/chat/session.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/chat/session.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/chat/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/chat/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/create.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -214,7 +157,7 @@
       <workItem from="1588082534823" duration="15144000" />
       <workItem from="1588099824178" duration="3678000" />
       <workItem from="1588177759184" duration="4867000" />
-      <workItem from="1590236483456" duration="11230000" />
+      <workItem from="1590236483456" duration="14122000" />
     </task>
     <servers />
   </component>
@@ -258,46 +201,46 @@
       <screen x="0" y="23" width="1366" height="677" />
     </state>
     <state x="421" y="115" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1366.677@0.23.1366.677" timestamp="1587334258944" />
-    <state width="1811" height="280" key="GridCell.Tab.0.bottom" timestamp="1590249326415">
+    <state width="1811" height="280" key="GridCell.Tab.0.bottom" timestamp="1590253125081">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1324" height="202" key="GridCell.Tab.0.bottom/0.23.1366.677@0.23.1366.677" timestamp="1588183735861" />
-    <state width="1811" height="280" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1590249326415" />
-    <state width="1811" height="280" key="GridCell.Tab.0.center" timestamp="1590249326415">
+    <state width="1811" height="280" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1590253125081" />
+    <state width="1811" height="280" key="GridCell.Tab.0.center" timestamp="1590253125081">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1324" height="202" key="GridCell.Tab.0.center/0.23.1366.677@0.23.1366.677" timestamp="1588183735860" />
-    <state width="1811" height="280" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1590249326415" />
-    <state width="1811" height="280" key="GridCell.Tab.0.left" timestamp="1590249326415">
+    <state width="1811" height="280" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1590253125081" />
+    <state width="1811" height="280" key="GridCell.Tab.0.left" timestamp="1590253125080">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1324" height="202" key="GridCell.Tab.0.left/0.23.1366.677@0.23.1366.677" timestamp="1588183735859" />
-    <state width="1811" height="280" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1590249326415" />
-    <state width="1811" height="280" key="GridCell.Tab.0.right" timestamp="1590249326415">
+    <state width="1811" height="280" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1590253125080" />
+    <state width="1811" height="280" key="GridCell.Tab.0.right" timestamp="1590253125081">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1324" height="202" key="GridCell.Tab.0.right/0.23.1366.677@0.23.1366.677" timestamp="1588183735861" />
-    <state width="1811" height="280" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1590249326415" />
-    <state width="1811" height="280" key="GridCell.Tab.1.bottom" timestamp="1590249326416">
+    <state width="1811" height="280" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1590253125081" />
+    <state width="1811" height="280" key="GridCell.Tab.1.bottom" timestamp="1590253125082">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1324" height="202" key="GridCell.Tab.1.bottom/0.23.1366.677@0.23.1366.677" timestamp="1588183735864" />
-    <state width="1811" height="280" key="GridCell.Tab.1.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1590249326416" />
-    <state width="1811" height="280" key="GridCell.Tab.1.center" timestamp="1590249326416">
+    <state width="1811" height="280" key="GridCell.Tab.1.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1590253125082" />
+    <state width="1811" height="280" key="GridCell.Tab.1.center" timestamp="1590253125082">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1324" height="202" key="GridCell.Tab.1.center/0.23.1366.677@0.23.1366.677" timestamp="1588183735863" />
-    <state width="1811" height="280" key="GridCell.Tab.1.center/67.27.1853.1053@67.27.1853.1053" timestamp="1590249326416" />
-    <state width="1811" height="280" key="GridCell.Tab.1.left" timestamp="1590249326416">
+    <state width="1811" height="280" key="GridCell.Tab.1.center/67.27.1853.1053@67.27.1853.1053" timestamp="1590253125082" />
+    <state width="1811" height="280" key="GridCell.Tab.1.left" timestamp="1590253125081">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1324" height="202" key="GridCell.Tab.1.left/0.23.1366.677@0.23.1366.677" timestamp="1588183735862" />
-    <state width="1811" height="280" key="GridCell.Tab.1.left/67.27.1853.1053@67.27.1853.1053" timestamp="1590249326416" />
-    <state width="1811" height="280" key="GridCell.Tab.1.right" timestamp="1590249326416">
+    <state width="1811" height="280" key="GridCell.Tab.1.left/67.27.1853.1053@67.27.1853.1053" timestamp="1590253125081" />
+    <state width="1811" height="280" key="GridCell.Tab.1.right" timestamp="1590253125082">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1324" height="202" key="GridCell.Tab.1.right/0.23.1366.677@0.23.1366.677" timestamp="1588183735864" />
-    <state width="1811" height="280" key="GridCell.Tab.1.right/67.27.1853.1053@67.27.1853.1053" timestamp="1590249326416" />
+    <state width="1811" height="280" key="GridCell.Tab.1.right/67.27.1853.1053@67.27.1853.1053" timestamp="1590253125082" />
     <state width="1811" height="346" key="GridCell.Tab.2.bottom" timestamp="1590248681370">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
