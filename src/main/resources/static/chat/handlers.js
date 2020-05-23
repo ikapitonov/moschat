@@ -47,11 +47,17 @@ function socketReconnection(data) {
 }
 
 function onError() {
+    let body = $("body");
+
     stompClient.disconnect();
 
-    alert("Ошибка подключения");
+    body.empty();
+    body.attr('id', 'server-error');
+    body.append("<h4>Произошла ошибка подключения. Пожалуйста, перезагрузите страницу</h4>");
 
-    location.reload();
+    setTimeout(function () {
+        location.reload();
+    }, 8000);
 }
 
 //удаление

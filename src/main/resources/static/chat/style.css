@@ -6,6 +6,17 @@ body {
     font-size: 12px;
 }
 
+#server-error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 300px;
+    color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 14px;
+}
 
 /* chat style */
 .chatG {
