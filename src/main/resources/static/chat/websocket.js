@@ -1,5 +1,5 @@
-let domen = location.origin;
-//let domen = "http://localhost:8080";
+//let domen = location.origin;
+let domen = "http://localhost:8080";
 let stompClient;
 let role;
 let webSocket;

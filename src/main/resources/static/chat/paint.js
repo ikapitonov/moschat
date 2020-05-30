@@ -2,10 +2,10 @@ function addUser(data) {
     let str = "<div class=\"oneMessageG padding-bottom-10\">";
 
     if (data.role == "user") {
-        str += "<p class=\"textJoinChatG\">Пользователь <span class=\"nameUserJoinG\">" + data.name + "</span> подключился к чату</p>";
+        str += "<p class=\"textJoinChatG main_text_color\">Пользователь <span class=\"nameUserJoinG\">" + data.name + "</span> подключился к чату</p>";
     }
     else {
-        str += "<p class=\"textJoinChatG\"><span class=\"nameUserJoinG\">" + data.name + "</span> подключился к чату</p>";
+        str += "<p class=\"textJoinChatG main_text_color\"><span class=\"nameUserJoinG\">" + data.name + "</span> подключился к чату</p>";
     }
     str += "</div>";
     $("#board").prepend(str);
@@ -15,10 +15,10 @@ function removeUser(data) {
     let str = "<div class=\"oneMessageG padding-bottom-10\">";
 
     if (data.role == "user") {
-        str += "<p class=\"textJoinChatG\">Пользователь <span class=\"nameUserJoinG\">" + data.name + "</span> отключился от чата</p>";
+        str += "<p class=\"textJoinChatG main_text_color\">Пользователь <span class=\"nameUserJoinG\">" + data.name + "</span> отключился от чата</p>";
     }
     else {
-        str += "<p class=\"textJoinChatG\"><span class=\"nameUserJoinG\">" + data.name + "</span> отключился от чата</p>";
+        str += "<p class=\"textJoinChatG main_text_color\"><span class=\"nameUserJoinG\">" + data.name + "</span> отключился от чата</p>";
     }
     str += "</div>";
     $("#board").prepend(str);
@@ -51,12 +51,12 @@ function massageShow(data, where) {
 
     str += "<div class=\"rightMOMG\">";
     str += "<div class=\"titleRightMOMG\">";
-    str += "<h3>" + data.appUser.name + "</h3>";
+    str += "<h3 class=\"main_text_color\">" + data.appUser.name + "</h3>";
     if (data.appUser.email != null && data.appUser.email != "") {
-        str += "<h5>" + data.appUser.email + "</h5>";
+        str += "<h5 class=\"second_text_color\">" + data.appUser.email + "</h5>";
     }
     if (data.appUser.phone != null && data.appUser.phone != "") {
-        str += "<h5>" + data.appUser.phone + "</h5>";
+        str += "<h5 class=\"second_text_color\">" + data.appUser.phone + "</h5>";
     }
 
     if (role == "admin") {
@@ -64,25 +64,25 @@ function massageShow(data, where) {
             if (userFields[i].length === 0)
                 continue;
 
-            str += "<h5>" + sessionFields[i] + ": " + userFields[i] + "</h5>";
+            str += "<h5 class=\"second_text_color\">" + sessionFields[i] + ": " + userFields[i] + "</h5>";
         }
     }
 
-    str += "<h5>" + data.date + "</h5>";
-    str += "<div class=\"buttonReply buttonReply2 btnOfAnswer\" active=\"1\" onclick=\"showInputReply1(this, "+ data.id +")\">Ответить</div>";
+    str += "<h5 class=\"second_text_color\">" + data.date + "</h5>";
+    str += "<div class=\"buttonReply buttonReply2 buttons_colors btnOfAnswer\" active=\"1\" onclick=\"showInputReply1(this, "+ data.id +")\">Ответить</div>";
 
     if (role == "admin") {
-        str += "<div class=\"buttonReply buttonReply2\" onclick=\"deleteMessage(" + data.id + ")\" active=\"1\">Удалить</div>";
+        str += "<div class=\"buttonReply buttonReply2 buttons_colors\" onclick=\"deleteMessage(" + data.id + ")\" active=\"1\">Удалить</div>";
     }
 
     str += "</div>";
-    str += "<pre class=\"textMessageG\">" + data.content + "</pre>";
+    str += "<pre class=\"textMessageG main_text_color\">" + data.content + "</pre>";
     str += "</div>";
 
     str += "</div>";
     str += "<div class=\"replyOMG\"><div class=\"comment_show\"></div>";
     //str += "<div class=\"replyInputBlock\">\n<textarea id=\"commentid_" + data.id + "\" onclick=\"showSignup()\" active=\"0\" class=\"textareaG textareaReplyG\" placeholder=\"Введите ответ\" name=\"inputMessage\"></textarea><div class=\"buttonReply buttonReply2\" active=\"0\" onclick=\"sendComment(" + data.id + ")\">Отправить</div><div class=\"buttonReply buttonReply2\" active=\"1\" onclick=\"showInputReply(this)\">Ответить</div></div>";
-    str += "<div class=\"replyInputBlock\">\n<textarea style=\"position: absolute;\" id=\"commentid_" + data.id + "\" onclick=\"showSignup()\" active=\"0\" class=\"textareaG textareaReplyG\" placeholder=\"Введите ответ\" name=\"inputMessage\"></textarea><div class=\"buttonReply buttonReply2\" active=\"0\" onclick=\"sendComment(" + data.id + ")\">Отправить</div></div>";
+    str += "<div class=\"replyInputBlock\">\n<textarea style=\"position: absolute;\" id=\"commentid_" + data.id + "\" onclick=\"showSignup()\" active=\"0\" class=\"textareaG textareaReplyG\" placeholder=\"Введите ответ\" name=\"inputMessage\"></textarea><div class=\"buttonReply buttonReply2 buttons_colors\" active=\"0\" onclick=\"sendComment(" + data.id + ")\">Отправить</div></div>";
     str+= "</div>";
     str += "</div>";
 
@@ -129,12 +129,12 @@ function commentShow(data, messageId, sessionFields) {
 
     str += "<div class=\"rightMOMG\">";
     str += "<div class=\"titleRightMOMG\">";
-    str += "<h3>" + data.appUser.name + "</h3>";
+    str += "<h3 class=\"main_text_color\">" + data.appUser.name + "</h3>";
     if (data.appUser.email != null && data.appUser.email != "") {
-        str += "<h5>" + data.appUser.email + "</h5>";
+        str += "<h5 class=\"second_text_color\">" + data.appUser.email + "</h5>";
     }
     if (data.appUser.phone != null && data.appUser.phone != "") {
-        str += "<h5>" + data.appUser.phone + "</h5>";
+        str += "<h5 class=\"second_text_color\">" + data.appUser.phone + "</h5>";
     }
 
     if (role == "admin") {
@@ -142,18 +142,18 @@ function commentShow(data, messageId, sessionFields) {
             if (userFields[i].length === 0)
                 continue;
 
-            str += "<h5>" + sessionFields[i] + ": " + userFields[i] + "</h5>";
+            str += "<h5 class=\"second_text_color\">" + sessionFields[i] + ": " + userFields[i] + "</h5>";
         }
     }
 
-    str += "<h5>" + data.date + "</h5>";
+    str += "<h5 class=\"second_text_color\">" + data.date + "</h5>";
 
     if (role == "admin") {
-        str += "<div class=\"buttonReply buttonReply2\" onclick=\"deleteComment(" + data.id + ")\" active=\"1\">Удалить</div>";
+        str += "<div class=\"buttonReply buttonReply2 buttons_colors\" onclick=\"deleteComment(" + data.id + ")\" active=\"1\">Удалить</div>";
     }
 
     str += "</div>";
-    str += "<pre class=\"textMessageG\">" + data.content + "</pre>";
+    str += "<pre class=\"textMessageG main_text_color\">" + data.content + "</pre>";
     str += "</div>";
     str += "</div>";
 

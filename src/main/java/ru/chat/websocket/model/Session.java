@@ -25,6 +25,9 @@ public class Session {
     @Column(length = 301)
     private String fields;
 
+    @Column(length = 301)
+    private String colors;
+
     @CreationTimestamp
     private LocalDateTime date;
 
@@ -82,5 +85,13 @@ public class Session {
 
     public void setUsePhone(boolean usePhone) {
         this.usePhone = usePhone;
+    }
+
+    public String getColors() {
+        return colors;
+    }
+
+    public void setColors(String colors) {
+        this.colors = colors;
     }
 }

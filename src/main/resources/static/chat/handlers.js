@@ -53,7 +53,7 @@ function onError() {
 
     body.empty();
     body.attr('id', 'server-error');
-    body.append("<h4>Произошла ошибка подключения. Пожалуйста, перезагрузите страницу</h4>");
+    body.append("<h4 class='main_text_color'>Произошла ошибка подключения. Пожалуйста, перезагрузите страницу</h4>");
 
     setTimeout(function () {
         location.reload();
@@ -161,14 +161,14 @@ setInterval(function () {
     let len = usersWrite.size;
 
     if (len == 0) {
-        $("#writes").css("color", "#030027");
+        $("#writes").css("display", "none");
     }
     else if (len == 1) {
-        $("#writes").css("color", "#FFFFFF");
+        $("#writes").css("display", "block");
         $("#writes").text("Сейчас набирает сообщение 1 пользователь...");
     }
     else {
-        $("#writes").css("color", "#FFFFFF");
+        $("#writes").css("display", "block");
         $("#writes").text("Сейчас набирают сообщение " + len + " " + declOfNum(len, [ 'пользователь', 'пользователя', 'пользоваталей' ]) + "...");
     }
 },interval);

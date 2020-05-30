@@ -7,47 +7,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">-->
-    <link rel="stylesheet" href="/chat/style.css?var=13">
+    <link rel="stylesheet" href="/chat/style.css?var=1">
+
+    <style>
+        .main_back_color {
+            background-color: [[${colors[0]}]];
+        }
+        .buttons_colors {
+            background-color: [[${colors[1]}]];
+            color: [[${colors[2]}]];
+        }
+        .main_text_color {
+            color: [[${colors[3]}]];
+        }
+        .second_text_color {
+            color: [[${colors[4]}]];
+        }
+        .oneMessageG:hover {
+            background-color: [[${colors[5]}]];
+        }
+    </style>
 </head>
-<body style="margin-bottom: 20px;">
+<body class="main_back_color" style="margin-bottom: 20px;">
 
 <div style="display: none;" id="sessionId" th:utext="${sessionId}"></div>
 <div th:if="${is_phone} == true" style="display: none;" id="use_phone">true</div>
-<!--<div style="display: none;" id="sessionId">1</div>-->
 
 <!-- код окно регистрации -->
 <div class="backWithOpacity" style="display: none;"></div>
 <div class="backReg">
-    <div class="signup">
+    <div class="signup main_text_color">
         <div class="closeSignup" onclick="hideSignup()"></div>
         <p class="textSignup">Войдите, чтобы оставлять комментарии и писать сообщения</p>
         <div class="formsSignup">
             <form class="oneform" id="formSignupUser">
                 <div>
                     <input class="inputSignup" id="userName" type="text" th:value="${name}" th:placeholder="${username}" />
-                    <div style="color: white; margin-left: 12px; font-size: 10px;">Обязательно</div>
+                    <div class="main_text_color" style="margin-left: 12px; font-size: 10px;">Обязательно</div>
                 </div>
                 <div>
                     <input th:if="${is_phone} == true" class="inputSignup" id="userPhone" type="tel" th:value="${phone}" th:placeholder="${phonename}" />
-                    <div th:if="${is_phone} == true" style="color: white; margin-left: 12px; font-size: 10px;">Обязательно</div>
+                    <div th:if="${is_phone} == true" class="main_text_color" style="margin-left: 12px; font-size: 10px;">Обязательно</div>
                 </div>
                 <input style="display: none;" class="inputSignup" id="userEmail" type="email" th:value="${email}" placeholder="E-mail" />
                 <input th:if="${fields} != null" th:each="Item, state : ${fields}" th:id="${'field' + state.index}" class="inputSignup" type="text" th:value="${Item.user}" th:placeholder="${Item.session}" />
-<!--                <p class="textSignup">Или телефон или почта или вместе. Их видят только администраторы.</p>-->
+                <!--                <p class="textSignup">Или телефон или почта или вместе. Их видят только администраторы.</p>-->
                 <div class="rowButtonsBottomG">
-                    <input class="submitSignup" type="submit" id="userAuth" value="Подключиться">
+                    <input class="submitSignup buttons_colors" type="submit" id="userAuth" value="Подключиться">
                     <!-- <input class="submitSignup" id="closeForm1" type="submit" value="Закрыть"> -->
                 </div>
             </form>
             <form class="oneform" id="formSigninUser">
                 <input class="inputSignup" type="tel" placeholder="Номер телефона" />
-                <input class="submitSignup" type="submit" value="Войти">
+                <input class="submitSignup buttons_colors" type="submit" value="Войти">
             </form>
             <form class="oneform" id="formSignupAdm">
                 <input class="inputSignup" id="admInputLogin" type="text" placeholder="Логин" />
                 <input class="inputSignup" id="admInputPass" type="password" placeholder="Пароль" />
                 <div class="rowButtonsBottomG">
-                    <input class="submitSignup" type="submit" id="adminAuth" value="Подключиться">
+                    <input class="submitSignup buttons_colors" type="submit" id="adminAuth" value="Подключиться">
                     <!-- <input class="submitSignup" id="closeForm2" type="submit" value="Закрыть"> -->
                 </div>
             </form>
@@ -55,12 +73,12 @@
                 <input class="inputSignup" type="text" placeholder="Логин" />
                 <input class="inputSignup" type="password" placeholder="Пароль" />
                 <div class="rowButtonsBottomG">
-                    <input class="submitSignup" type="submit" value="Войти">
+                    <input class="submitSignup buttons_colors" type="submit" value="Войти">
                     <!-- <input class="submitSignup" onclick="hideSignup()" type="submit" value="Закрыть"> -->
                 </div>
             </form>
             <div class="rowButtonSignupG">
-                <button onclick="switchTypeSignUp(this)" switchparam="buttonFromUser" class="buttonSignUp buttonSignUp1" active="1">Регистрация для администратора</button>
+                <button onclick="switchTypeSignUp(this)" switchparam="buttonFromUser" class="buttonSignUp buttonSignUp1 main_text_color" active="1">Регистрация для администратора</button>
                 <!-- <button onclick="switchUserAdm(this)" switchparam="buttonFromAdmin"  class="buttonSignUp buttonSignUp1" active="0">Для администратора</button> -->
             </div>
         </div>
@@ -72,25 +90,25 @@
 <div class="chatG">
     <!-- блок ввода комментария -->
     <div class="upBlock">
-        <div class="blockInputMessage">
+        <div class="blockInputMessage main_back_color">
             <div class="textareaWithBtn" style="display: flex; justify-content: space-between; width: 100%; background-color: white;">
                 <textarea class="textareaWithBtnG" onclick="showSignup()" id="textarea" placeholder="Введите комментарий" name="inputMessage"></textarea>
                 <div class="textarea-Btn">
                     <ul class="textarea-Btn-dropbtn textarea-Btn-icons textarea-Btn-btn-right textarea-Btn-showLeft" onclick="showDropdown()">
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <li class="main_back_color"></li>
+                        <li class="main_back_color"></li>
+                        <li class="main_back_color"></li>
                     </ul>
-                    <div class="textarea-Btn-list">
+                    <div class="textarea-Btn-list buttons_colors">
                         <div id="textarea-Btn-button">Войти</div>
                     </div>
                 </div>
             </div>
             <!-- <textarea class="textareaG" oninput="resizeTextarea(this)" id="textarea" placeholder="Введите комментарий" name="inputMessage"></textarea> -->
-            <button class="buttonSendG" type="button" onclick="sendMessage()" name="sendInputMessage">Добавить</button>
+            <button class="buttonSendG buttons_colors" type="button" onclick="sendMessage()" name="sendInputMessage">Добавить</button>
         </div>
-        <div class="blockTyping">
-            <p class="textTypingChatG" id="writes" style="color: #FFFFFF;">Загружаю чат...</p>
+        <div class="blockTyping main_back_color" style="height: 12px;">
+            <p  class="textTypingChatG main_text_color" id="writes">Загружаю чат...</p>
         </div>
     </div>
     <!-- конец блок ввода комментария -->
@@ -103,7 +121,7 @@
         <div style="height: 90px; width: 1px;"></div>
         <div id="board">
         </div>
-        <button class="uploadMoreG" style="display: none;" id="loading">Загрузить еще</button>
+        <button class="uploadMoreG buttons_colors" style="display: none;" id="loading">Загрузить еще</button>
     </div>
 </div>
 
@@ -288,7 +306,7 @@
 <script src="/chat/websocket.js?var=14"></script>
 <script src="/chat/cookie.js"></script>
 <script src="/chat/autosize.js"></script>
-<script src="/chat/session.js?var=18"></script>
+<script src="/chat/session.js?var=18-"></script>
 <script>
     loadingMessages();
     wsConnection();
@@ -301,6 +319,7 @@
     isAuth = true;
     generateAuth(null);
 </script>
+
 
 </body>
 </html>

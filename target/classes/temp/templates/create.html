@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Moderator</title>
+</head>
+<body class="mb-5">
+
+
+<div class="container mt-3" style="max-width: 700px;">
+    <h3 class="text-center">Создание новой сессии</h3>
+
+    <div id="response">
+    </div>
+
+    <form method="POST">
+        <div class="form-group">
+            <input type="text" class="form-control" id="name" placeholder="Название комнаты (на английском и без пробелов)">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="user" placeholder="Данные для показа (имя/ник)">
+        </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Нужно ли включать поле "телефон"? Оно с валидацией</label>
+        </div>
+        <div class="form-group" style="display: none;">
+            <input type="text" class="form-control" id="phone" placeholder="Название поля с номером телефона">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" id="key" placeholder="Секретный ключ">
+        </div>
+        <div class="form-group" id="box">
+        </div>
+        <div class="mt-2">
+            <button class="btn btn-success" id="new">Добавить дополнительное поле</button>
+        </div>
+        <div class="mt-3">
+            <button type="submit" class="btn btn-primary" id="submit">Готово</button>
+        </div>
+    </form>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $("#new").click(function (e) {
+            e.preventDefault();
+
+            if ($(".newbox").length === 5)
+                return ;
+
+            $("#box").append('<div class="form-group"><input type="text" class="form-control newbox" placeholder="Название дополнительного поля"></div>');
+        });
+
+        $("#exampleCheck1").change(function() {
+            if(this.checked) {
+                $("#phone").parent().css("display","block");
+            }
+            else {
+                $("#phone").parent().css("display","none");
+            }
+        });
+
+        $("#submit").click(function (e) {
+            e.preventDefault();
+
+            let name = $("#name").val();
+            let key = $("#key").val();
+            let fields = $(".newbox");
+            let user = $("#user").val();
+            let phone = $("#phone").val();
+            let isPhone = $('#exampleCheck1').is(':checked');
+            let arr = [];
+
+            if (name.length === 0) {
+                alert("Заполнение поле с названием");
+                return ;
+            }
+            if (user.length === 0) {
+                alert("Заполнение поле с данными");
+                return ;
+            }
+            if (isPhone === true && phone.length === 0) {
+                alert("Заполнение поле с названием поля номера телефона");
+                return ;
+            }
+            if (key.length === 0) {
+                alert("Заполнение поле с ключом");
+                return ;
+            }
+
+            for (let i = 0; i < fields.length; i++) {
+                if (fields[i].value.length > 0) {
+                    arr.push(fields[i].value);
+                }
+            }
+
+            send(name.trim(), key.trim(), arr, user.trim(), phone.trim(), isPhone);
+        });
+
+
+        function send(name, key, arr, user, phone, isPhone) {
+
+            $.ajax({
+                url: location.pathname,
+                type: 'POST',
+                data: JSON.stringify({
+                    name: name,
+                    key: key,
+                    user: user,
+                    phone: phone,
+                    useNumber: isPhone,
+                    fields: arr
+                }),
+                contentType: 'application/json',
+                success: function(msg) {
+                    if (msg == null || msg.status === undefined || msg.status === false) {
+                        result("danger", msg.error);
+                    }
+                    else {
+                        result("success", location.origin + "/" + name);
+                    }
+                }
+            });
+
+        }
+
+        function result(css, string) {
+            $("#response").empty();
+            $("#response").append("<div class=\"alert alert-" + css + "\" role=\"alert\">"+ string +"</div>");
+        }
+
+    });
+</script>
+
+</body>
+</html>
